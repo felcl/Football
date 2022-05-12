@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet , useNavigate } from "react-router-dom";
 import { Layout } from 'antd';
 import logo from '../assets/image/logo.png'
 import '../assets/style/layout.scss'
 const { Header, Content} = Layout;
 
 const MainLayout :React.FC =() =>{
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     return(
         <Layout className="layout">
             <Header className="MainSider">
@@ -15,7 +15,7 @@ const MainLayout :React.FC =() =>{
                          <div className="MenuItem pointer">
                         家
                         </div>
-                        <div className="MenuItem pointer">
+                        <div className="MenuItem pointer" onClick={()=>{navigate('/BlindBox')}}>
                         寶箱
                         </div>
                         <div className="MenuItem pointer">

@@ -92,6 +92,7 @@ input:focus,select:focus,textarea:focus {
 .Edition-Center{
   max-width: 1200px;
   width: 100%;
+  margin:auto;
 }
 /* flex 居中 */
 .flexCenter{
