@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import CardDetails from '../components/CardDetails'
 import '../assets/style/carddetails.scss'
 import DropDown from '../components/DropDown'
@@ -6,11 +6,12 @@ import CardItem from '../components/CardItem'
 import '../assets/style/Swap.scss'
 
 function Swap() {
+    let [showCardDetail,setShowCardDetail] = useState(false)
   return (
     <div>
       <div className="Edition-Center">  
         交易场
-        <CardDetails></CardDetails>
+        <CardDetails isShow={showCardDetail}></CardDetails>
         <div className="SwapTitle">
         交易市場
         </div>
