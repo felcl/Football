@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Modal} from 'antd';
 
- function CardDetails() {
+interface CardDetailPropsType{
+  isShow:boolean
+}
+ function CardDetails(props:CardDetailPropsType) {
     // const [isModalVisible, setIsModalVisible] = useState(true);
 
 
@@ -16,7 +19,7 @@ import { Modal} from 'antd';
   return (
     <>
     {/* <div className='box'>11111</div> */}
-      <Modal title="Basic Modal" visible={true} 
+      <Modal title="Basic Modal" visible={props.isShow} 
       className='Card'
       centered
       width={'449px'}
