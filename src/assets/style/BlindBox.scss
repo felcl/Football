@@ -1,0 +1,59 @@
+.BlindBoxTitle{
+    margin-top:100px;
+    color: #FFFFFF;
+    text-align:center;
+    font-weight: 700;
+    font-size: 24px;
+}
+.BlindBoxInfo{
+    display: flex;
+    align-items: center;
+    >div{
+        margin: 0 29px;
+    }
+    .Info{
+        flex: 1;
+        .intr{
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .intrContent{
+            font-weight: 400;
+            font-size: 14px;
+            color: #FFFFFF;
+            margin-top: 10px;
+        }
+        .BuyRow{
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+            .buyInfo{
+                width:125px;
+                .BuyName{
+                    color: #FFFFFF;
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+                .price{
+                    color: #FFFFFF;
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+            .BuyBtn{
+                border-radius: 6px;
+                padding: 8px 16px;
+                color: #FFFFFF;
+                letter-spacing: 0.08em;
+                font-weight: 400;
+                font-size: 14px;
+                margin-left: 58px;
+            }
+        }
+    }
+    .Img{
+        flex: 1;
+    }
+}
