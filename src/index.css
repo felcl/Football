@@ -1,4 +1,5 @@
 body {
+  background: #161731 !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -56,9 +57,6 @@ a:focus {
 input:focus,select:focus,textarea:focus {
   outline:-webkit-focus-ring-color auto 0;
 }
-body{
-  background: #FAF9FF;
-}
 .cbtn{
   cursor: pointer;
 }
@@ -68,25 +66,6 @@ body{
 .MainContent{
   height: calc(100vh - 64px);
   overflow-y: auto;
-}
-.MainSider{
-  background: rgba(0, 0, 0, 0.4) !important;
-}
-.MainSider .ant-menu.ant-menu-dark{
-  color: #fff;
-  background: transparent;
-}
-.MainSider .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
-  background-color: transparent;
-}
-.MainSider .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected span{
-  color: #FFCE3C;
-}
-.MainSider .ant-menu-submenu-selected .ant-menu-submenu-title .ant-menu-title-content{
-  color: #FFCE3C;
-}
-.MainSider .ant-menu-dark .ant-menu-inline.ant-menu-sub{
-  background: transparent;
 }
 .menuSider{
   position: fixed !important;
@@ -105,14 +84,23 @@ body{
 .layoutMain{
   position: relative
 }
+.ant-layout-header{
+  background: transparent !important;
+  padding: 0 !important;
+}
 .MenuMantle{
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0);
   opacity: 0.2;
     z-index: 10;
 }
+/* 版心 */
+.Edition-Center{
+  max-width: 1200px;
+  width: 100%;
+}
+/* flex 居中 */
 .flexCenter{
   display: flex;
   justify-content: center;
@@ -120,4 +108,12 @@ body{
 }
 .flex1{
   flex: 1;
+}
+/* 鼠标手势 */
+.pointer{
+  cursor:pointer;
+}
+/* 主题渐变色 */
+.linear-gradient{
+  background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
 }

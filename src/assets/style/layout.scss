@@ -1,0 +1,26 @@
+.HeaderNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    .MenuList{
+        display: flex;
+        align-items: center;
+        .MenuItem{
+            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 16px;
+            margin-left: 63px;
+            line-height: 1.2;
+        }
+        .Connect{
+            padding:8px 16px;
+            letter-spacing: 0.08em;
+            color: #FFFFFF;
+            border-radius: 6px;
+            line-height: 1.2;
+            margin-left: 63px;
+        }
+    }
+}
