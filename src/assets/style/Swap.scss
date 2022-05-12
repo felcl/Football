@@ -1,0 +1,45 @@
+.SwapTitle{
+    margin-top: 60px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+}
+.screen{
+    display: flex;
+    margin-top:50px;
+    justify-content:space-between;
+    align-items: center;
+    .Tabs{
+        display: flex;
+        
+        >div{
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+        .activeTab{
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+        .invalidTab{
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+        }
+    }
+    .DropDownGroup{
+        display: flex;
+    }
+}
+
+.CardList{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    grid-row-gap: 40px;
+    grid-column-gap: 40px;
+    margin-top: 20px;
+
+}
