@@ -1,12 +1,12 @@
 import React from "react"
 
-function Home() {
+function BlindBox() {
   return (
     <div>
       <div className="Edition-Center">  
-
+        盲盒页面
       </div>
     </div>
   )
 }
-export default React.memo(Home)
+export default React.memo(BlindBox)
