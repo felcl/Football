@@ -1,10 +1,10 @@
 import React from "react"
-
+import Modal from "../components/Modal.jsx"
 function BlindBox() {
   return (
     <div>
       <div className="Edition-Center">  
-        盲盒页面
+      <Modal/>
       </div>
     </div>
   )

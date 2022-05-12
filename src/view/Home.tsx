@@ -1,10 +1,10 @@
 import React from "react"
-
+import Modal from '../components/Modal'
 function Home() {
   return (
     <div>
-      <div className="Edition-Center">  
-
+      <div className="Edition-Center"> 
+      <Modal/> 
       </div>
     </div>
   )
