@@ -40,27 +40,35 @@
       display: flex;
       justify-content: space-around;
       //   flex-grow: 0;
+      font-size: 14px;
       .gm {
         // flex-grow: 0;
         width: 76px;
         height: 36px;
         color: #db2dcf;
         background: #1d1e44;
-        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
         border-radius: 6px;
+        border: 0;
+        div {
+          background: #1d1e44;
+          border-radius: 6px;
+        }
       }
       .hc {
         width: 76px;
         height: 36px;
         background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
         border-radius: 6px;
+        border: 0;
       }
       .zy {
         width: 76px;
         height: 36px;
-
+        color: #fff;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 6px;
+        border: 0;
       }
     }
   }
