@@ -1,3 +1,4 @@
+// 市场交易卡牌详情和NFT卡牌详情下面3个button按钮的差别
 import React, { useState } from 'react';
 import { Modal} from 'antd';
 
@@ -41,6 +42,7 @@ interface CardDetailPropsType{
             <button className='zy'>质押</button>
 
         </div>
+        <span>点击任意地方离开</span>
       </Modal>
     </>
   )

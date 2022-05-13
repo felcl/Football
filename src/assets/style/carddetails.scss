@@ -10,8 +10,9 @@
     display: none;
   }
   .ant-modal-body {
+    position: relative;
     background: #1d1e44;
-    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 0;
     .title {
       font-size: 24px;
@@ -36,11 +37,14 @@
       font-size: 14px;
     }
     .butm {
-      width: 100%;
+      margin: 0 70px;
+      // width: 100%;
+      margin-top: 60px;
       display: flex;
       justify-content: space-around;
       //   flex-grow: 0;
       font-size: 14px;
+      box-shadow: 0;
       .gm {
         // flex-grow: 0;
         width: 76px;
@@ -51,8 +55,14 @@
         border-radius: 6px;
         border: 0;
         div {
+          width: 74px;
+          height: 34px;
           background: #1d1e44;
           border-radius: 6px;
+          margin-left: -5px;
+          text-align: center;
+          line-height: 34px;
+          font-size: 14px;
         }
       }
       .hc {
@@ -70,6 +80,16 @@
         border-radius: 6px;
         border: 0;
       }
+    }
+    span {
+      position: absolute;
+      bottom: -60px;
+      left: 173px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      color: #fff;
     }
   }
 }
