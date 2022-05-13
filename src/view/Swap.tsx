@@ -4,12 +4,16 @@ import '../assets/style/componentsStyle/carddetails.scss'
 import '../assets/style/componentsStyle/MarketDealing.scss'
 import '../assets/style/componentsStyle/Puchased.scss'
 import '../assets/style/componentsStyle/CancelPurchase.scss'
+import '../assets/style/componentsStyle/CancelSucceed.scss'
+
 
 
 import DropDown from '../components/DropDown'
 import CardItem from '../components/CardItem'
 import Puchased from '../components/Puchased'
 import CancelPurchase from '../components/CancelPurchase'
+import CancelSucceed from '../components/CancelSucceed'
+
 
 
 import '../assets/style/Swap.scss'
@@ -22,6 +26,8 @@ function Swap() {
     <div>
       <div className="Edition-Center">  
         交易场
+        {/* 取消挂卖成功 */}
+        <CancelSucceed></CancelSucceed>
         {/* 取消挂卖 */}
         <CancelPurchase></CancelPurchase>
         {/* 购买成功 */}

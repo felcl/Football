@@ -1,4 +1,4 @@
-// 市场交易确认购买
+// 确认购买
 import React from 'react'
 import { Modal} from 'antd';
 
