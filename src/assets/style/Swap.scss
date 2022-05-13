@@ -32,6 +32,7 @@
     }
     .DropDownGroup{
         display: flex;
+        position: relative;
     }
 }
 
@@ -42,4 +43,28 @@
     grid-column-gap: 40px;
     margin-top: 20px;
 
+}
+.Pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+.ant-pagination-item-link{
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.ant-pagination-item{
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    a{
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+}
+.ant-pagination-item-active{
+    background: #D533D1 !important;
+    border: 1px solid #D533D1 !important;
 }

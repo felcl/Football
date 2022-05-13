@@ -19,9 +19,9 @@ function NFT() {
                 <div className={TabIndex === 1 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(1)}}>盲盒</div>
             </div>
             <div className="DropDownGroup">
+                {/* <DropDown></DropDown>
                 <DropDown></DropDown>
-                <DropDown></DropDown>
-                <DropDown></DropDown>
+                <DropDown></DropDown> */}
             </div>
         </div>
         {

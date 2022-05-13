@@ -1,0 +1,74 @@
+.NodeTips{
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    .important{
+        font-weight: 600;
+    }
+    img{
+        margin-left: 5px;
+    }
+}
+.progressRow{
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+    .progressLabel{
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .progress{
+        flex:1;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        height: 10px;
+        .progressValue{
+            background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+            border-radius: 8px;
+            width: 50%;
+            height: 100%;
+        }
+    }
+    .progressInrt{
+        letter-spacing: 0.08em;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+.rewardNumRow{
+    display: flex;
+    align-items: center;
+    height: 66px;
+    background: #171833;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding:0 24px 0 15px;
+    .rewardNum{
+        flex: 1;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 24px;
+    }
+    .TokenInfo{
+        img{
+            margin-right: 5px;
+        }
+        color: #FFFFFF;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+.applyBtn{
+    width: 100%;
+    background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+    border-radius: 6px;
+    height: 36px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

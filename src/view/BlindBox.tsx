@@ -14,7 +14,9 @@ function BlindBox() {
     <div>
       <div className="Edition-Center">
         寶箱
+        {/* 购买确认弹窗 */}
         <RaceBoxModal isShow={showRaceBoxModal}></RaceBoxModal>
+        {/* 购买成功弹窗 */}
         <PurchaseBox isShow={showPurchaseBox}></PurchaseBox>
         <div className="BlindBoxTitle">
           盲盒寶箱

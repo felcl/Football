@@ -13,6 +13,7 @@ import CardItem from '../components/CardItem'
 import Puchased from '../components/Puchased'
 import CancelPurchase from '../components/CancelPurchase'
 import CancelSucceed from '../components/CancelSucceed'
+import { Pagination } from 'antd';
 
 
 
@@ -23,6 +24,9 @@ function Swap() {
     let [TabIndex,SetTabIndex] = useState(0)
     let [showCardDetail,setShowCardDetail] = useState(false)
     const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
+    function onChange(pageNumber:number) {
+        console.log('Page: ', pageNumber);
+    }
   return (
     <div>
       <div className="Edition-Center">  
@@ -49,12 +53,15 @@ function Swap() {
             </div>
             <div className="DropDownGroup">
                 <DropDown></DropDown>
-                <DropDown></DropDown>
-                <DropDown></DropDown>
+                {/* <DropDown></DropDown>
+                <DropDown></DropDown> */}
             </div>
         </div>
         <div className="CardList">
             <CardItem></CardItem>
+        </div>
+        <div className="Pagination">
+            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
         </div>
       </div>
     </div>

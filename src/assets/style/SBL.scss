@@ -1,0 +1,27 @@
+.SwapTitle{
+    margin-top: 60px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+}
+.TabRow{
+    margin-top: 55px;
+    display: flex;
+    .TabItem{
+        margin-right: 6px;
+        padding: 8px 24px;
+        width: max-content;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    .Inactivation{
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+        font-size: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+    }
+}

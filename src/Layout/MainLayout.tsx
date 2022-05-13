@@ -1,10 +1,34 @@
 import { Outlet , useNavigate , useLocation} from "react-router-dom";
 import { Layout } from 'antd';
 import logo from '../assets/image/logo.png'
+import FaceBook from '../assets/image/FaceBook.png'
+import GitHub from '../assets/image/GitHub.png'
+import Telegram from '../assets/image/Telegram.png'
+import Medium from '../assets/image/Medium.png'
+import Twitter from '../assets/image/Twitter.png'
+import Lang from '../assets/image/Lang.png'
 import '../assets/style/layout.scss'
-const { Header, Content} = Layout;
+import { Menu, Dropdown } from 'antd';
+const { Header, Content, Footer} = Layout;
 
 const MainLayout :React.FC =() =>{
+    const menu = (
+        <Menu
+          items={[
+            {
+              label: <span className="LangItem">繁體</span>,
+              key: '0',
+            },
+            {
+                type: 'divider',
+              },
+            {
+              label: <span className="LangItem">English</span>,
+              key: '1',
+            }
+          ]}
+        />
+      );
     const location = useLocation();
     const navigate = useNavigate();
     function menuActive(Path: string){
@@ -18,10 +42,10 @@ const MainLayout :React.FC =() =>{
         <Layout className="layout">
             <Header className="MainSider">
                 <div className="Edition-Center HeaderNav">
-                    <img src={logo} alt="" />
+                    <img src={logo} onClick={()=>{navigate('/')}} alt="" />
                     <div className="MenuList">
                         <div className={menuActive('/')} onClick={()=>{navigate('/')}}>
-                        家
+                        首頁
                         </div>
                         <div  className={menuActive('/BlindBox')} onClick={()=>{navigate('/BlindBox')}}>
                         寶箱
@@ -38,17 +62,50 @@ const MainLayout :React.FC =() =>{
                         <div className="MenuItem pointer">
                         邀請
                         </div>
+                        <Dropdown overlay={menu} placement="bottom" overlayClassName="LangDropDown" trigger={['click']} arrow={{ pointAtCenter: true }}>
+                            <div className="Lang">
+                                <img src={Lang} alt="" />
+                                語言切換 - 繁
+                            </div>
+                        </Dropdown>
+                        
                         <div className="Connect linear-gradient pointer">
                         Connect
                         </div>
                     </div>
                 </div>
             </Header>
-            <Layout className="layoutMain">
-                <Content className="MainContent" >
-                    <Outlet />
-                </Content>
-            </Layout>
+            <Content className="MainContent" >
+                <Outlet />
+                <Footer>
+                    <div className="footerLink">
+                        <img src={logo} alt="" />
+                        <div className="SOCIALRow">
+                            <div className="SOCIAL">SOCIAL</div>
+                            <div className="SOCIALItem">
+                                <img src={Twitter} alt="" />
+                                <span>Twitter</span>
+                            </div>
+                            <div className="SOCIALItem">
+                                <img src={Medium} alt="" />
+                                <span>Medium</span>
+                            </div>
+                            <div className="SOCIALItem">
+                                <img src={Telegram} alt="" />
+                                <span>Telegram</span>
+                            </div>
+                            <div className="SOCIALItem">
+                                <img src={GitHub} alt="" />
+                                <span>GitHub</span>
+                            </div>
+                            <div className="SOCIALItem">
+                                <img src={FaceBook} alt="" />
+                                <span>FaceBook</span>
+                            </div>
+                        </div>
+                    </div>
+                </Footer>
+            </Content>
         </Layout>
     )
 };

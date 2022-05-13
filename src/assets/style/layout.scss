@@ -18,6 +18,17 @@
             color: #DB2DCF;
             font-weight: 700;
         }
+        .Lang{
+            margin-left: 42px;
+            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.2;
+            img{
+                margin-right: 5px;
+            }
+        }
+
         .Connect{
             padding:8px 16px;
             letter-spacing: 0.08em;
@@ -28,3 +39,41 @@
         }
     }
 }
+.footerLink{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    .SOCIALRow{
+        display: flex;
+    }
+    .SOCIAL{
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .SOCIALItem{
+        margin-left: 25px;
+        font-weight: 500;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 0.08em;
+        img{
+            margin-right: 8px;
+        }
+    }
+}
+// .ant-dropdown-placement-bottom>.ant-dropdown-arrow{
+//     left: 75% !important;
+// }
+// .LangDropDown{
+//     .LangItem{
+//         color: #333333;
+//         font-weight: 400;
+//         font-size: 14px;
+//     }
+//     .ant-dropdown-menu{
+//         border-radius: 11px !important;
+//         overflow: hidden;
+//     }
+// }

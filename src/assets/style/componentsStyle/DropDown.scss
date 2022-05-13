@@ -10,3 +10,16 @@
     padding: 10px 15px;
     justify-content: space-between;
 }
+.DropDown{
+    .ant-dropdown-menu{
+        background-color: #161731;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        .ant-dropdown-menu-title-content{
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .ant-dropdown-menu-item:hover{
+            background-color: transparent !important;
+        }
+    }
+}
