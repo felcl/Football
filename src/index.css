@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "PingFang SC";
+  src: url("./assets/font/PINGFANG.TTF");
+}
 body {
   background: #161731 !important;
   margin: 0;
@@ -92,6 +96,7 @@ input:focus,select:focus,textarea:focus {
 .Edition-Center{
   max-width: 1200px;
   width: 100%;
+  margin:auto;
 }
 /* flex 居中 */
 .flexCenter{
@@ -109,4 +114,7 @@ input:focus,select:focus,textarea:focus {
 /* 主题渐变色 */
 .linear-gradient{
   background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+}
+.invalid{
+  background: rgba(255, 255, 255, 0.2);
 }
