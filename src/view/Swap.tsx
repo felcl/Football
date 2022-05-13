@@ -7,11 +7,14 @@ import '../assets/style/Swap.scss'
 
 function Swap() {
     let [showCardDetail,setShowCardDetail] = useState(true)
+    const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
   return (
     <div>
       <div className="Edition-Center">  
         交易场
         <CardDetails isShow={showCardDetail}></CardDetails>
+        <CardDetails isShow={showCardDetail}  
+        ></CardDetails>
         <div className="SwapTitle">
         交易市場
         </div>
