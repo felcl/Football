@@ -1,5 +1,4 @@
 .CardItemLinearBorder{
-    min-height: 347px;
     border-radius: 19px;
     padding:1px;
     background:linear-gradient(180deg, #4EADF5 0%, #DB2DCF 100%);
@@ -7,7 +6,6 @@
 .CardItem{
     background: #1F2045;
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
-    min-height: 347px;
     border-radius: 19px;
     padding:15px;
     .CardImg{
@@ -16,5 +14,43 @@
         border-radius: 10px;
         width: 240px;
         height: 240px;
+    }
+    .cardId{
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .openBtn{
+        padding: 8px 24px;
+        width: max-content;
+        border-radius: 6px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #FFFFFF;
+        margin: 15px auto 0;
+    }
+    .price{
+        font-weight: 400;
+        font-size: 14px;
+        color: #FFFFFF;
+        margin-top:10px;
+        .decorate{
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+            border-radius:50%;
+            margin-left: 6px;
+        }
+    }
+    .buyBtn{
+        width: max-content;
+        padding: 8px 24px;
+        border-radius: 6px;
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 14px;
+        margin: 22px auto 0;
     }
 }

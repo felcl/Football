@@ -63,5 +63,16 @@
         border-radius: 6px;
       }
     }
+    span {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: -60px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      color: #fff;
+    }
   }
 }
