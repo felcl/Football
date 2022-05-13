@@ -1,18 +1,35 @@
 import React,{useState} from "react"
 import CardDetails from '../components/CardDetails'
-import '../assets/style/carddetails.scss'
+import '../assets/style/componentsStyle/carddetails.scss'
+import '../assets/style/componentsStyle/MarketDealing.scss'
+import '../assets/style/componentsStyle/Puchased.scss'
+import '../assets/style/componentsStyle/CancelPurchase.scss'
+
+
 import DropDown from '../components/DropDown'
 import CardItem from '../components/CardItem'
+import Puchased from '../components/Puchased'
+import CancelPurchase from '../components/CancelPurchase'
+
+
 import '../assets/style/Swap.scss'
+import MarketDealing from '../components/MarketDealing'
 
 function Swap() {
-    let [showCardDetail,setShowCardDetail] = useState(true)
+    let [showCardDetail,setShowCardDetail] = useState(false)
     const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
   return (
     <div>
       <div className="Edition-Center">  
         交易场
         <CardDetails isShow={showCardDetail}></CardDetails>
+        {/* 取消挂卖 */}
+        <CancelPurchase></CancelPurchase>
+        {/* 购买成功 */}
+        <Puchased></Puchased>
+        {/*确认购买  */}
+        <MarketDealing></MarketDealing>
+        {/* 卡牌详情 */}
         <CardDetails isShow={showCardDetail}  
         ></CardDetails>
         <div className="SwapTitle">

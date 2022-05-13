@@ -1,13 +1,15 @@
 import React, { useState } from "react"
 import RaceBoxModal from "../components/RaceBoxModal"
 import PurchaseBox from "../components/PurchaseBox"
+import CardSynthesis from "../components/CardSynthesis"
 import BlindBoxImg from '../assets/image/BlindBoxImg.png'
 import '../assets/style/BlindBox.scss'
 import '../assets/style/RaceBoxModal.scss'
 import '../assets/style/PurchaseBox.scss'
 function BlindBox() {
   const [showRaceBoxModal, setShowRaceBoxModal] = useState(false)
-  const [showPurchaseBox, setShowPurchaseBox] = useState(true)
+  const [showPurchaseBox, setShowPurchaseBox] = useState(false)
+  const [showCardSynthesis, setshowCardSynthesis] = useState(true)
   return (
     <div>
       <div className="Edition-Center">
