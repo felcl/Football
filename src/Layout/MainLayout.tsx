@@ -21,10 +21,10 @@ const MainLayout :React.FC =() =>{
                         <div className="MenuItem pointer" onClick={()=>{navigate('/Swap')}}>
                         交易市場
                         </div>
-                        <div className="MenuItem pointer">
+                        <div className="MenuItem pointer" onClick={()=>{navigate('/NFT')}}>
                         NFT
                         </div>
-                        <div className="MenuItem pointer">
+                        <div className="MenuItem pointer" onClick={()=>{navigate('/SBL')}}>
                         SBL
                         </div>
                         <div className="MenuItem pointer">
