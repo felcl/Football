@@ -16,6 +16,7 @@ import '../assets/style/Swap.scss'
 import MarketDealing from '../components/MarketDealing'
 
 function Swap() {
+    let [TabIndex,SetTabIndex] = useState(0)
     let [showCardDetail,setShowCardDetail] = useState(false)
     const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
   return (
@@ -36,8 +37,8 @@ function Swap() {
         </div>
         <div className="screen">
             <div className="Tabs">
-                <div className="activeTab linear-gradient">所有</div>
-                <div className="invalidTab">我的</div>
+                <div className={TabIndex === 0 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(0)}}>所有</div>
+                <div className={TabIndex === 1 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(1)}}>我的</div>
             </div>
             <div className="DropDownGroup">
                 <DropDown></DropDown>
