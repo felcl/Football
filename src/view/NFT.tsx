@@ -4,11 +4,13 @@ import DropDown from '../components/DropDown'
 import Card from '../components/Card'
 import BlindBox from '../components/BlindBox'
 import '../assets/style/Swap.scss'
+import AddFlow from '../components/AddFlow'
 
 function NFT() {
     let [TabIndex,SetTabIndex] = useState(0)
   return (
     <div>
+      <AddFlow></AddFlow>
       <div className="Edition-Center">
         <div className="SwapTitle">
         NFT - 庫存
