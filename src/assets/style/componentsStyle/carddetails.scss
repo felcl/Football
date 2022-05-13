@@ -10,9 +10,8 @@
     display: none;
   }
   .ant-modal-body {
-    position: relative;
     background: #1d1e44;
-    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 0;
     .title {
       font-size: 24px;
@@ -37,49 +36,31 @@
       font-size: 14px;
     }
     .butm {
-      margin: 0 70px;
-      // width: 100%;
-      margin-top: 60px;
+      width: 100%;
       display: flex;
       justify-content: space-around;
       //   flex-grow: 0;
-      font-size: 14px;
-      box-shadow: 0;
       .gm {
         // flex-grow: 0;
         width: 76px;
         height: 36px;
         color: #db2dcf;
         background: #1d1e44;
-        background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
         border-radius: 6px;
-        border: 0;
-        div {
-          width: 74px;
-          height: 34px;
-          background: #1d1e44;
-          border-radius: 6px;
-          margin-left: -5px;
-          text-align: center;
-          line-height: 34px;
-          font-size: 14px;
-        }
       }
       .hc {
         width: 76px;
         height: 36px;
         background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
         border-radius: 6px;
-        border: 0;
-        color: #fff;
       }
       .zy {
         width: 76px;
         height: 36px;
-        color: #fff;
+
         background: rgba(255, 255, 255, 0.2);
         border-radius: 6px;
-        border: 0;
       }
     }
     span {

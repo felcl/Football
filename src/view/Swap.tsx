@@ -26,6 +26,7 @@ function Swap() {
     <div>
       <div className="Edition-Center">  
         交易场
+        <CardDetails isShow={showCardDetail}></CardDetails>
         {/* 取消挂卖成功 */}
         <CancelSucceed></CancelSucceed>
         {/* 取消挂卖 */}
