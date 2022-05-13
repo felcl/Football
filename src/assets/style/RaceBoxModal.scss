@@ -1,0 +1,40 @@
+.RaceBoxModal {
+    height: 393px;
+    .ant-modal-content {
+        box-shadow: none;
+        background: #1d1e44;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        border-radius: 19px;
+
+        .ant-modal-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .Img,
+            img {
+                width: 235px;
+                height: 235px;
+            }
+
+            .Tip {
+                width: 285px;
+                height: 22px;
+                margin-top: 30px;
+                font-size: 16px;
+                color: #fff;
+            }
+            .Verify {
+                width: 76px;
+                height: 36px;
+                margin-top: 30px;
+                background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+                border-radius: 6px;
+            }
+        }
+    }
+
+
+
+}

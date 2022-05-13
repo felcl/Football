@@ -1,0 +1,16 @@
+.raceBoxMedal {
+    width: 646px;
+    height: 396px;
+    border-radius: 19px;
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #1D1E44;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 19px;
+}
