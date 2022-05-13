@@ -6,6 +6,8 @@ import DeputyLayout from "../Layout/DeputyLayout";
 const Home = React.lazy(() => import('../view/Home'));
 const BlindBox = React.lazy(() => import('../view/BlindBox'));
 const Swap = React.lazy(() => import('../view/Swap'));
+const NFT = React.lazy(() => import('../view/NFT'));
+const SBL = React.lazy(() => import('../view/SBL'));
 export default function Router() {
   return (
     <Suspense fallback={<PageLoding></PageLoding>}>
@@ -14,6 +16,8 @@ export default function Router() {
             <Route index  element={<Home/>}></Route>
             <Route path="BlindBox"  element={<BlindBox/>}></Route>
             <Route path="Swap"  element={<Swap/>}></Route>
+            <Route path="NFT"  element={<NFT/>}></Route>
+            <Route path="SBL"  element={<SBL/>}></Route>
           </Route>
           <Route path="/DeputyLayout" element={<DeputyLayout />}>
           </Route>
