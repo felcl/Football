@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import RaceBoxModal from "../components/RaceBoxModal"
-import PurchaseBox from "../components/PurchaseBox"
-import CardSynthesis from "../components/CardSynthesis"
+import Tips from "../components/Tips"
+// import CardSynthesis from "../components/CardSynthesis"
 import BlindBoxImg from '../assets/image/BlindBoxImg.png'
 import '../assets/style/BlindBox.scss'
 import '../assets/style/RaceBoxModal.scss'
@@ -10,14 +10,19 @@ function BlindBox() {
   const [showRaceBoxModal, setShowRaceBoxModal] = useState(false)
   const [showPurchaseBox, setShowPurchaseBox] = useState(false)
   const [showCardSynthesis, setshowCardSynthesis] = useState(true)
+  /* 购买成功回调 */
+  function buySuccess(){
+    setShowRaceBoxModal(false)
+    setShowPurchaseBox(true)
+  }
   return (
     <div>
       <div className="Edition-Center">
         寶箱
         {/* 购买确认弹窗 */}
-        <RaceBoxModal isShow={showRaceBoxModal}></RaceBoxModal>
+        <RaceBoxModal isShow={showRaceBoxModal} close={()=>{setShowRaceBoxModal(false)}} buySuccess={buySuccess}></RaceBoxModal>
         {/* 购买成功弹窗 */}
-        <PurchaseBox isShow={showPurchaseBox}></PurchaseBox>
+        <Tips isShow={showPurchaseBox} title="購買成功!" subTitle="確認購買該盲盒？此次購買消耗0.5BNB" close={()=>{setShowPurchaseBox(false)}}></Tips>
         <div className="BlindBoxTitle">
           盲盒寶箱
         </div>
@@ -35,7 +40,7 @@ function BlindBox() {
                 <div className="BuyName">IGO</div>
                 <div className="price">價格：0.5 BNB/個</div>
               </div>
-              <div className="BuyBtn linear-gradient pointer">立即購買</div>
+              <div className="BuyBtn linear-gradient pointer" onClick={()=>{setShowRaceBoxModal(true)}}>立即購買</div>
             </div>
             <div className="BuyRow">
               <div className="buyInfo">

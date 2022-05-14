@@ -1,12 +1,21 @@
 // 取消挂卖
 import React from 'react'
 import { Modal} from 'antd';
-
- function CancelPurchase() {
+interface CancelPurchasePropsType{
+  isShow:boolean,
+  close:Function,
+  CancelSuccess:Function
+}
+ function CancelPurchase(props:CancelPurchasePropsType) {
+  function CancelFun(){
+    /* 取消成功后回调 */
+    props.CancelSuccess()
+  }
   return (
     <>
-    <Modal title="Basic Modal" visible={false} 
+    <Modal title="Basic Modal" visible={props.isShow} 
       className='CancelPurchase'
+      onCancel={()=>props.close()}
       centered
       width={'449px'}
       closable={ false }
@@ -15,7 +24,7 @@ import { Modal} from 'antd';
           <p className='title'>取消挂卖</p>
           <p className='zifujg'>确认取消挂卖？</p>
         <span>点击任意地方离开</span>
-        <button className='btm'>确认</button>
+        <button className='btm' onClick={CancelFun}>确认</button>
       </Modal></>
   )
 }

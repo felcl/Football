@@ -2,11 +2,24 @@
 import React from 'react'
 import { Modal} from 'antd';
 
- function MarketDealing() {
+interface MarketDealingPropsType{
+  isShow:boolean,
+  close:Function,
+  buySuccess:Function,
+}
+ function MarketDealing(props:MarketDealingPropsType) {
+   /* 确认购买 */
+   function buyFun(){
+     /* 购买成功关闭弹窗 */
+     props.close()
+     /* 购买成功回调 */
+    props.buySuccess()
+   }
   return (
     <>
-    <Modal title="Basic Modal" visible={false} 
+    <Modal title="Basic Modal" visible={props.isShow} 
       className='Market'
+      onCancel={()=>props.close()}
       centered
       width={'449px'}
       closable={ false }
@@ -15,7 +28,7 @@ import { Modal} from 'antd';
           <p className='title'>确认购买</p>
           <p className='zifujg'>购买此卡片需要支付1SBL</p>
         <span>点击任意地方离开</span>
-        <button className='btm'>确认</button>
+        <button className='btm' onClick={buyFun}>确认</button>
       </Modal></>
   )
 }

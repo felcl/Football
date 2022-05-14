@@ -1,0 +1,110 @@
+.SwapTitle{
+    margin-top: 60px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+}
+.TabRow{
+    border-radius: 6px;
+    display: flex;
+    >div{
+        margin-right: 6px;
+    }
+    .TabItem{
+        border-radius: 6px;
+        padding: 8px 24px;
+        color: #FFFFFF;
+        width: max-content;
+        
+    }
+    .invalid{
+        padding: 8px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+.InvitationLabel{
+    font-weight: 700;
+    font-size: 20px;
+    color:#fff;
+    margin-top: 27px;
+}
+.InvitationRule{
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    font-size: 14px;
+    max-width: 405px;
+}
+.BoxBorder{
+    background: linear-gradient(180deg, #4EADF533, #DB2DCF33);
+    border-radius: 19px;
+    padding: 1px;
+    max-width: 346px;
+    width: 100%;
+}
+.InvitationAddr{
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 19px;
+    background: #161731;
+    padding:20px;
+    max-width: 346px;
+    width: 100%;
+}
+.InvitationList{
+    max-height: 252px;
+    li{
+        height: 55px;
+    }
+}
+.boxLabel{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    .InvitationNum{
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        width: 104px;
+        height: 23px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        font-size: 12px;
+    }
+}
+.userAddr{
+    width: 306px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 10px;
+    .linkLabel{
+        width: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        color: #FFFFFF;
+    }
+    .link{
+        display: flex;
+        align-items: center;
+        .linkAddr{
+            font-weight: 500;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+        .division{
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.46875) 53.12%, rgba(255, 255, 255, 0) 100%);
+            width: 1px;height: 14px;
+            margin: 0 6px;
+        }
+    }
+}

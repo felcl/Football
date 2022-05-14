@@ -1,12 +1,16 @@
 // 市场交易取消挂卖成功
 import React from 'react'
 import { Modal} from 'antd';
-
- function CancelSucceed() {
+interface CancelSucceedPropsType{
+  isShow:boolean,
+  close:Function
+}
+ function CancelSucceed(props:CancelSucceedPropsType) {
   return (
     <>
-    <Modal title="Basic Modal" visible={false} 
+    <Modal title="Basic Modal" visible={props.isShow} 
       className='CancelSucceed'
+      onCancel={()=>props.close()}
       centered
       width={'449px'}
       closable={ false }
@@ -15,7 +19,7 @@ import { Modal} from 'antd';
           <p className='title'>取消成功</p>
           <p className='zifujg'>该挂卖以成功取消</p>
         <span>点击任意地方离开</span>
-        <button className='btm'>确认</button>
+        <button className='btm' onClick={()=>props.close()}>确认</button>
       </Modal></>
   )
 }

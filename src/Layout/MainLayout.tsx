@@ -59,7 +59,7 @@ const MainLayout :React.FC =() =>{
                         <div className={menuActive('/SBL')} onClick={()=>{navigate('/SBL')}}>
                         SBL
                         </div>
-                        <div className="MenuItem pointer">
+                        <div className={menuActive('/Invitation')} onClick={()=>{navigate('/Invitation')}}>
                         邀請
                         </div>
                         <Dropdown overlay={menu} placement="bottom" overlayClassName="LangDropDown" trigger={['click']} arrow={{ pointAtCenter: true }}>

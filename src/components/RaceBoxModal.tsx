@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Modal } from 'antd';
 import BlindBoxImg from '../assets/image/BlindBoxImg.png';
 interface RaceBoxModalPropsType {
-  isShow: boolean
+  isShow: boolean,
+  close:Function,
+  buySuccess:Function
 }
 function RaceBoxModal(props: RaceBoxModalPropsType) {
   return (
@@ -10,6 +12,7 @@ function RaceBoxModal(props: RaceBoxModalPropsType) {
       <Modal visible={props.isShow}
         className='RaceBoxModal'
         centered
+        onCancel={()=>props.close()}
         maskClosable
         width={'646px'}
         closable={false}
@@ -19,7 +22,7 @@ function RaceBoxModal(props: RaceBoxModalPropsType) {
           <img src={BlindBoxImg} alt="" />
         </div>
         <div className='Tip'>確認購買該盲盒？此次購買消耗0.5BNB</div>
-        <button className='Verify'>確認</button>
+        <button className='Verify' onClick={()=>props.buySuccess()}>確認</button>
       </Modal>
     </>
   )

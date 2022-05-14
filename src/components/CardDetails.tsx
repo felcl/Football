@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Modal} from 'antd';
 
 interface CardDetailPropsType{
-  isShow:boolean
+  isShow:boolean,
+  close:Function,
+  type:string
 }
+/* type:Swap 交易场详情 CreateOrder 挂单详情 NFT 背包卡牌详情 */
  function CardDetails(props:CardDetailPropsType) {
     // const [isModalVisible, setIsModalVisible] = useState(true);
 
@@ -20,6 +23,7 @@ interface CardDetailPropsType{
     <>
     {/* <div className='box'>11111</div> */}
       <Modal title="Basic Modal" visible={props.isShow} 
+      onCancel={()=>props.close()}
       className='Card'
       centered
       width={'449px'}
@@ -35,13 +39,14 @@ interface CardDetailPropsType{
           <p className='kpdetails'>卡牌等级:1星</p>
           <p className='kpdetails'>卡牌类型:无</p>
           <p className='kpdetails'>卡牌介绍:</p>
-        <div className='butm'>
-            <button className='gm'>挂卖</button>
-            <button className='hc'>合成</button>
-            <button className='zy'>质押</button>
-
-        </div>
-      </Modal>
+          {
+            props.type === "NFT" && <div className='butm'>
+                <button className='gm'>挂卖</button>
+                <button className='hc'>合成</button>
+                <button className='zy'>质押</button>
+            </div>
+          }
+        </Modal>
     </>
   )
 }

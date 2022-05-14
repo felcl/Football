@@ -1,12 +1,17 @@
 // 市场交易确认购买
 import React from 'react'
 import { Modal} from 'antd';
+interface PuchasedPropsType{
+  isShow:boolean,
+  close:Function
+}
 
- function Puchased() {
+ function Puchased(props:PuchasedPropsType) {
   return (
     <>
-    <Modal title="Basic Modal" visible={false} 
+    <Modal title="Basic Modal" visible={props.isShow} 
       className='Puchased'
+      onCancel={()=>props.close()}
       centered
       width={'449px'}
       closable={ false }
@@ -15,7 +20,7 @@ import { Modal} from 'antd';
           <p className='title'>购买成功</p>
           <p className='zifujg'>购买成功以放置宝箱</p>
         <span>点击任意地方离开</span>
-        <button className='btm'>确认</button>
+        <button className='btm' onClick={()=>props.close()}>确认</button>
       </Modal></>
   )
 }

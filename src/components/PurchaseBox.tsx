@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 interface PurchasePropsType {
-    isShow: boolean
+    isShow: boolean,
+    close:Function
 }
 function PurchaseBox(props: PurchasePropsType) {
     return (
@@ -9,6 +10,7 @@ function PurchaseBox(props: PurchasePropsType) {
             <Modal visible={props.isShow}
                 className='PurchaseModal'
                 centered
+                onCancel={()=>props.close()}
                 maskClosable
                 width={'449px'}
                 closable={false}

@@ -33,6 +33,7 @@
     .DropDownGroup{
         display: flex;
         position: relative;
+        align-items: center;
     }
 }
 
@@ -67,4 +68,19 @@
 .ant-pagination-item-active{
     background: #D533D1 !important;
     border: 1px solid #D533D1 !important;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.ant-pagination-options-quick-jumper{
+    color:rgba(255, 255, 255, 0.6) !important;
+    input{
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 3px !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
 }

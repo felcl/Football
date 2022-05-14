@@ -1,8 +1,11 @@
 import React from 'react'
 import '../assets/style/componentsStyle/CardItem.scss'
-function Card() {
+interface CardPropsType{
+    showDetia:Function
+}
+function Card(props:CardPropsType) {
   return (
-    <div className="CardItemLinearBorder">
+    <div className="CardItemLinearBorder" onClick={()=>{props.showDetia()}}>
         <div className="CardItem">
             <div className="CardImg">
 
