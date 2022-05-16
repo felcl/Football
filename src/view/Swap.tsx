@@ -1,7 +1,5 @@
 import React,{useState} from "react"
 import CardDetails from '../components/CardDetails'
-import '../assets/style/componentsStyle/CancelPurchase.scss'
-import '../assets/style/componentsStyle/CancelSucceed.scss'
 
 
 
@@ -17,7 +15,7 @@ import '../assets/style/Swap.scss'
 import MarketDealing from '../components/MarketDealing'
 
 function Swap() {
-    let [showCardDetail,setShowCardDetail] = useState(false)
+    let [showCardDetail,setShowCardDetail] = useState(true)
     const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
   return (
     <div>
