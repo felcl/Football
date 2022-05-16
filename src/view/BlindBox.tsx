@@ -6,7 +6,7 @@ import '../assets/style/BlindBox.scss'
 import '../assets/style/RaceBoxModal.scss'
 import '../assets/style/PurchaseBox.scss'
 function BlindBox() {
-  const [showRaceBoxModal, setShowRaceBoxModal] = useState(false)
+  const [showRaceBoxModal, setShowRaceBoxModal] = useState(true)
   const [showPurchaseBox, setShowPurchaseBox] = useState(false)
   return (
     <div>
