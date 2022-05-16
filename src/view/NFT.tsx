@@ -3,13 +3,17 @@ import '../assets/style/componentsStyle/carddetails.scss'
 import DropDown from '../components/DropDown'
 import Card from '../components/Card'
 import BlindBox from '../components/BlindBox'
+import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
-
+import '../assets/style/componentsStyle/CardSynthesis.scss'
 function NFT() {
     let [TabIndex,SetTabIndex] = useState(0)
+  const [showCardSynthesis, setshowCardSynthesis] = useState(true)
+    
   return (
     <div>
       <div className="Edition-Center">
+        <CardSynthesis isShow={showCardSynthesis}></CardSynthesis>
         <div className="SwapTitle">
         NFT - 庫存
         </div>
