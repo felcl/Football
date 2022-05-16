@@ -1,6 +1,7 @@
 // 收益记录
 import React from "react";
 import { Modal, Table } from "antd";
+import "../assets/style/componentsStyle/GainRecording.scss";
 
 function GainRecording() {
   const columns = [

@@ -1,9 +1,9 @@
-//金币节点 申请记录
+// 捐赠销毁捐赠记录
 import React from "react";
 import { Modal, Table } from "antd";
-import '../assets/style/componentsStyle/GoldRecord.scss'
+import "../assets/style/componentsStyle/DonateDestroy.scss";
 
-function GoldRecord() {
+function DonateDestroy() {
   const columns = [
     {
       title: "时间",
@@ -34,13 +34,13 @@ function GoldRecord() {
     <>
       <Modal
         visible={false}
-        className="GoldRecord"
+        className="DonateDestroy"
         centered
         width={"525px"}
         closable={false}
         footer={null}
       >
-        <p className="title">申请记录</p>
+        <p className="title"> 捐贈記錄 </p>
         <Table
           columns={columns}
           dataSource={data}
@@ -53,4 +53,4 @@ function GoldRecord() {
     </>
   );
 }
-export default GoldRecord;
+export default DonateDestroy;

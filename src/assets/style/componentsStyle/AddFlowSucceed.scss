@@ -1,0 +1,98 @@
+.AddFlowSucceed {
+  background: #1d1e44;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 19px;
+  // height: 490px;
+  .ant-modal-content {
+    box-shadow: none;
+  }
+  .ant-modal-header {
+    display: none;
+  }
+  .ant-modal-body {
+    position: relative;
+    background: #1d1e44;
+    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    .title {
+      font-size: 24px;
+      margin: auto;
+      margin-top: 30px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0;
+    }
+    .box {
+      margin: 0 auto;
+      margin-top: 48px;
+      margin-bottom: 50px;
+      padding-left: 48px;
+      .huode {
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+      .user {
+        display: flex;
+        .num {
+          font-weight: 700;
+          font-size: 40px;
+          color: #ffffff;
+        }
+        .right {
+          display: flex;
+          align-items: center;
+          margin-left: 12px;
+          position: relative;
+          .img1 {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            z-index: 999;
+            background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
+          }
+          .img2 {
+            position: absolute;
+            left: 18px;
+            top: 19px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+          }
+        }
+      }
+      .titou {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        color: #ffffff;
+        margin-bottom: 55px;
+      }
+    }
+    .btn {
+      display: block;
+      margin: 0 auto;
+      width: 270px;
+      height: 36px;
+      line-height: 36px;
+      background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
+      border-radius: 6px;
+      border: 0;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+    span {
+      position: absolute;
+      bottom: -55px;
+      width: 100%;
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      color: #fff;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 // 金币节点奖励机制
 import React from 'react'
 import { Modal} from 'antd';
+import '../assets/style/componentsStyle/GlodMechanism.scss'
 
 function GlodMechanism() {
   return (

@@ -1,9 +1,8 @@
-.Card {
+.PutParticulars {
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
   // height: 573px;
-  position: relative;
   .ant-modal-content {
     box-shadow: none;
   }
@@ -35,6 +34,15 @@
       padding-left: 30px;
       color: #fff;
       font-size: 14px;
+      input {
+        margin-left: 20px;
+        margin-right: 10px;
+        width: 140px;
+        height: 38px;
+        background: #171833;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
     }
     .butm {
       width: 80%;
@@ -43,47 +51,13 @@
       margin: 0 auto;
       color: #fff;
       margin-top: 66px;
-      margin-bottom: 38px;
       //   flex-grow: 0;
-      .gm {
-        // flex-grow: 0;
-        position: relative;
-        // display: flex;
-        width: 76px;
-        height: 36px;
-        // line-height: 76px;
-        color: #db2dcf;
-        background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
-        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
-        border-radius: 6px;
-        border: 0;
-        div {
-          position: absolute;
-          // justify-content: center;
-          margin: auto;
-          border-radius: 6px;
-          line-height: 34px;
-          left: 0;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          width: 74px;
-          height: 34px;
-          background: #1d1e44;
-        }
-      }
+      margin-bottom: 30px;
       .hc {
         border: 0;
         width: 76px;
         height: 36px;
         background: linear-gradient(90deg, #4eadf5 0%, #db2dcf 100%);
-        border-radius: 6px;
-      }
-      .zy {
-        width: 76px;
-        height: 36px;
-        border: 0;
-        background: rgba(255, 255, 255, 0.2);
         border-radius: 6px;
       }
     }

@@ -1,27 +1,15 @@
+// NTF挂卖详情
 import React, { useState } from 'react';
 import { Modal} from 'antd';
-import '../assets/style/componentsStyle/carddetails.scss'
+import '../assets/style/componentsStyle/PutParticulars.scss'
 
-interface CardDetailPropsType{
-  isShow:boolean
-}
- function CardDetails(props:CardDetailPropsType) {
-    // const [isModalVisible, setIsModalVisible] = useState(true);
+ function PutParticulars() {
 
-
-  
-    // const handleOk = () => {
-    //   setIsModalVisible(false);
-    // };
-  
-    // const handleCancel = () => {
-    //   setIsModalVisible(false);
-    // };
   return (
     <>
     {/* <div className='box'>11111</div> */}
-      <Modal title="Basic Modal" visible={props.isShow} 
-      className='Card'
+      <Modal title="Basic Modal" visible={false} 
+      className='PutParticulars'
       centered
       width={'449px'}
       closable={ false }
@@ -36,16 +24,15 @@ interface CardDetailPropsType{
           <p className='kpdetails'>卡牌等级:1星</p>
           <p className='kpdetails'>卡牌类型:无</p>
           <p className='kpdetails'>卡牌介绍:</p>
+          <p className='kpdetails'>请输入价格:<input type='text'/>BNB</p>
+        
         <div className='butm'>
-            <button className='gm'>
-              <div>挂卖</div>
-              </button>
-            <button className='hc'>合成</button>
-            <button className='zy'>质押</button>
+            <button className='hc'>确认</button>
+
         </div>
         <span>点击任意地方离开</span>
       </Modal>
     </>
   )
 }
-export default CardDetails
+export default PutParticulars

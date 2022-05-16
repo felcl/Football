@@ -1,6 +1,7 @@
 // 确认购买
 import React from 'react'
 import { Modal} from 'antd';
+import '../assets/style/componentsStyle/MarketDealing.scss'
 
  function MarketDealing() {
   return (
