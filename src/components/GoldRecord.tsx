@@ -1,6 +1,7 @@
 //金币节点 申请记录
 import React from "react";
 import { Modal, Table } from "antd";
+import '../assets/style/componentsStyle/GoldRecord.scss'
 
 function GoldRecord() {
   const columns = [

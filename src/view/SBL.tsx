@@ -1,18 +1,11 @@
 import React from 'react'
 import AwardMechanism from '../components/AwardMechanism'
-import '../assets/style/componentsStyle/AwardMechanism.scss'
 import GainRecording from '../components/GainRecording'
-import '../assets/style/componentsStyle/GainRecording.scss'
 import TeamMachine from '../components/TeamMachine'
-import '../assets/style/componentsStyle/TeamMachine.scss'
 import TeamEarnings from '../components/TeamEarnings'
-import '../assets/style/componentsStyle/TeamEarnings.scss'
 import GoldRecord from '../components/GoldRecord'
-import '../assets/style/componentsStyle/GoldRecord.scss'
 import GlodMechanism from '../components/GlodMechanism'
-import '../assets/style/componentsStyle/GlodMechanism.scss'
 import GlodJdSy from '../components/GlodJdSy'
-import '../assets/style/componentsStyle/GlodJdSy.scss'
 
 
 function SBL() {

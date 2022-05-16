@@ -5,6 +5,8 @@ import Card from '../components/Card'
 import BlindBox from '../components/BlindBox'
 import '../assets/style/Swap.scss'
 import AddFlow from '../components/AddFlow'
+// 挂卖详情
+import PutParticulars from '../components/PutParticulars'
 
 function NFT() {
     let [TabIndex,SetTabIndex] = useState(0)
@@ -15,6 +17,8 @@ function NFT() {
         <div className="SwapTitle">
         NFT - 庫存
         </div>
+        {/* 挂卖详情 */}
+        <PutParticulars></PutParticulars>
         <div className="screen">
             <div className="Tabs">
                 <div className={TabIndex === 0 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(0)}}>卡牌</div>
