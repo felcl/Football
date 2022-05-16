@@ -6,12 +6,15 @@ import BlindBox from '../components/BlindBox'
 import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
 import '../assets/style/componentsStyle/CardSynthesis.scss'
+import AddFlow from '../components/AddFlow'
+
 function NFT() {
     let [TabIndex,SetTabIndex] = useState(0)
   const [showCardSynthesis, setshowCardSynthesis] = useState(true)
     
   return (
     <div>
+      <AddFlow></AddFlow>
       <div className="Edition-Center">
         <CardSynthesis isShow={showCardSynthesis}></CardSynthesis>
         <div className="SwapTitle">

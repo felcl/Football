@@ -36,11 +36,13 @@ interface CardDetailPropsType{
           <p className='kpdetails'>卡牌类型:无</p>
           <p className='kpdetails'>卡牌介绍:</p>
         <div className='butm'>
-            <button className='gm'>挂卖</button>
+            <button className='gm'>
+              <div>挂卖</div>
+              </button>
             <button className='hc'>合成</button>
             <button className='zy'>质押</button>
-
         </div>
+        <span>点击任意地方离开</span>
       </Modal>
     </>
   )

@@ -1,0 +1,51 @@
+.TeamMachine {
+  background: #1d1e44;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 19px;
+  height: 330px;
+  .ant-modal-content {
+    box-shadow: none;
+  }
+  .ant-modal-header {
+    display: none;
+  }
+  .ant-modal-body {
+    position: relative;
+    background: #1d1e44;
+    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    .title {
+      font-size: 24px;
+      margin: auto;
+      margin-top: 30px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0;
+    }
+    .box {
+      width: 386px;
+      margin: 0 auto;
+      .zifujg {
+        //   text-align: center;
+        width: 100%;
+        //   margin-left: 40px;
+        height: 22px;
+        margin-top: 20px;
+        line-height: 22px;
+        font-size: 16px;
+        color: #fff;
+      }
+    }
+    span {
+      position: absolute;
+      bottom: -80px;
+      width: 100%;
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      color: #fff;
+    }
+  }
+}
