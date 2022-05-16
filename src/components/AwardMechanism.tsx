@@ -6,7 +6,7 @@ import '../assets/style/componentsStyle/AwardMechanism.scss'
 function AwardMechanism() {
   return (
     <>
-    <Modal visible={true} 
+    <Modal visible={false} 
     className='AwardMechanism'
     centered
     width={'449px'}

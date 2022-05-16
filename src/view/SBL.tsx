@@ -6,11 +6,31 @@ import TeamEarnings from '../components/TeamEarnings'
 import GoldRecord from '../components/GoldRecord'
 import GlodMechanism from '../components/GlodMechanism'
 import GlodJdSy from '../components/GlodJdSy'
+import DonateSucceed from '../components/DonateSucceed'
+import DonateRule from '../components/DonateRule'
+import DonateDestroy from '../components/DonateDestroy'
+import ReleaseMechanusm from '../components/ReleaseMechanusm'
+import DonationRecord from '../components/DonationRecord'
+
+
+
+
+
 
 
 function SBL() {
   return (
     <div>SBL
+      {/* 捐赠奖励，收益记录 */}
+      <DonationRecord></DonationRecord>
+      {/* 捐赠奖励，释放机制 */}
+      <ReleaseMechanusm></ReleaseMechanusm>
+      {/* 捐赠销毁，销毁记录 */}
+      <DonateDestroy></DonateDestroy>
+      {/* 捐赠规则 */}
+      <DonateRule></DonateRule>
+      {/* 捐赠销毁捐赠成功 */}
+      <DonateSucceed></DonateSucceed>
       {/* 金币节点收益记录 */}
       <GlodJdSy></GlodJdSy>
       {/* 金币节点奖励机制 */}
