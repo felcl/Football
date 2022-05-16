@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
+import '../assets/style/PurchaseBox.scss'
 interface PurchasePropsType {
     isShow: boolean
 }
