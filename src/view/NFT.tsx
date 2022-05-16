@@ -11,6 +11,12 @@ import AddFlow from '../components/AddFlow'
 import PutParticulars from '../components/PutParticulars'
 // 合成成功
 import ComSucceed from '../components/ComSucceed'
+// 卡牌合成规则
+import CardComRule from '../components/CardComRule'
+// 盲盒开启
+import BoxOpen from '../components/BoxOpen'
+
+
 
 function NFT() {
     let [TabIndex,SetTabIndex] = useState(0)
@@ -24,6 +30,10 @@ function NFT() {
         <div className="SwapTitle">
         NFT - 庫存
         </div>
+        {/* 盲盒开启 */}
+        <BoxOpen></BoxOpen>
+        {/* 卡牌合成规则 */}
+        <CardComRule></CardComRule>
         {/* 挂卖详情 */}
         <PutParticulars></PutParticulars>
         {/* 合成成功 */}

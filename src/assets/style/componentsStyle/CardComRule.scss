@@ -1,8 +1,7 @@
-.ComSucceed {
+.CardComRule {
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  // height: 300px;
   .ant-modal-content {
     box-shadow: none;
   }
@@ -23,18 +22,21 @@
       box-shadow: 0;
     }
     .box {
-      width: 186px;
-      height: 186px;
+      width: 500px;
       margin: 0 auto;
-      background: #171833;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
+      margin-bottom: 30px;
       margin-top: 20px;
-      margin-bottom: 45px;
+      .zifujg {
+        width: 100%;
+        margin-left: 40px;
+        margin-bottom: 0;
+        font-size: 16px;
+        color: #fff;
+      }
     }
     span {
       position: absolute;
-      bottom: -80px;
+      bottom: -55px;
       width: 100%;
       text-align: center;
       font-style: normal;
