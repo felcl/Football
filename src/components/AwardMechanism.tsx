@@ -1,6 +1,7 @@
 // 奖励机制
 import React from 'react'
 import { Modal} from 'antd';
+import '../assets/style/componentsStyle/AwardMechanism.scss'
 
 function AwardMechanism() {
   return (

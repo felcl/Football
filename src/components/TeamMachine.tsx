@@ -1,6 +1,7 @@
 // 团队奖励机制
 import React from 'react'
 import { Modal} from 'antd';
+import '../assets/style/componentsStyle/TeamMachine.scss'
 
 function TeamMachine() {
   return (

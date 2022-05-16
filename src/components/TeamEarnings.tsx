@@ -1,6 +1,7 @@
 //团队奖励 收益记录
 import React from "react";
 import { Modal, Table } from "antd";
+import '../assets/style/componentsStyle/TeamEarnings.scss'
 
 function TeamEarnings() {
   const columns = [

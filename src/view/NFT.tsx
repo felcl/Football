@@ -8,9 +8,13 @@ import {getBoxUserInfo , getUserCard} from '../API'
 import DropDown from '../components/DropDown'
 import Card,{CardInfoType} from '../components/Card'
 import BlindBox from '../components/BlindBox'
+import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
+import '../assets/style/componentsStyle/CardSynthesis.scss'
 import AddFlow from '../components/AddFlow'
 import { Pagination } from 'antd';
+// 挂卖详情
+import PutParticulars from '../components/PutParticulars'
 
 export interface BoxInfo{
   id:number,
@@ -70,6 +74,7 @@ const typeMap = [
 function NFT() {
     let state = useSelector<stateType,stateType>(state => state);
     const web3React = useWeb3React()
+    const [showCardSynthesis, setshowCardSynthesis] = useState(false)
     let [TabIndex,SetTabIndex] = useState(0)
     /* 类型筛选 */
     let [type,SetType] = useState(0)
@@ -83,6 +88,8 @@ function NFT() {
     let [userCard,setuserCard] = useState<CardInfoType []>([])
     /* 卡牌详情弹窗控制 */
     let [showCardDetail,setShowCardDetail] = useState(false)
+    /* 创建订单弹窗控制 */
+    let [showCreateOrder,setShowCreateOrder] = useState(false)
     function showDetial(index:number) {
       setCardDetialIndex(index)
       setShowCardDetail(true)
@@ -90,6 +97,10 @@ function NFT() {
     function onChange(pageNumber:number) {
       SetPage(pageNumber)
       console.log('Page: ', pageNumber);
+    }
+    function createOrderFun(){
+      setShowCardDetail(false)
+      setShowCreateOrder(true)
     }
     /* 初始化数据 */
     useEffect(()=>{
@@ -119,13 +130,19 @@ function NFT() {
     <div>
       <AddFlow></AddFlow>
       {
-        userCard.length >0 && <CardDetails isShow={showCardDetail} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCardDetail(false)} type="NFT"></CardDetails>
+        userCard.length >0 && <CardDetails isShow={showCardDetail} showCreateOrder={createOrderFun} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCardDetail(false)} type="NFT"></CardDetails>
+      }
+      {
+        userCard.length >0  && <CardDetails isShow={showCreateOrder} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCreateOrder(false)} type="CreateOrder"></CardDetails>
       }
       
       <div className="Edition-Center">
+        <CardSynthesis isShow={showCardSynthesis}></CardSynthesis>
         <div className="SwapTitle">
         NFT - 庫存
         </div>
+        {/* 挂卖详情 */}
+        {/* <PutParticulars></PutParticulars> */}
         <div className="screen">
             <div className="Tabs">
                 <div className={TabIndex === 0 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(0)}}>卡牌</div>

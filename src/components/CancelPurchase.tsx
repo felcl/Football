@@ -1,6 +1,7 @@
 // 取消挂卖
 import React from 'react'
 import { Modal} from 'antd';
+import '../assets/style/componentsStyle/CancelPurchase.scss'
 interface CancelPurchasePropsType{
   isShow:boolean,
   close:Function,

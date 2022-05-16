@@ -183,6 +183,11 @@ export class Contracts{
         this.verification('BlindBox')
         return this.contract.BlindBox?.methods.OpenBox(data).send({from: addr})
     }
+    //创建订单
+    createOrder(addr: string,tokenId:string,price:number,payToken:string,nftAddr:string){
+        this.verification('EXChangeNFT')
+        return this.contract.EXChangeNFT?.methods.createOrder(tokenId,price,payToken,nftAddr,'0x0000000000000000000000000000000000000000').send({from: addr})
+    }
     //查询当前区块高度
     QueryBlock(){
         return this.web3.eth.getBlockNumber()

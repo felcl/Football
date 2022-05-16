@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
+import {Contracts} from '../web3'
+import {useWeb3React} from '@web3-react/core'
 import {CardInfoType} from './Card'
 import { Modal} from 'antd';
+import {contractAddress} from '../config'
+import '../assets/style/componentsStyle/carddetails.scss'
 
 interface CardDetailPropsType{
   isShow:boolean,
   close:Function,
   type:string,
-  CardInfo:CardInfoType
+  CardInfo:CardInfoType,
+  showCreateOrder?:Function
 }
 /* type:Swap 交易场详情 CreateOrder 挂单详情 NFT 背包卡牌详情 */
  function CardDetails(props:CardDetailPropsType) {
-    // const [isModalVisible, setIsModalVisible] = useState(true);
-
-
-  
-    // const handleOk = () => {
-    //   setIsModalVisible(false);
-    // };
-  
-    // const handleCancel = () => {
-    //   setIsModalVisible(false);
-    // };
+  const web3React = useWeb3React()
+   function createOrder(){
+     if(!web3React.account){
+       console.log("请链接钱包")
+     }
+    Contracts.example.createOrder(web3React.account as string,props.CardInfo.tokenId,100,'0x0000000000000000000000000000000000000000',contractAddress.NFT)
+   }
   return (
     <>
     {/* <div className='box'>11111</div> */}
@@ -42,10 +43,18 @@ interface CardDetailPropsType{
           <p className='kpdetails'>卡牌类型:无</p>
           <p className='kpdetails'>卡牌介绍:{props.CardInfo.introduce}</p>
           {
+            props.type === "CreateOrder" &&<p className='kpdetails'>请输入价格:<input type='text'/>BNB</p>
+          }
+          {
             props.type === "NFT" && <div className='butm'>
-                <button className='gm'><div>挂卖</div></button>
+                <button className='gm'><div onClick={()=>{props.showCreateOrder && props.showCreateOrder()}}>挂卖</div></button>
                 <button className='hc'>合成</button>
                 <button className='zy'>质押</button>
+            </div>
+          }
+          {
+            props.type === "CreateOrder" && <div className='butm'>
+                <button className='hc' onClick={createOrder}>确认</button>
             </div>
           }
           <span>点击任意地方离开</span>

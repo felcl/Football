@@ -1,13 +1,9 @@
 import React,{useState} from "react"
 import orderRecord from '../assets/image/orderRecord.png'
 import CardDetails from '../components/CardDetails'
-import Tips from '../components/Tips'
-import '../assets/style/componentsStyle/carddetails.scss'
-import '../assets/style/componentsStyle/MarketDealing.scss'
-import '../assets/style/componentsStyle/Puchased.scss'
 import '../assets/style/componentsStyle/CancelPurchase.scss'
 import '../assets/style/componentsStyle/CancelSucceed.scss'
-
+import Tips from '../components/Tips'
 import DropDown from '../components/DropDown'
 import CardItem from '../components/CardItem'
 import Puchased from '../components/Puchased'

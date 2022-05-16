@@ -1,5 +1,6 @@
 // 市场交易取消挂卖成功
 import React from 'react'
+import '../assets/style/componentsStyle/CancelSucceed.scss'
 import { Modal} from 'antd';
 interface CancelSucceedPropsType{
   isShow:boolean,

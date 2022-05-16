@@ -1,0 +1,264 @@
+.CardSynthesis {
+    .ant-modal-content {
+        height: 666px;
+        box-shadow: none;
+        background: #1d1e44;
+        padding: 0;
+        border: 0;
+        border-radius: 19px;
+
+        .ant-modal-body {
+            display: flex;
+            flex-direction: column;
+            height: 666px;
+            padding: 0;
+            align-items: center;
+            color: #fff;
+
+            .Title {
+                width: 96px;
+                height: 34px;
+                margin-top: 30px;
+                font-size: 24px;
+                font-weight: 700;
+            }
+
+            .Handle {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+                height: 600px;
+                padding-top: 35px;
+
+                .SynthesisHandle {
+                    flex: auto;
+                    width: 550px;
+                    height: calc(100%-35px);
+
+                    .SynthesisItems {
+
+                        .CardItems {
+                            display: flex;
+                            justify-content: space-evenly;
+
+                            >div {
+                                width: 150px;
+                                height: 150px;
+                            }
+
+                            .Add {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            .CardImg {
+                                width: 150px;
+                                height: 150px;
+                                background: #171833;
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                border-radius: 10px;
+
+                            }
+                        }
+
+                        .CardItem {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 190px;
+                            height: 400px;
+                            margin: 0 auto;
+                            padding-top: 56px;
+
+                            .CardImg {
+                                width: 190px;
+                                height: 190px;
+                            }
+
+                            .Decorate {
+                                display: flex;
+                                justify-content: space-around;
+                                font-size: 16px;
+                                font-weight: 400;
+                                padding-top: 30px;
+
+                                .Number {
+                                    color: #DB2DCF;
+                                }
+                            }
+
+                            button {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 104px;
+                                height: 36px;
+                                margin-top: 25px;
+                                font-size: 14px;
+                                font-weight: 700;
+                                border-radius: 6px;
+                                background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+                            }
+
+                            .Tip {
+                                display: flex;
+                                align-items: center;
+                                margin-top: 18px;
+                                font-style: 12px;
+                                font-weight: 400;
+                                color: rgba(255, 255, 255, 0.6);
+
+                                .TipContent {
+                                    line-height: 18.84px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .SynthesisList {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex: auto;
+                    width: 550px;
+                    height: 550px;
+                    border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+                    .Category {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
+
+                        >div {
+                            width: 150px;
+                            height: 36px;
+                        }
+
+                        .Page {
+                            // 分页样式
+                            display: flex;
+                            align-items: center;
+                            justify-content: end;
+
+                            ul {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+                            }
+
+                            button {
+                                width: 24px;
+                                height: 24px;
+
+                            }
+
+                            .ant-pagination {
+
+
+                                .ant-pagination-prev {
+                                    margin-right: 0;
+                                    min-width: 34px;
+
+                                    button {
+                                        border: 1px solid rgba(255, 255, 255, 0.2);
+                                        border-radius: 6px;
+                                        color: rgba(255, 255, 255, 0.2);
+
+                                    }
+                                }
+
+                                .ant-pagination-simple-pager {
+                                    width: 34px;
+                                    line-height: 24px;
+                                    margin-right: 0;
+                                    color: rgba(255, 255, 255, 0.8);
+
+                                    span {
+                                        margin: 0 auto;
+                                    }
+
+                                    input {
+                                        width: 17px;
+                                        background: #1d1e44;
+                                        border: 0;
+                                        margin-right: 0;
+                                    }
+                                }
+
+                                .ant-pagination-next {
+                                    display: flex;
+                                    justify-content: end;
+
+                                    button {
+                                        font-size: 14px;
+                                        font-weight: 700;
+                                        border-radius: 6px;
+                                        background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
+                                        color: #fff;
+                                        font-weight: 400;
+                                    }
+                                }
+                            }
+                        }
+
+                        .dropDown {
+                            display: flex;
+                            align-items: center;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                            color: rgba(255, 255, 255, 0.6);
+                            border-radius: 6px;
+                            margin-left: 10px;
+                            padding: 10px 15px;
+                            justify-content: space-between;
+                        }
+                    }
+
+                    .CardListBox {
+                        width: 492px;
+                        height: 495px;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 12px;
+
+                        .SynthesisCardList {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 216px;
+                            height: 241px;
+                            border-radius: 19px;
+                            padding-top: 15PX;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+
+                            .Img {
+                                background: #171833;
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                border-radius: 10px;
+                                width: 186px;
+                                height: 186px;
+                                // margin-top: 15px;
+
+
+                            }
+
+                            .Id {
+                                font-style: 14px;
+                                font-weight: 400;
+                                margin-top: 10px;
+                            }
+
+                        }
+                    }
+                }
+
+
+
+
+            }
+        }
+
+    }
+}
