@@ -11,6 +11,12 @@ import DonateRule from '../components/DonateRule'
 import DonateDestroy from '../components/DonateDestroy'
 import ReleaseMechanusm from '../components/ReleaseMechanusm'
 import DonationRecord from '../components/DonationRecord'
+import AddFlowSucceed from '../components/AddFlowSucceed'
+import AddFlowRem from '../components/AddFlowRem'
+import RemoveAffirm from '../components/RemoveAffirm'
+
+
+
 
 
 
@@ -21,6 +27,12 @@ import DonationRecord from '../components/DonationRecord'
 function SBL() {
   return (
     <div>SBL
+      {/*  以添加流动性移除确认*/}
+      <RemoveAffirm></RemoveAffirm>
+      {/* 以添加流动性移除 */}
+      <AddFlowRem></AddFlowRem>
+      {/* 添加流动性成功 */}
+      <AddFlowSucceed></AddFlowSucceed>
       {/* 捐赠奖励，收益记录 */}
       <DonationRecord></DonationRecord>
       {/* 捐赠奖励，释放机制 */}
