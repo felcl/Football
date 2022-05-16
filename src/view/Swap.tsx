@@ -15,7 +15,7 @@ import '../assets/style/Swap.scss'
 import MarketDealing from '../components/MarketDealing'
 
 function Swap() {
-    let [showCardDetail,setShowCardDetail] = useState(true)
+    let [showCardDetail,setShowCardDetail] = useState(false)
     const isShowCardDetail=()=>setShowCardDetail(!showCardDetail)
   return (
     <div>

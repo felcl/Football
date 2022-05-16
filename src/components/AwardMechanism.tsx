@@ -6,7 +6,7 @@ import '../assets/style/componentsStyle/AwardMechanism.scss'
 function AwardMechanism() {
   return (
     <>
-    <Modal visible={false} 
+    <Modal visible={true} 
     className='AwardMechanism'
     centered
     width={'449px'}
@@ -15,7 +15,7 @@ function AwardMechanism() {
     >
         <p className='title'>奖励机制</p>
         <p className='zifujg'>1、持有普通NFT卡牌，享有一星級10%推薦獎勵；</p>
-        <p className='zifujg'>2、持有良好NFT卡牌，享有二星級6%推薦獎勵。</p>
+        <p className='zifujgt'>2、持有良好NFT卡牌，享有二星級6%推薦獎勵。</p>
       <span>点击任意地方离开</span>
     </Modal>
     </>
