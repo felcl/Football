@@ -7,12 +7,15 @@
 }
 .screen{
     display: flex;
-    margin-top:50px;
+    margin-top:30px;
     justify-content:space-between;
+    flex-wrap: wrap;
     align-items: center;
+    >div{
+        margin-top: 20px;
+    }
     .Tabs{
         display: flex;
-        
         >div{
             padding: 8px 24px;
             border-radius: 6px;
@@ -34,8 +37,14 @@
         display: flex;
         position: relative;
         align-items: center;
+        .dropDown:first-child{
+            margin: 0;
+        }
     }
 }
+// @media (max-width) {
+    
+// }
 
 .CardList{
     display: grid;

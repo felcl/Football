@@ -6,6 +6,7 @@ import {Contract} from 'web3-eth-contract';
 import {provider} from 'web3-core';
 import Web3 from 'web3'
 import {abiObj,contractAddress} from './config'
+import BigNumber from 'big.js'
 declare let window: any;
 interface contractType {
     [propName: string]: Contract;
@@ -169,182 +170,25 @@ export class Contracts{
         var amount = Web3.utils.toBN("99999999999999999999999999999999")
         return this.contract.Token?.methods.approve(toaddr,amount).send({from: addr})
     }
-    //购买
-    buy(addr: string,reward: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.buy(reward).send({from: addr})
+    //购买盲盒
+    buyBox(addr: string,data:string,payableAmount:number,){
+        BigNumber.NE = -40
+        BigNumber.PE = 40
+        let num = new BigNumber(payableAmount).times(10 ** 18).toString()
+        this.verification('BlindBox')
+        return this.contract.BlindBox?.methods.buyBox(data).send({from: addr,value:num})
     }
-    //查询释放
-    idoBalanceMapping(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.idoBalanceMapping(addr).call({from: addr})
-    }
-    //查询下级返佣
-    getUserRefereeByAddress(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.getUserRefereeByAddress().call({from: addr})
-    }
-    //提取推荐收益
-    userDrawRefereeToken(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.userDrawRefereeToken().send({from: addr})
-    }
-    //提取返还IDO
-    userDrawToken(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.userDrawToken().send({from: addr})
-    }
-    //查询结束区块
-    endBlock(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.endBlock().call({from: addr})
-    }
-    //查询是否开启释放领取
-    openDraw(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.openDraw().call({from: addr})
-    }
-    //查询是否开启推荐奖励领取
-    refereeOpenDraw(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.refereeOpenDraw().call({from: addr})
-    }
-    //查询用户是否购买
-    buyMapping(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.buyMapping(addr).call({from: addr})
-    }
-    //查询邀请可领取量
-    refereeTotalMapping(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.refereeTotalMapping(addr).call({from: addr})
-    }
-    //查询开始购买区块
-    beginBlock(addr: string){
-        this.verification('IDO')
-        return this.contract.IDO?.methods.beginBlock().call({from: addr})
+    //购买盲盒
+    OpenBox(addr: string,data:string){
+        this.verification('BlindBox')
+        return this.contract.BlindBox?.methods.OpenBox(data).send({from: addr})
     }
     //查询当前区块高度
     QueryBlock(){
         return this.web3.eth.getBlockNumber()
     }
+    //查询BNB余额
+    getBalance(addr:string){
+        return this.web3.eth.getBalance(addr)
+    }
 }
-// //验证是否创建合约，是否包含地址
-// function verification(library:provider,contractName:string,address:string ){
-//     if(!contract[contractName]){
-        
-//         // console.log('首次调用创建合约')
-//         const web3 = new Web3(library)
-//         contract[contractName] =new web3.eth.Contract(abiObj[contractName], contractAddress[contractName])
-//     }
-//     if(!address){
-//         return false
-//     }
-//     return contract[contractName]
-// }
-// //查询余额
-// export function balanceOf(library :provider,addr : string){
-//     let contractExample = verification(library,'Token',addr)
-//     if(contractExample){
-//         return contractExample.methods.balanceOf(addr).call({from: addr})
-//     }
-// }
-// //查询授权
-// export function Tokenapprove(library:provider,addr: string,toaddr: string){
-//     let contractExample = verification(library,'Token',addr)
-//     if(contractExample){
-//         return contractExample.methods.allowance(addr,toaddr).call({from: addr})
-//     }
-// }
-// //授权
-// export function approve(library:provider,addr: string,toaddr: string){
-//     let contractExample = verification(library,'Token',addr)
-//     if(contractExample){
-//         var amount = Web3.utils.toBN("99999999999999999999999999999999")
-//         return contractExample.methods.approve(toaddr,amount).send({from: addr})
-//     }else{
-//         return Promise.reject('not address')
-//     }
-// }
-// //购买盲盒
-// export function buy(library:provider,addr: string,reward: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.buy(reward).send({from: addr})
-//     }
-// }
-// //释放查询
-// export function idoBalanceMapping(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.idoBalanceMapping(addr).call({from: addr})
-//     }
-// }
-// //查询下级返佣
-// export function getUserRefereeByAddress(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.getUserRefereeByAddress().call({from: addr})
-//     }
-// }
-// //提取推荐收益
-// export function userDrawRefereeToken(library:provider,addr: string,){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.userDrawRefereeToken().send({from: addr})
-//     }
-// }
-// //提取返还IDO
-// export function userDrawToken(library:provider,addr: string,){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.userDrawToken().send({from: addr})
-//     }
-// }
-// //查询结束区块
-// export function endBlock(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.endBlock().call({from: addr})
-//     }
-// }
-// //查询是否开启释放领取
-// export function openDraw(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.openDraw().call({from: addr})
-//     }
-// }
-// //查询是否开启推荐奖励领取
-// export function refereeOpenDraw(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.refereeOpenDraw().call({from: addr})
-//     }
-// }
-// //查询用户是否购买
-// export function buyMapping(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.buyMapping(addr).call({from: addr})
-//     }
-// }
-// //查询邀请可领取量
-// export function refereeTotalMapping(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.refereeTotalMapping(addr).call({from: addr})
-//     }
-// }
-// //查询开始购买区块
-// export function beginBlock(library:provider,addr: string){
-//     let contractExample = verification(library,'IDO',addr)
-//     if(contractExample){
-//         return contractExample.methods.beginBlock().call({from: addr})
-//     }
-// }
-// //查询当前区块高度
-// export function QueryBlock(library:provider){
-//     const web3 = new Web3(library)
-//     return web3.eth.getBlockNumber()
-// }

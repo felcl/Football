@@ -44,7 +44,7 @@ function Swap() {
     <div>
       <div className="Edition-Center">
         {/* 卡牌详情 */}
-        <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails>
+        {/* <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails> */}
         {/* 取消挂卖成功 */}
         <Tips isShow={showCancelSuccess} title="取消成功" subTitle="该挂卖以成功取消" close={()=>setShowCancelSuccess(false)}></Tips>
         {/* 取消挂卖 */}
@@ -64,16 +64,16 @@ function Swap() {
             </div>
             {
                 TabIndex === 0 &&  <div className="DropDownGroup">
+                    {/* <DropDown></DropDown>
                     <DropDown></DropDown>
-                    <DropDown></DropDown>
-                    <DropDown></DropDown>
+                    <DropDown></DropDown> */}
                 </div>
             }
             {
                 TabIndex === 1 &&  <div className="DropDownGroup">
                     <img src={orderRecord} alt="" />
-                    <DropDown></DropDown>
-                    <DropDown></DropDown>
+                    {/* <DropDown></DropDown>
+                    <DropDown></DropDown> */}
                 </div>
             }
         </div>
@@ -96,7 +96,7 @@ function Swap() {
             </>
         }
         <div className="Pagination">
-            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
+            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={2} showSizeChanger={false} total={500} onChange={onChange} />
         </div>
       </div>
     </div>

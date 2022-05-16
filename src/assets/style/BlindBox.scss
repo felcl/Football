@@ -11,6 +11,11 @@
     >div{
         margin: 0 29px;
     }
+    @media (max-width:426px) {
+        >div{
+            margin: 0;
+        }
+    }
     .Info{
         flex: 1;
         .intr{
@@ -52,8 +57,24 @@
                 margin-left: 58px;
             }
         }
+        @media (max-width:426px) {
+            .BuyRow{
+                justify-content:space-between;
+            }
+        }
     }
     .Img{
         flex: 1;
+        img{
+            max-width:100%
+        }
+    }
+}
+@media (max-width:1023px) {
+    .BlindBoxInfo{
+        flex-direction: column-reverse;
+    }
+    .BlindBoxTitle{
+        margin-top:50px; 
     }
 }

@@ -1,0 +1,595 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "Cancel",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "createMan",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "payToken",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "CreateOrder",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "payToken",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "marker",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "takeMan",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "finishTime",
+                "type": "uint256"
+            }
+        ],
+        "name": "TakeOrder",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "admin",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "cancelOrder",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "checkCardGrade",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "isUse",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "payToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftAddr",
+                "type": "address"
+            }
+        ],
+        "name": "createOrder",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getAllNowOeder",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "bytes32",
+                        "name": "orderId",
+                        "type": "bytes32"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "price",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "payToken",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "nftToken",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "marker",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "takeMan",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "finishTime",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "isUse",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct ExchangeNFT.OrderInfo[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getAllTakeOeder",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "bytes32",
+                        "name": "orderId",
+                        "type": "bytes32"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "price",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "payToken",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "nftToken",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "marker",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "takeMan",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "finishTime",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "isUse",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct ExchangeNFT.OrderInfo[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getNewAdmin",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "manager",
+        "outputs": [
+            {
+                "internalType": "contract Manager",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "newAdmin",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "nowOrder",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "payToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "marker",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "takeMan",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "finishTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "isUse",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "onERC721Received",
+        "outputs": [
+            {
+                "internalType": "bytes4",
+                "name": "",
+                "type": "bytes4"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_feeMan",
+                "type": "address"
+            }
+        ],
+        "name": "setFee",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "setManager",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_newAdmin",
+                "type": "address"
+            }
+        ],
+        "name": "setNewAdmin",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "status",
+                "type": "bool"
+            }
+        ],
+        "name": "setNftAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_grade",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "_isUser",
+                "type": "bool"
+            }
+        ],
+        "name": "setNftGrade",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "takeOrder",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "takeOrderList",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "orderId",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "payToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "marker",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "takeMan",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "finishTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "isUse",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

@@ -11,9 +11,13 @@
     .CardImg{
         background: #171833;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow:hidden;
         border-radius: 10px;
         width: 240px;
         height: 240px;
+        img{
+            width: 100%;
+        }
     }
     .cardId{
         color: #FFFFFF;

@@ -38,11 +38,36 @@ const MainLayout :React.FC =() =>{
             return 'MenuItem pointer'
         }
     }
+    const HeadMenu = (
+        <Menu>
+            <Menu.Item key="0" onClick={() =>{navigate('/')}}>
+                首頁
+            </Menu.Item>
+            <Menu.Item key="1" onClick={() =>{navigate('/BlindBox')}}>
+                寶箱
+            </Menu.Item>
+            <Menu.Item key="2" onClick={() =>{navigate('/Swap')}}>
+                交易市場
+            </Menu.Item>
+            <Menu.Item key="3" onClick={() =>{navigate('/NFT')}}>
+                NFT
+            </Menu.Item>
+            <Menu.Item key="4" onClick={() =>{navigate('/SBL')}}>
+                SBL
+            </Menu.Item>
+            <Menu.Item key="5" onClick={() =>{navigate('/Invitation')}}>
+                邀請
+            </Menu.Item>
+        </Menu>
+      );
     return(
         <Layout className="layout">
             <Header className="MainSider">
                 <div className="Edition-Center HeaderNav">
-                    <img src={logo} onClick={()=>{navigate('/')}} alt="" />
+                    <Dropdown overlay={HeadMenu} trigger={['click']}>
+                        <img className="MobileHeadMenu" src={logo} alt="" />
+                    </Dropdown>
+                    <img className="HeadMenu" src={logo} onClick={()=>{navigate('/')}} alt="" />
                     <div className="MenuList">
                         <div className={menuActive('/')} onClick={()=>{navigate('/')}}>
                         首頁
@@ -71,6 +96,11 @@ const MainLayout :React.FC =() =>{
                         
                         <div className="Connect linear-gradient pointer">
                         Connect
+                        </div>
+                    </div>
+                    <div className="Mobile">
+                        <div className="Connect linear-gradient pointer">
+                            Connect
                         </div>
                     </div>
                 </div>

@@ -101,6 +101,11 @@ input:focus,select:focus,textarea:focus {
   width: 100%;
   margin:auto;
 }
+@media (max-width:1280px) {
+  .Edition-Center{
+    padding:0 40px;
+  }
+}
 /* flex 居中 */
 .flexCenter{
   display: flex;

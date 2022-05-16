@@ -4,6 +4,7 @@
     align-items: center;
     margin: 0 auto;
     height: 100%;
+
     .MenuList{
         display: flex;
         align-items: center;
@@ -36,6 +37,34 @@
             border-radius: 6px;
             line-height: 1.2;
             margin-left: 63px;
+        }
+    }
+    .MobileHeadMenu{
+        display: none;
+    }
+    .Mobile{
+        display: none;
+        .Connect{
+            padding:8px 16px;
+            letter-spacing: 0.08em;
+            color: #FFFFFF;
+            border-radius: 6px;
+            line-height: 1.2;
+            margin-left: 63px;
+        }
+    }
+    @media (max-width:1439px) {
+        .MenuList{
+            display: none;
+        }
+        .Mobile{
+            display: flex;
+        }
+        .HeadMenu{
+            display: none;
+        }
+        .MobileHeadMenu{
+            display: block;
         }
     }
 }

@@ -1,11 +1,14 @@
 import './App.css';
-import {useSelector} from "react-redux";
+import { useEffect } from 'react';
+import {useWeb3React} from '@web3-react/core'
+import {useSelector , useDispatch} from "react-redux";
 import styled from 'styled-components';
 import Routers from './router'
+import {GetQueryString} from './utils/tool'
 // import web3 from 'web3';
 import {stateType} from './store/reducer'
-// import {createAddMessageAction,createLoginSuccessAction} from './store/actions'
-// import {Login} from './API'
+import {createAddMessageAction,createLoginSuccessAction} from './store/actions'
+import {Login} from './API'
 import { useConnectWallet } from './web3'
 import Loding from './components/loding'
 // import { useNavigate } from "react-router-dom";
@@ -35,12 +38,16 @@ const MessageBox = styled.div`
 //   if(r!=null)return  unescape(r[2]); return null;
 // }
 function App() {
+  const web3React = useWeb3React()
   // const navigate = useNavigate();
-  // useEffect(()=>{
-  //   console.log('初始地址')
-  //   navigate('/Layout')
-  // },[])
-  // const dispatch = useDispatch();
+  useEffect(()=>{
+    if(web3React.active){
+      LoginFun()
+    }else{
+      // dispatch(createLoginSuccessAction('',''))
+    }
+  },[web3React.account])
+  const dispatch = useDispatch();
   let state = useSelector<stateType,stateType>(state => state);
   // useEffect(()=>{
   //   let address = GetQueryString('address')
@@ -55,17 +62,25 @@ function App() {
   //     index:state.message.length
   //   }))
   // }
-  // function LoginFun(){
-  //   dispatch(createLoginSuccessAction('token','0x1B91dEf0997Ce8998898EC1f953da860fFaA346a'))
-  //   Login({
-  //     password:"123",
-  //     refereeUserAddress:'',
-  //     userAddress:'0x1B91dEf0997Ce8998898EC1f953da860fFaA346a',
-  //     userPower:0
-  //   }).then(res=>{
-  //     console.log(res,'登录结果');
-  //   })
-  // }
+  function addMessage (msg:string){
+    // dispatch(createAddMessageAction('添加提醒'))
+  }
+  function LoginFun(){
+    let refereeUserAddress = GetQueryString("address")|| ''
+    Login({
+      password:"123",
+      refereeUserAddress,
+      userAddress:web3React.account as string,
+      // userAddress:'0x9482394b609b51693FBd0b3B5Ed632B34c5070Eb',
+      userPower:0
+    }).then((res:any)=>{
+      console.log(res)
+      if(res.code !== 200){
+        addMessage(res.msg)
+      }
+      dispatch(createLoginSuccessAction(res.data.token,web3React.account as string))
+    })
+  }
   return (
     <div className="App">
       {/* {state.address}

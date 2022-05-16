@@ -17,7 +17,7 @@ function PurchaseBox(props: PurchasePropsType) {
                 footer={null}
             >
                 <div className='Title'>購買成功!</div>
-                <div className='Tip'>確認購買該盲盒？此次購買消耗0.5BNB</div>
+                <div className='Tip'>您可選擇立即開啓或放入NFT-庫存中。</div>
                 <div className='Handle'>
                     <div className="Button">
                         <button className='Save'>放入庫存</button>
