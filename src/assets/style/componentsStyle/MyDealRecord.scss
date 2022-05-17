@@ -2,12 +2,13 @@
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  height: 424px;
+  // height: 424px;
   padding-left: 30px;
   padding-right: 32px;
   .ant-modal-content {
     box-shadow: none;
     background: #1d1e44;
+    margin-bottom: 30px;
   }
   .ant-modal-header {
     display: none;
@@ -15,7 +16,6 @@
   .ant-modal-body {
     position: relative;
     background: #1d1e44;
-    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 0;
     .title {
       font-size: 24px;
@@ -37,27 +37,16 @@
       color: #fff;
     }
     .ant-table {
-      //   margin-left: 10px;
       background: #1d1e44;
-      .ant-table-thead{
-        tr{
-          padding-right: 15px !important;
-        }
-      }
     }
     .ant-table-wrapper {
-      //   background: #1d1e44;
-      // width: 572px;
-      margin: 0 auto;
       .ant-pagination {
         display: none;
       }
     }
   }
   .ant-table-thead {
-    // text-align: center;
     tr {
-      padding: 0;
       .ant-table-cell-scrollbar {
         box-shadow: none;
       }
@@ -66,8 +55,12 @@
         background: #1d1e44;
         color: rgba(255, 255, 255, 0.8);
         border: 0;
+        text-align: center;
       }
-      
+      th:nth-child(1) {
+        text-align: left;
+        padding-left: 0;
+      }
     }
   }
   .ant-table-tbody {
@@ -78,21 +71,11 @@
       color: #fff;
       td {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
       }
       td:nth-child(1) {
-        padding-left: 0;
         text-align: left;
-      }
-      td:nth-child(2) {
-        // text-align: center;
-      }
-      td:nth-child(6) {
-        text-align: center;
-        // width: 200px;
-      }
-      td:nth-child(7) {
-        padding-right: 0;
-        text-align: right;
+        padding-left: 0;
       }
       .ant-table-cell-row-hover {
         background: #1d1e44 !important;
@@ -101,10 +84,7 @@
   }
   //表格体的滚动条设置
   .ant-table-body {
-    // margin-left: 30px;
-    // padding-right: 15px;
     &::-webkit-scrollbar {
-      //   margin-left: 10px;
       width: 3px; //y轴滚动条粗细
     }
 

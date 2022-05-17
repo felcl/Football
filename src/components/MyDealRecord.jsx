@@ -64,69 +64,77 @@ function MyDealRecord() {
         closable={false}
         footer={null}
       >
-        <p className="title"> 捐贈記錄 </p>
+        <p className="title"> 交易記錄 </p>
         {/* <Table
           columns={columns}
           dataSource={data}
           scroll={{ y: 240 }}
         /> */}
-        <Table dataSource={data} pagination={false} rowKey="id" scroll={{ y: 240 }}>
+        <Table
+          dataSource={data}
+          pagination={false}
+          rowKey="id"
+          scroll={{ y: 260 }}
+        >
           <Column
-              title="时间"
-              render={item => (
-                  <>
-                  <div >{item.name}</div>
-                  </>
-              )}
+            title="时间"
+            width={140}
+            render={(item) => (
+              <>
+                <div>{item.name}</div>
+              </>
+            )}
           />
           <Column
-              title="ID"
-              render={item => (
-                  <>
-                  <div >{item.ID}</div>
-                  </>
-              )}
+            title="ID"
+            render={(item) => (
+              <>
+                <div>{item.ID}</div>
+              </>
+            )}
           />
           <Column
-              title="等級"
-              render={item => (
-                  <>
-                  <div >{item.denji}</div>
-                  </>
-              )}
+            title="等級"
+            render={(item) => (
+              <>
+                <div>{item.denji}</div>
+              </>
+            )}
           />
           <Column
-              title="類型"
-              render={item => (
-                  <>
-                  <div >{item.leixin}</div>
-                  </>
-              )}
+            title="類型"
+            render={(item) => (
+              <>
+                <div>{item.leixin}</div>
+              </>
+            )}
           />
           <Column
-              title="類别"
-              render={item => (
-                  <>
-                  <div >{item.leibie}</div>
-                  </>
-              )}
+            title="類别"
+            render={(item) => (
+              <>
+                <div>{item.leibie}</div>
+              </>
+            )}
           />
           <Column
-              title="金額"
-              render={item => (
-                  <>
-                  <div >{item.jiner}</div>
-                  </>
-              )}
+            title="金額"
+            width={140}
+            render={(item) => (
+              <>
+                <div>{item.jiner}</div>
+              </>
+            )}
           />
           <Column
             align="center"
-              title="状态"
-              render={item => (
-                  <>
-                  <div >{item.zhuangtai}</div>
-                  </>
-              )}
+            title="状态"
+            width={100}
+            render={(item) => (
+              <>
+                <div>{item.zhuangtai}</div>
+              </>
+            )}
           />
         </Table>
         <span>点击任意地方离开</span>
