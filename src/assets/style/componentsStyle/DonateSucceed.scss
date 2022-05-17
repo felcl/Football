@@ -1,8 +1,7 @@
-.GlodMechanism {
+.DonateSucceed {
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  // height: 490px;
   .ant-modal-content {
     box-shadow: none;
   }
@@ -23,37 +22,22 @@
       box-shadow: 0;
     }
     .box {
-      width: 500px;
+      // width: 500px;
       margin: 0 auto;
-      margin-bottom: 50px;
-      .tou {
-        font-weight: 700;
-        font-size: 16px;
-        // line-height: 22px;
-        margin: 0;
-        color: #fff;
-      }
-      .btm {
-        font-weight: 700;
-        font-size: 16px;
-        margin-top: 30px;
-        margin-bottom: 0px;
-        color: #fff;
-      }
+      margin-bottom: 30px;
+      margin-top: 20px;
       .zifujg {
-        //   text-align: center;
         width: 100%;
-        //   margin-left: 40px;
-        height: 22px;
-        margin-top: 8px;
-        line-height: 22px;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-bottom: 0;
         font-size: 16px;
         color: #fff;
       }
     }
     span {
       position: absolute;
-      bottom: -80px;
+      bottom: -55px;
       width: 100%;
       text-align: center;
       font-style: normal;

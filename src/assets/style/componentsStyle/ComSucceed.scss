@@ -2,7 +2,7 @@
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  height: 300px;
+  // height: 300px;
   .ant-modal-content {
     box-shadow: none;
   }
@@ -30,6 +30,8 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       overflow: hidden;
+      margin-top: 20px;
+      margin-bottom: 45px;
       img{
         width: 100%;
       }

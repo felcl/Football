@@ -12,6 +12,7 @@ import CardItem from '../components/CardItem'
 import Puchased from '../components/Puchased'
 import CancelPurchase from '../components/CancelPurchase'
 import CancelSucceed from '../components/CancelSucceed'
+import MyDealRecord from '../components/MyDealRecord'
 import { Pagination } from 'antd';
 
 import '../assets/style/Swap.scss'
@@ -174,6 +175,8 @@ function Swap() {
   return (
     <div>
       <div className="Edition-Center">
+        {/* 我的交易记录 */}
+        <MyDealRecord></MyDealRecord>
         {/* 卡牌详情 */}
         {/* <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails> */}
         {/* 取消挂卖成功 */}

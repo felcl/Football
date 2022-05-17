@@ -32,6 +32,17 @@
                 background: linear-gradient(90deg, #4EADF5 0%, #DB2DCF 100%);
                 border-radius: 6px;
             }
+            span{
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                bottom: -30px;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 17px;
+                color: rgba(255, 255, 255, 0.6);
+            }
         }
     }
 

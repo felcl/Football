@@ -14,10 +14,19 @@ import '../assets/style/componentsStyle/CardSynthesis.scss'
 import AddFlow from '../components/AddFlow'
 import {addMessage,showLoding} from '../utils/tool'
 import { Pagination } from 'antd';
+import '../assets/style/componentsStyle/AddFlow.scss'
+import AddFluidOk from "../components/AddFluidOk"
+import '../assets/style/componentsStyle/AddFluidOk.scss'
 // 挂卖详情
 import PutParticulars from '../components/PutParticulars'
 // 合成成功
 import ComSucceed from '../components/ComSucceed'
+// 卡牌合成规则
+import CardComRule from '../components/CardComRule'
+// 盲盒开启
+import BoxOpen from '../components/BoxOpen'
+
+
 
 export interface BoxInfo{
   id:number,
@@ -165,8 +174,12 @@ function NFT() {
       <CardSynthesis isShow={showCardSynthesis} CardInfo={userCard[cardDetialIndex]} close={()=>setshowCardSynthesis(false)}></CardSynthesis>
       <div className="Edition-Center">
         <div className="SwapTitle">
-        NFT - 庫存
+          NFT - 庫存
         </div>
+        {/* 盲盒开启 */}
+        <BoxOpen></BoxOpen>
+        {/* 卡牌合成规则 */}
+        <CardComRule></CardComRule>
         {/* 挂卖详情 */}
         {/* <PutParticulars></PutParticulars> */}
         {/* 合成成功 */}
@@ -185,7 +198,7 @@ function NFT() {
             
         </div>
         {
-            TabIndex === 0 ? <>
+          TabIndex === 0 ? <>
             {/* 卡牌 */}
             <div className="CardList">
               {
@@ -195,14 +208,14 @@ function NFT() {
             <div className="Pagination">
                 <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} showSizeChanger={false} total={totalNum} onChange={onChange} />
             </div>
-            </>:<>
+          </> : <>
             {/* 盲盒 */}
             <div className="CardList">
               {
                 userBox.map((item)=><BlindBox openSuccess={openSuccess} key={item.id} BoxInfo={item}></BlindBox>)
               }
             </div>
-            </>
+          </>
         }
       </div>
     </div>
