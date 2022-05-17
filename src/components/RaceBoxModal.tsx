@@ -20,6 +20,7 @@ function RaceBoxModal(props: RaceBoxModalPropsType) {
         </div>
         <div className='Tip'>確認購買該盲盒？此次購買消耗0.5BNB</div>
         <button className='Verify'>確認</button>
+        <span>點擊任意地方關閉</span>
       </Modal>
     </>
   )
