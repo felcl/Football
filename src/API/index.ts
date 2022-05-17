@@ -100,3 +100,10 @@ export function getOrderList(data:getUserOrderType){
         data
     })
 }
+/* 获取用户邀请列表 */
+export function getUserReferee(){
+    return axois.request({
+        url:`/user/uUser/getUserReferee`,
+        method:'get',
+    })
+}

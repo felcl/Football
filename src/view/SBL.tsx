@@ -55,7 +55,7 @@ function SBL() {
             }
         </div>
        {/* 我的交易记录 */}
-      <MyDealRecord></MyDealRecord>
+      {/* <MyDealRecord></MyDealRecord> */}
       {/*  以添加流动性移除确认*/}
       <RemoveAffirm></RemoveAffirm>
       {/* 以添加流动性移除 */}

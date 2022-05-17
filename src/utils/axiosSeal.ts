@@ -18,6 +18,7 @@ class HttpRequest { // 定义一个接口请求类，用于创建一个axios请�
         instance.interceptors.request.use((config: AxiosRequestConfig) => {
           // config.headers.lang = 'en'
           if((config.method === 'POST' || config.method === 'post') && config?.data.Encrypt){
+            console.log(config.data,"请求拦截")
             config.data=Encrypt(JSON.stringify(config.data))
           }
           // config.data=Encrypt(JSON.stringify(config.data))

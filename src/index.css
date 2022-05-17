@@ -69,7 +69,7 @@ input:focus,select:focus,textarea:focus {
 }
 .MainContent{
   min-height: calc(100vh - 156px) !important;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .menuSider{
   position: fixed !important;
@@ -82,7 +82,7 @@ input:focus,select:focus,textarea:focus {
   position: relative
 }
 .ant-layout-header{
-  background: transparent !important;
+  background: #161731 !important;
   padding: 0 !important;
 }
 .ant-layout-footer{

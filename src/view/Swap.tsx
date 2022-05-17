@@ -1,5 +1,6 @@
 import React,{useState , useEffect} from "react"
 import orderRecord from '../assets/image/orderRecord.png'
+import nodata from '../assets/image/nodata.png'
 import {useSelector , useDispatch} from "react-redux";
 import {stateType} from '../store/reducer'
 import CardDetails from '../components/CardDetails'
@@ -176,7 +177,7 @@ function Swap() {
     <div>
       <div className="Edition-Center">
         {/* 我的交易记录 */}
-        <MyDealRecord></MyDealRecord>
+        {/* <MyDealRecord></MyDealRecord> */}
         {/* 卡牌详情 */}
         {/* <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails> */}
         {/* 取消挂卖成功 */}
@@ -220,8 +221,15 @@ function Swap() {
             {/* 交易场订单列表 */}
             <div className="CardList">
                 {
-                    orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{setShowCardDetail(true)}} buy={()=>buy(index)}></CardItem>)
+                    orderList.length !==0 ? <>
+                    {
+                        orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{setShowCardDetail(true)}} buy={()=>buy(index)}></CardItem>)
+                    }
+                    </>:<>
+                    {/* <img src={nodata} alt="" /> */}
+                    </>
                 }
+                
             </div>
             </>
         }
@@ -237,7 +245,7 @@ function Swap() {
         }
         {/* 交易场数据合个人交易场数据共用一个分页器 */}
         <div className="Pagination">
-            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} showSizeChanger={false} total={500} onChange={onChange} />
+            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} showSizeChanger={false} total={totalNum} onChange={onChange} />
         </div>
         
       </div>

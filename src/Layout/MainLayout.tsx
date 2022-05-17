@@ -65,7 +65,7 @@ const MainLayout :React.FC =() =>{
       );
     return(
         <Layout className="layout">
-            <Header className="MainSider">
+            <Header  style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                 <div className="Edition-Center HeaderNav">
                     <Dropdown overlay={HeadMenu} trigger={['click']}>
                         <img className="MobileHeadMenu" src={logo} alt="" />
@@ -123,9 +123,8 @@ const MainLayout :React.FC =() =>{
                     </div>
                 </div>
             </Header>
-            <Content className="MainContent" >
+            <Content className="MainContent" style={{ padding: '0 50px', marginTop: 64 }}>
                 <Outlet />
-                
             </Content>
             <Footer>
                 <div className="footerLink">
