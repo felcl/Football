@@ -46,7 +46,15 @@
                                 width: 150px;
                                 height: 150px;
                             }
-
+                            .CardItemsLeft{
+                                background: #171833;
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                img{
+                                    width: 100%;
+                                }
+                            }
                             .Add {
                                 display: flex;
                                 justify-content: center;
@@ -59,7 +67,10 @@
                                 background: #171833;
                                 border: 1px solid rgba(255, 255, 255, 0.1);
                                 border-radius: 10px;
-
+                                overflow: hidden;
+                                img{
+                                    width: 100%;
+                                }
                             }
                         }
 
@@ -239,8 +250,11 @@
                                 border-radius: 10px;
                                 width: 186px;
                                 height: 186px;
+                                overflow: hidden;
                                 // margin-top: 15px;
-
+                                img{
+                                    width: 100%;
+                                }
 
                             }
 

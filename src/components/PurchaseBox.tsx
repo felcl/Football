@@ -20,11 +20,9 @@ function PurchaseBox(props: PurchasePropsType) {
                 <div className='Title'>購買成功!</div>
                 <div className='Tip'>您可選擇立即開啓或放入NFT-庫存中。</div>
                 <div className='Handle'>
-                    <div className="Button">
-                        <button className='Save'>放入庫存</button>
-                    </div>
                     <div className='Button'>   
-                        <button className='Open'>立即開啓</button></div> 
+                        <button className='Open' onClick={()=>props.close()}>放入庫存</button>
+                    </div> 
                 </div>
             </Modal>
         </>

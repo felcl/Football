@@ -1,6 +1,7 @@
 .CardItemLinearBorder{
+    width: 270px;
     border-radius: 19px;
-    padding:1px;
+    box-sizing: border-box;
     background:linear-gradient(180deg, #4EADF5 0%, #DB2DCF 100%);
 }
 .CardItem{
@@ -8,6 +9,8 @@
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 19px;
     padding:15px;
+    box-sizing: border-box;
+    margin:1px;
     .CardImg{
         background: #171833;
         border: 1px solid rgba(255, 255, 255, 0.1);

@@ -68,7 +68,7 @@ input:focus,select:focus,textarea:focus {
   background: transparent !important;
 }
 .MainContent{
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 156px) !important;
   overflow-y: auto;
 }
 .menuSider{

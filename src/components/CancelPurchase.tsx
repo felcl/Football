@@ -1,16 +1,34 @@
 // 取消挂卖
 import React from 'react'
 import { Modal} from 'antd';
+import {Contracts} from '../web3'
+import {useSelector , useDispatch} from "react-redux";
+import {stateType} from '../store/reducer'
+import {addMessage,showLoding} from '../utils/tool'
+import {useWeb3React} from '@web3-react/core'
+import {orderInfoType} from '../view/Swap'
 import '../assets/style/componentsStyle/CancelPurchase.scss'
 interface CancelPurchasePropsType{
   isShow:boolean,
   close:Function,
   CancelSuccess:Function
+  buyInfo:orderInfoType
 }
  function CancelPurchase(props:CancelPurchasePropsType) {
+  const web3React = useWeb3React()
   function CancelFun(){
+    if(!web3React.account){
+      return console.log("请连接钱包")
+    }
+    showLoding(true)
+   Contracts.example.cancelOrder(web3React.account as string , props.buyInfo.chainOrderId).then(() => {
+     console.log("订单取消成功")
+     props.close()
+   }).finally(()=>{
+    showLoding(false)
+   })
     /* 取消成功后回调 */
-    props.CancelSuccess()
+    // props.CancelSuccess()
   }
   return (
     <>

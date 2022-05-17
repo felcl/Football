@@ -8,7 +8,7 @@ import '../assets/style/componentsStyle/PutParticulars.scss'
   return (
     <>
     {/* <div className='box'>11111</div> */}
-      <Modal title="Basic Modal" visible={true} 
+      <Modal title="Basic Modal" visible={false} 
       className='PutParticulars'
       centered
       width={'449px'}

@@ -2,7 +2,8 @@
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  height: 573px;
+  // height: 573px;
+  position: relative;
   .ant-modal-content {
     box-shadow: none;
   }
@@ -54,6 +55,7 @@
       margin: 0 auto;
       color: #fff;
       margin-top: 66px;
+      margin-bottom: 38px;
       //   flex-grow: 0;
       .gm {
         // flex-grow: 0;

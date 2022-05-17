@@ -1,5 +1,8 @@
 import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime' // import plugin
+import store from "../store";
+import {createAddMessageAction,createSetLodingAction} from '../store/actions'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import BigNumber from 'big.js'
 export function toThousands(num: string) {
     let numArr = num.split('.')
     if(numArr.length>1){
@@ -54,6 +57,18 @@ export function NumSplic(val:string,len:number) {
 }
 export function numberDivision(){
     
+}
+export function showLoding(isShow:boolean){
+    store.dispatch(createSetLodingAction(isShow))
+}
+export function addMessage (msg:string){
+    store.dispatch(createAddMessageAction({
+        message:msg,
+        index:store.getState().message.length
+    }))
+}
+export function isApprove(price:number|string,Approve:string){
+    return new BigNumber(Approve).gte(price)
 }
 // export function debounce(tarFun:Function, delay:number, immed:boolean) {
 // 	let timer:number|null = null

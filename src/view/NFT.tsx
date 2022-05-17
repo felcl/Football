@@ -12,12 +12,20 @@ import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
 import '../assets/style/componentsStyle/CardSynthesis.scss'
 import AddFlow from '../components/AddFlow'
+import {addMessage,showLoding} from '../utils/tool'
 import { Pagination } from 'antd';
 // 挂卖详情
 import PutParticulars from '../components/PutParticulars'
+// 合成成功
+import ComSucceed from '../components/ComSucceed'
 
 export interface BoxInfo{
   id:number,
+}
+export interface OpenResType{
+  imageUrl:string,
+  cardLevel:number,
+  cardName:string
 }
 const LevelMap = [
   {
@@ -74,7 +82,6 @@ const typeMap = [
 function NFT() {
     let state = useSelector<stateType,stateType>(state => state);
     const web3React = useWeb3React()
-    const [showCardSynthesis, setshowCardSynthesis] = useState(false)
     let [TabIndex,SetTabIndex] = useState(0)
     /* 类型筛选 */
     let [type,SetType] = useState(0)
@@ -86,10 +93,16 @@ function NFT() {
     let [cardDetialIndex,setCardDetialIndex] = useState(0)
     let [userBox,setuserBox] = useState<BoxInfo []>([])
     let [userCard,setuserCard] = useState<CardInfoType []>([])
+    /* 合成弹窗控制 */
+    const [showCardSynthesis, setshowCardSynthesis] = useState(false)
     /* 卡牌详情弹窗控制 */
     let [showCardDetail,setShowCardDetail] = useState(false)
     /* 创建订单弹窗控制 */
     let [showCreateOrder,setShowCreateOrder] = useState(false)
+    /* 开卡成功弹窗控制 */
+    let [showOpenCard,setShowOpenCard] = useState(false)
+    /* 开盲盒结果 */
+    let [openRes,setOpenRes] = useState<OpenResType | null>(null)
     function showDetial(index:number) {
       setCardDetialIndex(index)
       setShowCardDetail(true)
@@ -101,6 +114,14 @@ function NFT() {
     function createOrderFun(){
       setShowCardDetail(false)
       setShowCreateOrder(true)
+    }
+    function showMergeFun(){
+      setShowCardDetail(false)
+      setshowCardSynthesis(true)
+    }
+    function openSuccess(res:OpenResType){
+      setOpenRes(res)
+      setShowOpenCard(true)
     }
     /* 初始化数据 */
     useEffect(()=>{
@@ -128,30 +149,40 @@ function NFT() {
     },[state.token,web3React.account,type,level,page])
   return (
     <div>
-      <AddFlow></AddFlow>
+      {/* <AddFlow></AddFlow> */}
       {
-        userCard.length >0 && <CardDetails isShow={showCardDetail} showCreateOrder={createOrderFun} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCardDetail(false)} type="NFT"></CardDetails>
+        openRes && <ComSucceed isShow={showOpenCard} close={()=>setShowOpenCard(false)} CardInfo={openRes} ></ComSucceed>
       }
+      {/* 卡牌详情 */}
+      {
+        userCard.length >0 && <CardDetails isShow={showCardDetail} showMerge={showMergeFun} showCreateOrder={createOrderFun} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCardDetail(false)} type="NFT"></CardDetails>
+      }
+      {/* 卡牌挂卖 */}
       {
         userCard.length >0  && <CardDetails isShow={showCreateOrder} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCreateOrder(false)} type="CreateOrder"></CardDetails>
       }
-      
+      {/* 卡牌合成 */}
+      <CardSynthesis isShow={showCardSynthesis} CardInfo={userCard[cardDetialIndex]} close={()=>setshowCardSynthesis(false)}></CardSynthesis>
       <div className="Edition-Center">
-        <CardSynthesis isShow={showCardSynthesis}></CardSynthesis>
         <div className="SwapTitle">
         NFT - 庫存
         </div>
         {/* 挂卖详情 */}
         {/* <PutParticulars></PutParticulars> */}
+        {/* 合成成功 */}
+        {/* <ComSucceed></ComSucceed> */}
         <div className="screen">
             <div className="Tabs">
                 <div className={TabIndex === 0 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(0)}}>卡牌</div>
                 <div className={TabIndex === 1 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(1)}}>盲盒</div>
             </div>
-            <div className="DropDownGroup">
-                <DropDown Map={LevelMap} change={SetLevel}></DropDown>
-                 <DropDown Map={typeMap} change={SetType}></DropDown>
-            </div>
+            {
+              TabIndex === 0  && <div className="DropDownGroup">
+                  <DropDown Map={LevelMap} change={SetLevel}></DropDown>
+                  <DropDown Map={typeMap} change={SetType}></DropDown>
+              </div>
+            }
+            
         </div>
         {
             TabIndex === 0 ? <>
@@ -168,7 +199,7 @@ function NFT() {
             {/* 盲盒 */}
             <div className="CardList">
               {
-                userBox.map((item)=><BlindBox key={item.id} BoxInfo={item}></BlindBox>)
+                userBox.map((item)=><BlindBox openSuccess={openSuccess} key={item.id} BoxInfo={item}></BlindBox>)
               }
             </div>
             </>

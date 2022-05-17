@@ -6,6 +6,7 @@ export interface CardInfoType{
   introduce:string,
   cardName:string,
   cardType:number,
+  cardLevel:number,
   tokenId:string
 }
 interface CardPropsType{

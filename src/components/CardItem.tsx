@@ -1,6 +1,8 @@
 import React from 'react'
 import '../assets/style/componentsStyle/CardItem.scss'
+import {orderInfoType} from '../view/Swap'
 interface CardInfo{
+  orderInfo?:orderInfoType
   type:string
   showCardDetail:Function,
   buy?:Function,
@@ -15,7 +17,7 @@ function CardItem(props:CardInfo) {
             </div>
             {
               props.type ==="commodity" && <>
-                <div className="price flexCenter">價格：1 SBL <div className="decorate"></div></div>
+                <div className="price flexCenter">價格：{props.orderInfo?.price} SBL <div className="decorate"></div></div>
                 <div className="buyBtn linear-gradient" onClick={()=>{props.buy!()}}>購買</div>
               </>
             }

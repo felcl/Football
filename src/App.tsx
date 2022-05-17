@@ -27,7 +27,7 @@ const MessageRow=styled.div`
 const MessageBox = styled.div`
   width: 100%;
   position:fixed;
-  z-index: 999;
+  z-index: 9999;
   top: 50px;
   text-align: center;
   
@@ -56,15 +56,15 @@ function App() {
   //   }
   // },[])
   useConnectWallet()
-  // function addMessage (){
-  //   dispatch(createAddMessageAction({ 
-  //     message:'添加提醒',
-  //     index:state.message.length
-  //   }))
-  // }
   function addMessage (msg:string){
-    // dispatch(createAddMessageAction('添加提醒'))
+    dispatch(createAddMessageAction({ 
+      message:msg,
+      index:state.message.length
+    }))
   }
+  // function addMessage (msg:string){
+  //   // dispatch(createAddMessageAction('添加提醒'))
+  // }
   function LoginFun(){
     let refereeUserAddress = GetQueryString("address")|| ''
     Login({

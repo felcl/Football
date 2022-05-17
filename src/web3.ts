@@ -184,9 +184,43 @@ export class Contracts{
         return this.contract.BlindBox?.methods.OpenBox(data).send({from: addr})
     }
     //创建订单
-    createOrder(addr: string,tokenId:string,price:number,payToken:string,nftAddr:string){
+    createOrder(addr: string,tokenId:string,price:number|string,payToken:string,nftAddr:string){
         this.verification('EXChangeNFT')
-        return this.contract.EXChangeNFT?.methods.createOrder(tokenId,price,payToken,nftAddr,'0x0000000000000000000000000000000000000000').send({from: addr})
+        BigNumber.NE = -40
+        BigNumber.PE = 40
+        let priceStr = new BigNumber(price).times(10 ** 18).toString()
+        return this.contract.EXChangeNFT?.methods.createOrder(tokenId,priceStr,payToken,nftAddr).send({from: addr})
+    }
+    //取消订单
+    cancelOrder(addr: string,orderId:string){
+        this.verification('EXChangeNFT')
+        return this.contract.EXChangeNFT?.methods.cancelOrder('0x'+orderId).send({from: addr})
+    }
+    //购买订单
+    takeOrder(addr: string,orderId:string,price:number){
+        this.verification('EXChangeNFT')
+        BigNumber.NE = -40
+        BigNumber.PE = 40
+        let priceStr = new BigNumber(price).times(10 ** 18).toString()
+        return this.contract.EXChangeNFT?.methods.takeOrder('0x'+orderId).send({from: addr,value:priceStr})
+    }
+    //授权所有NFT
+    setApprovalForAll(addr: string,toAddr:string,isApprova:boolean){
+        this.verification('NFT')
+        return this.contract.NFT?.methods.setApprovalForAll(toAddr,isApprova).send({from: addr})
+    }
+    //判断NFT授权
+    isApprovedForAll(addr: string,toAddr:string){
+        this.verification('NFT')
+        return this.contract.NFT?.methods.isApprovedForAll(addr,toAddr).call({from: addr})
+    }
+    //合成
+    toSynthesis(addr: string,data:string,payableAmount:number){
+        BigNumber.NE = -40
+        BigNumber.PE = 40
+        let num = new BigNumber(payableAmount).times(10 ** 18).toString()
+        this.verification('Merge')
+        return this.contract.Merge?.methods.toSynthesis(data).send({from: addr,value:num})
     }
     //查询当前区块高度
     QueryBlock(){

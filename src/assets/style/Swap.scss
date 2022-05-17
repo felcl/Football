@@ -37,6 +37,7 @@
         display: flex;
         position: relative;
         align-items: center;
+        flex-wrap: wrap;
         .dropDown:first-child{
             margin: 0;
         }
@@ -50,9 +51,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 270px);
     grid-row-gap: 40px;
-    grid-column-gap: 40px;
+    grid-column-gap: 30px;
+    justify-content: center;
     margin-top: 20px;
-
+    max-width:1200px;
 }
 .Pagination{
     display: flex;

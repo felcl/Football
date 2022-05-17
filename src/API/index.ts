@@ -54,13 +54,48 @@ interface getUserCardType{
     currentPage:number,
     level:number,
     pageSize:number,
-    type:number,
+    type?:number,
     userAddress:string
 }
-/* 获取用户盲盒信息 */
+/* 获取用户卡牌信息 */
 export function getUserCard(data:getUserCardType){
     return axois.request({
         url:`/user/cCardUser/getCardUserInfo`,
+        method:'post',
+        data
+    })
+}
+interface compoundCardType{
+    cardId:number,
+    choiceCardId:number
+}
+/* 合成 */
+export function compoundCard(data:compoundCardType){
+    return axois.request({
+        url:`/user/cCardUser/compoundCard`,
+        method:'post',
+        data
+    })
+}
+/* 获取可合成卡牌 */
+export function getCardCompoundList(data:getUserCardType){
+    return axois.request({
+        url:`/user/cCardUser/getCardCompoundList`,
+        method:'post',
+        data
+    })
+}
+interface getUserOrderType{
+    currentPage:number,
+    level:number,
+    pageSize:number,
+    type?:number,
+    userAddress?:string
+}
+/* 获取交易场列表 */
+export function getOrderList(data:getUserOrderType){
+    return axois.request({
+        url:`/user/cCardOrder/getOrderList`,
         method:'post',
         data
     })

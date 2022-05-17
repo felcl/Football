@@ -4,8 +4,10 @@ import {Contracts} from '../web3'
 import {useWeb3React} from '@web3-react/core'
 import {openBox} from '../API'
 import {BoxInfo} from '../view/NFT'
+import {addMessage,showLoding} from '../utils/tool'
 interface BlindBoxPropsType{
-  BoxInfo:BoxInfo
+  BoxInfo:BoxInfo,
+  openSuccess:Function
 }
 function BlindBox(props:BlindBoxPropsType) {
   const web3React = useWeb3React()
@@ -13,11 +15,15 @@ function BlindBox(props:BlindBoxPropsType) {
     if(!web3React.account){
       return console.log("请链接钱包")
     }
+    showLoding(true)
     openBox({id:props.BoxInfo.id,userAddress:web3React.account}).then(res=>{
-      console.log(res,"开启盲盒加密")
-      Contracts.example.OpenBox(web3React.account as string,res.data.sign).then((res:any)=>{
-
+      Contracts.example.OpenBox(web3React.account as string,res.data.sign).then(()=>{
+        return props.openSuccess(res.data.cardUser)
+      }).finally(()=>{
+        showLoding(false)
       })
+    },()=>{
+      showLoding(false)
     })
   }
   return (

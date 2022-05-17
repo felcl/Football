@@ -1,5 +1,7 @@
 import { Outlet , useNavigate , useLocation} from "react-router-dom";
 import { Layout } from 'antd';
+import { AddrHandle } from '../utils/tool'
+import {useWeb3React} from '@web3-react/core'
 import logo from '../assets/image/logo.png'
 import FaceBook from '../assets/image/FaceBook.png'
 import GitHub from '../assets/image/GitHub.png'
@@ -12,6 +14,7 @@ import { Menu, Dropdown } from 'antd';
 const { Header, Content, Footer} = Layout;
 
 const MainLayout :React.FC =() =>{
+    const web3React = useWeb3React()
     const menu = (
         <Menu
           items={[
@@ -93,49 +96,65 @@ const MainLayout :React.FC =() =>{
                                 語言切換 - 繁
                             </div>
                         </Dropdown>
-                        
-                        <div className="Connect linear-gradient pointer">
-                        Connect
-                        </div>
+                        {
+                            web3React.active ? <>
+                            <div className="Connect linear-gradient pointer">
+                            {AddrHandle(web3React.account as string)}
+                            </div>
+                            </>:<>
+                            <div className="Connect linear-gradient pointer">
+                            Connect
+                            </div>
+                            </>
+                        }
                     </div>
                     <div className="Mobile">
-                        <div className="Connect linear-gradient pointer">
-                            Connect
-                        </div>
+                        {
+                            web3React.active ? <>
+                            <div className="Connect linear-gradient pointer">
+                                {AddrHandle(web3React.account as string)}
+                            </div>
+                            </>:<>
+                            <div className="Connect linear-gradient pointer">
+                                Connect
+                            </div>
+                            </>
+                        }
                     </div>
                 </div>
             </Header>
             <Content className="MainContent" >
                 <Outlet />
-                <Footer>
-                    <div className="footerLink">
-                        <img src={logo} alt="" />
-                        <div className="SOCIALRow">
-                            <div className="SOCIAL">SOCIAL</div>
-                            <div className="SOCIALItem">
-                                <img src={Twitter} alt="" />
-                                <span>Twitter</span>
-                            </div>
-                            <div className="SOCIALItem">
-                                <img src={Medium} alt="" />
-                                <span>Medium</span>
-                            </div>
-                            <div className="SOCIALItem">
-                                <img src={Telegram} alt="" />
-                                <span>Telegram</span>
-                            </div>
-                            <div className="SOCIALItem">
-                                <img src={GitHub} alt="" />
-                                <span>GitHub</span>
-                            </div>
-                            <div className="SOCIALItem">
-                                <img src={FaceBook} alt="" />
-                                <span>FaceBook</span>
-                            </div>
+                
+            </Content>
+            <Footer>
+                <div className="footerLink">
+                    <img src={logo} alt="" />
+                    <div className="SOCIALRow">
+                        <div className="SOCIAL">SOCIAL</div>
+                        <div className="SOCIALItem">
+                            <img src={Twitter} alt="" />
+                            <span>Twitter</span>
+                        </div>
+                        <div className="SOCIALItem">
+                            <img src={Medium} alt="" />
+                            <span>Medium</span>
+                        </div>
+                        <div className="SOCIALItem">
+                            <img src={Telegram} alt="" />
+                            <span>Telegram</span>
+                        </div>
+                        <div className="SOCIALItem">
+                            <img src={GitHub} alt="" />
+                            <span>GitHub</span>
+                        </div>
+                        <div className="SOCIALItem">
+                            <img src={FaceBook} alt="" />
+                            <span>FaceBook</span>
                         </div>
                     </div>
-                </Footer>
-            </Content>
+                </div>
+            </Footer>
         </Layout>
     )
 };

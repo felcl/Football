@@ -1,13 +1,17 @@
 import React, {useEffect, useState } from "react"
 import RaceBoxModal from "../components/RaceBoxModal"
+import {useWeb3React} from '@web3-react/core'
 import {getBoxBase} from '../API'
-// import {Contracts} from '../web3'
-import Tips from "../components/Tips"
+import {Contracts} from '../web3'
+// import Tips from "../components/Tips"
+import {isApprove,addMessage,showLoding} from '../utils/tool'
 import PurchaseBox from "../components/PurchaseBox"
 import BlindBoxImg from '../assets/image/BlindBoxImg.png'
 import '../assets/style/BlindBox.scss'
 import '../assets/style/RaceBoxModal.scss'
 import '../assets/style/PurchaseBox.scss'
+import { contractAddress } from "../config"
+import BigNumber from 'big.js'
 
 export interface BoxBaseType{
   id:number
@@ -17,11 +21,14 @@ export interface BoxBaseType{
 }
 
 function BlindBox() {
+  const web3React = useWeb3React()
   const [showRaceBoxModal, setShowRaceBoxModal] = useState(false)
   const [showPurchaseBox, setShowPurchaseBox] = useState(false)
   /* 盲盒基本配置 */
   const [BoxBase,setBoxBase] = useState<BoxBaseType[]>([])
   const [buyBoxIndex,setBuyBoxIndex] = useState(0)
+  /* 授权额度 */
+  const [approveValue,setApproveValue] = useState('0')
   // const [showCardSynthesis, setshowCardSynthesis] = useState(true)
   /* 购买成功回调 */
   function buySuccess(){
@@ -32,12 +39,35 @@ function BlindBox() {
     setBuyBoxIndex(index)
     setShowRaceBoxModal(true)
   }
+  function approveFun(){
+    if(!web3React.account){
+      return console.log("请连接钱包")
+    }
+    showLoding(true)
+    Contracts.example.approve(web3React.account,contractAddress.BlindBox).then(()=>{
+      Contracts.example.Tokenapprove(web3React.account as string,contractAddress.BlindBox).then((res:any)=>{
+        setApproveValue(new BigNumber(res).div(10 ** 18).toString())
+      }).finally(()=>{
+        showLoding(false)
+      })
+    })
+  }
   useEffect(()=>{
+    /* 查询盲盒基本配置 */
     getBoxBase().then(res=>{
       setBoxBase(res.data)
       console.log(res,"盲盒基本配置")
     })
   },[])
+  useEffect(()=>{
+    if(web3React.account){
+      /* 查询用户授权 */
+      Contracts.example.Tokenapprove(web3React.account,contractAddress.BlindBox).then((res:any)=>{
+        setApproveValue(new BigNumber(res).div(10 ** 18).toString())
+        console.log(new BigNumber(res).div(10 ** 18).toString(),"授权额度")
+      })
+    }
+  },[web3React.account])
   return (
     <div>
       <div className="Edition-Center">
@@ -67,8 +97,22 @@ function BlindBox() {
                 <div className="price">價格：{item.price} {item.coinName}/個</div>
               </div>
               {
+                /* 判断状态 */
                 item.status === 1 ?<>
-                  <div className="BuyBtn linear-gradient pointer" onClick={()=>{buyBox(index)}}>立即購買</div>
+                  {
+                    /* 判断币种：如果是BNB直接购买 ，如果不是需要判断授权*/
+                    item.coinName === 'BNB' ? <>
+                    <div className="BuyBtn linear-gradient pointer" onClick={()=>{buyBox(index)}}>立即購買</div>
+                    </>:<>
+                      {
+                        isApprove(item.price,approveValue) ? <>
+                        <div className="BuyBtn linear-gradient pointer" onClick={()=>{buyBox(index)}}>立即購買</div>
+                        </> : <>
+                        <div className="BuyBtn linear-gradient pointer" onClick={approveFun}>授权</div>
+                        </>
+                      }
+                    </>
+                  }
                 </>:<>
                   <div className="BuyBtn invalid pointer">立即購買</div>
                 </>
