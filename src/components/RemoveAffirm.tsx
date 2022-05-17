@@ -8,7 +8,7 @@ import Frame from '../assets/image/Frame.png'
 function RemoveAffirm() {
   return (
     <>
-    <Modal visible={true} 
+    <Modal visible={false} 
     className='RemoveAffirm'
     centered
     width={'459px'}

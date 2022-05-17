@@ -14,6 +14,8 @@ import DonationRecord from '../components/DonationRecord'
 import AddFlowSucceed from '../components/AddFlowSucceed'
 import AddFlowRem from '../components/AddFlowRem'
 import RemoveAffirm from '../components/RemoveAffirm'
+import MyDealRecord from '../components/MyDealRecord'
+
 
 
 
@@ -27,6 +29,8 @@ import RemoveAffirm from '../components/RemoveAffirm'
 function SBL() {
   return (
     <div>SBL
+      {/* 我的交易记录 */}
+      <MyDealRecord></MyDealRecord>
       {/*  以添加流动性移除确认*/}
       <RemoveAffirm></RemoveAffirm>
       {/* 以添加流动性移除 */}
