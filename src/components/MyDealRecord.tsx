@@ -1,64 +1,34 @@
 // SBL/我的交易记录
-import React from "react";
+import React,{useEffect , useState} from "react";
 import { Modal, Table } from "antd";
+import {getOrderStateList} from '../API'
+import {useSelector} from "react-redux";
+import {stateType} from '../store/reducer'
 import "../assets/style/componentsStyle/MyDealRecord.scss";
+const status=['上架','撤销','已售出']
 const { Column } = Table;
-function MyDealRecord() {
-  const columns = [
-    {
-      title: "时间",
-      dataIndex: "name",
-      width: 180,
-    },
-    {
-      title: "ID",
-      dataIndex: "ID",
-      // width: 90,
-    },
-    {
-      title: "等级",
-      dataIndex: "denji",
-      // width: 90,
-    },
-    {
-      title: "类型",
-      dataIndex: "leixin",
-      // width: 80,
-    },
-    {
-      title: "类别",
-      dataIndex: "leibie",
-      // width: 80,
-    },
-    {
-      title: "金额",
-      dataIndex: "jiner",
-      width: 180,
-    },
-    {
-      title: "状态",
-      dataIndex: "zhuangtai",
-      // width: 80,
-    },
-  ];
-  const data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      name: `2022/05/06 11:40`,
-      ID: "456987",
-      denji: "良品",
-      leixin: "类型A",
-      leibie: "出售",
-      jiner: "2,352445,4756",
-      zhuangtai: `成功`,
-    });
-  }
+interface propsType{
+  isShow: boolean,
+  close:Function
+}
+function MyDealRecord(props:propsType) {
+  let state = useSelector<stateType,stateType>(state => state);
+  let [tableData,setTableData] = useState([])
+  useEffect(()=>{
+    if(state.token && props.isShow){
+      getOrderStateList().then(res=>{
+        setTableData(res.data)
+        console.log(res,"用户订单记录")
+      })
+    }
+  },[state.token,props.isShow])
+  
   return (
     <>
       <Modal
         visible={false}
         className="MyDealRecord"
+        onCancel={()=>props.close()}
         centered
         width={"886px"}
         closable={false}
@@ -71,7 +41,7 @@ function MyDealRecord() {
           scroll={{ y: 240 }}
         /> */}
         <Table
-          dataSource={data}
+          dataSource={tableData}
           pagination={false}
           rowKey="id"
           scroll={{ y: 260 }}
@@ -81,7 +51,7 @@ function MyDealRecord() {
             width={140}
             render={(item) => (
               <>
-                <div>{item.name}</div>
+                <div>{item.createTime}</div>
               </>
             )}
           />
@@ -89,7 +59,7 @@ function MyDealRecord() {
             title="ID"
             render={(item) => (
               <>
-                <div>{item.ID}</div>
+                <div>{item.orderId}</div>
               </>
             )}
           />
@@ -122,7 +92,7 @@ function MyDealRecord() {
             width={140}
             render={(item) => (
               <>
-                <div>{item.jiner}</div>
+                <div>{item.orderPrice}</div>
               </>
             )}
           />
@@ -132,7 +102,7 @@ function MyDealRecord() {
             width={100}
             render={(item) => (
               <>
-                <div>{item.zhuangtai}</div>
+                <div>{status[item.status]}</div>
               </>
             )}
           />

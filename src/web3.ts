@@ -222,6 +222,14 @@ export class Contracts{
         this.verification('Merge')
         return this.contract.Merge?.methods.toSynthesis(data).send({from: addr,value:num})
     }
+    //购买节点
+    buyNode(addr: string,data:string,payableAmount:number){
+        BigNumber.NE = -40
+        BigNumber.PE = 40
+        let num = new BigNumber(payableAmount).times(10 ** 18).toString()
+        this.verification('Node')
+        return this.contract.Node?.methods.buyNode(data).send({from: addr,value:num})
+    }
     //查询当前区块高度
     QueryBlock(){
         return this.web3.eth.getBlockNumber()

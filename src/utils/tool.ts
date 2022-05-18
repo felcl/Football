@@ -12,11 +12,11 @@ export function toThousands(num: string) {
     }
 }
 //用户地址处理方法
-export function AddrHandle(addr:string,start=4,end=4) :string | undefined{
+export function AddrHandle(addr:string,start=4,end=4,replace="...") :string | undefined{
     if(!addr){return}
     let r = new RegExp('(.{'+start+'}).*(.{'+end+'})');
     let addrArr:RegExpMatchArray | null =addr.match(r)
-    return addrArr![1]+'...'+addrArr![2]
+    return addrArr![1]+replace+addrArr![2]
 }
 export function HowLongAgo(time:number){
     dayjs.extend(relativeTime)
@@ -25,8 +25,9 @@ export function HowLongAgo(time:number){
 }
 export function GetQueryString(name:string){
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  unescape(r[2]); return null;
+    console.log(window.location)
+    var r = window.location.search.slice(1).match(reg);
+    if(r!=null)return  decodeURI(r[2]); return null;
 }
 export function JudgmentNumber(number:string){
     let numArr = number.split(".")

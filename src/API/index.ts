@@ -100,3 +100,56 @@ export function getOrderList(data:getUserOrderType){
         data
     })
 }
+/* 获取用户邀请列表 */
+export function getUserReferee(){
+    return axois.request({
+        url:`/user/uUser/getUserReferee`,
+        method:'get',
+    })
+}
+/* 获取用户订单记录 */
+export function getOrderStateList(){
+    return axois.request({
+        url:`/user/cCardOrder/getOrderStateList`,
+        method:'get',
+    })
+}
+/* 获取节点配置 */
+export function getNodeBase(){
+    return axois.request({
+        url:`/user/dNodeBase/getNodeBase`,
+        method:'get',
+    })
+}
+/* 购买节点加密数据 */
+export function buyNodeBase(data:buyBoxType){
+    return axois.request({
+        url:`/user/dNodeBase/buyNodeBase`,
+        method:'post',
+        data:{
+            ...data,
+            Encrypt:true
+        }
+    })
+}
+/* 获取节点奖励记录 */
+export function getNodeUserList(){
+    return axois.request({
+        url:`/user/dNodeBase/getNodeUserList`,
+        method:'get'
+    })
+}
+/* 获取用户最高等级 */
+export function getCardUserMaxLevelInfo(){
+    return axois.request({
+        url:`/user/cCardUser/getCardUserMaxLevelInfo`,
+        method:'get'
+    })
+}
+/* 获取用户节点申请记录 */
+export function getNodeUserBuyRecord(){
+    return axois.request({
+        url:`/user/dNodeBase/getNodeUserBuyRecord`,
+        method:'get'
+    })
+}

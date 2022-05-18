@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
+import './lang/i18n'
 import {useWeb3React} from '@web3-react/core'
 import {useSelector , useDispatch} from "react-redux";
 import styled from 'styled-components';
