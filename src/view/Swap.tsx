@@ -1,6 +1,5 @@
 import React,{useState , useEffect} from "react"
 import orderRecord from '../assets/image/orderRecord.png'
-import nodata from '../assets/image/nodata.png'
 import {useSelector , useDispatch} from "react-redux";
 import {stateType} from '../store/reducer'
 import CardDetails from '../components/CardDetails'
@@ -10,6 +9,7 @@ import {getOrderList} from '../API'
 
 import DropDown from '../components/DropDown'
 import CardItem from '../components/CardItem'
+import NoData from '../components/NoData'
 import Puchased from '../components/Puchased'
 import CancelPurchase from '../components/CancelPurchase'
 import CancelSucceed from '../components/CancelSucceed'
@@ -119,6 +119,8 @@ function Swap() {
     let [showCancelOrder,setShowCancelOrder] = useState(false)
     /* 取消订单成功弹窗控制 */
     let [showCancelSuccess,setShowCancelSuccess] = useState(false)
+    /* 订单记录弹窗控制 */
+    let [showOrderRecord,setShowOrderRecord] = useState(false)
     /* 购买订单信息 */
     let [orderInfo,setOrderInfo] = useState<orderInfoType | null>(null)
     /* 订单列表 */
@@ -177,14 +179,14 @@ function Swap() {
     <div>
       <div className="Edition-Center">
         {/* 我的交易记录 */}
-        {/* <MyDealRecord></MyDealRecord> */}
+        <MyDealRecord isShow={showOrderRecord} close={()=>{setShowOrderRecord(false)}} ></MyDealRecord>
         {/* 卡牌详情 */}
         {/* <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails> */}
         {/* 取消挂卖成功 */}
         <Tips isShow={showCancelSuccess} title="取消成功" subTitle="该挂卖以成功取消" close={()=>setShowCancelSuccess(false)}></Tips>
         {/* 取消挂卖 */}
         {
-            orderInfo && <CancelPurchase isShow={showCancelOrder} buyInfo={orderInfo} close={()=>setShowCancelOrder(false)} CancelSuccess={CancelSuccess}></CancelPurchase>
+        orderInfo && <CancelPurchase isShow={showCancelOrder} buyInfo={orderInfo} close={()=>setShowCancelOrder(false)} CancelSuccess={CancelSuccess}></CancelPurchase>
         }
         {/* 购买成功 */}
         <Tips isShow={showBuySuccess} title="购买成功" subTitle="购买成功以放置宝箱" close={()=>setShowBuySuccess(false)}></Tips>
@@ -210,7 +212,7 @@ function Swap() {
             }
             {
                 TabIndex === 1 &&  <div className="DropDownGroup">
-                    <img src={orderRecord} alt="" />
+                    <img src={orderRecord} alt="" onClick={() =>{setShowOrderRecord(true)}} />
                     <DropDown Map={LevelMap} change={SetUserlevel} ></DropDown>
                     <DropDown Map={typeMap} change={SetUsertype}></DropDown>
                 </div>
@@ -219,33 +221,39 @@ function Swap() {
         {
             TabIndex === 0 && <>
             {/* 交易场订单列表 */}
-            <div className="CardList">
                 {
                     orderList.length !==0 ? <>
-                    {
-                        orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{setShowCardDetail(true)}} buy={()=>buy(index)}></CardItem>)
-                    }
+                        <div className="CardList">
+                            {
+                                orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{setShowCardDetail(true)}} buy={()=>buy(index)}></CardItem>)
+                            }
+                        </div>
                     </>:<>
-                    {/* <img src={nodata} alt="" /> */}
+                        <NoData></NoData>
                     </>
                 }
-                
-            </div>
             </>
         }
         {
             TabIndex === 1 && <>
             {/* 交易场个人订单列表 */}
-            <div className="CardList">
-                {
-                    userOrderList.map((item,index) =><CardItem type="goods" key={item.id} showCardDetail={()=>{setShowCardDetail(true)}} CancelOrder={()=>Cancel(index)}></CardItem>)
-                }
-            </div>
+            {
+                userOrderList.length !==0 ? <>
+                    <div className="CardList">
+                        {
+                            userOrderList.map((item,index) =><CardItem type="goods" key={item.id} showCardDetail={()=>{setShowCardDetail(true)}} CancelOrder={()=>Cancel(index)}></CardItem>)
+                        }
+                    </div>
+                </>:<>
+                    <NoData></NoData>
+                </>
+            }
+            
             </>
         }
         {/* 交易场数据合个人交易场数据共用一个分页器 */}
         <div className="Pagination">
-            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} showSizeChanger={false} total={totalNum} onChange={onChange} />
+            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} hideOnSinglePage showSizeChanger={false} total={totalNum} onChange={onChange} />
         </div>
         
       </div>

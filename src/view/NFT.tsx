@@ -11,6 +11,7 @@ import BlindBox from '../components/BlindBox'
 import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
 import '../assets/style/componentsStyle/CardSynthesis.scss'
+import NoData from '../components/NoData'
 import AddFlow from '../components/AddFlow'
 import {addMessage,showLoding} from '../utils/tool'
 import { Pagination } from 'antd';
@@ -200,21 +201,34 @@ function NFT() {
         {
           TabIndex === 0 ? <>
             {/* 卡牌 */}
-            <div className="CardList">
-              {
-                userCard.map((item,index)=><Card key={item.id} Index={index} cardInfo={item} showDetia={showDetial}></Card>)
-              }
-            </div>
-            <div className="Pagination">
-                <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} showSizeChanger={false} total={totalNum} onChange={onChange} />
-            </div>
-          </> : <>
+            {
+              userCard.length !==0 ? <>
+                <div className="CardList">
+                  {
+                    userCard.map((item,index)=><Card key={item.id} Index={index} cardInfo={item} showDetia={showDetial}></Card>)
+                  }
+                </div>
+              </>:<>
+                <NoData></NoData>
+              </>
+            }
+              <div className="Pagination">
+                  <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} hideOnSinglePage showSizeChanger={false} total={totalNum} onChange={onChange} />
+              </div>
+            </> : <>
             {/* 盲盒 */}
-            <div className="CardList">
-              {
-                userBox.map((item)=><BlindBox openSuccess={openSuccess} key={item.id} BoxInfo={item}></BlindBox>)
-              }
-            </div>
+            {
+              userBox.length !==0 ? <>
+                <div className="CardList">
+                    {
+                      userBox.map((item)=><BlindBox openSuccess={openSuccess} key={item.id} BoxInfo={item}></BlindBox>)
+                    }
+                </div>
+              </>:<>
+                <NoData></NoData>
+              </>
+            }
+            
           </>
         }
       </div>

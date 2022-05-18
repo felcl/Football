@@ -28,8 +28,12 @@
 .InvitationLabel{
     font-weight: 700;
     font-size: 20px;
-    color:#fff;
+    // color:#fff;
     margin-top: 27px;
+    background-image: -webkit-gradient(linear,left center,right center,from(#fff),color-stop(0.15,#161731));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .InvitationRule{
     color: rgba(255, 255, 255, 0.6);
@@ -58,9 +62,16 @@
     max-height: 252px;
     overflow-y: auto;
     padding-right: 18px;
+    margin-top: 20px;
     li{
         height: 55px;
         border-bottom:1px solid rgba(255, 255, 255, 0.1);
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        display: flex;
+        align-items: center;
     }
 }
 .InvitationList::-webkit-scrollbar{

@@ -1,4 +1,5 @@
 import { Outlet , useNavigate , useLocation} from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 import { Layout } from 'antd';
 import { AddrHandle } from '../utils/tool'
 import {useWeb3React} from '@web3-react/core'
@@ -14,20 +15,29 @@ import { Menu, Dropdown } from 'antd';
 const { Header, Content, Footer} = Layout;
 
 const MainLayout :React.FC =() =>{
+    let {t,i18n} = useTranslation()
     const web3React = useWeb3React()
+    function getparent(triggerNode:any){
+        return triggerNode.parentNode
+    }
+    function changeLanguage(lang:any){
+        window.localStorage.setItem("lang",lang.key)
+        i18n.changeLanguage(lang.key)
+    }
     const menu = (
         <Menu
+          onClick={changeLanguage}
           items={[
             {
               label: <span className="LangItem">繁體</span>,
-              key: '0',
+              key: 'zh',
             },
             {
                 type: 'divider',
               },
             {
               label: <span className="LangItem">English</span>,
-              key: '1',
+              key: 'en',
             }
           ]}
         />
@@ -67,13 +77,13 @@ const MainLayout :React.FC =() =>{
         <Layout className="layout">
             <Header  style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                 <div className="Edition-Center HeaderNav">
-                    <Dropdown overlay={HeadMenu} trigger={['click']}>
+                    <Dropdown overlay={HeadMenu} getPopupContainer={getparent} trigger={['click']}>
                         <img className="MobileHeadMenu" src={logo} alt="" />
                     </Dropdown>
                     <img className="HeadMenu" src={logo} onClick={()=>{navigate('/')}} alt="" />
                     <div className="MenuList">
                         <div className={menuActive('/')} onClick={()=>{navigate('/')}}>
-                        首頁
+                            {t("Home")}
                         </div>
                         <div  className={menuActive('/BlindBox')} onClick={()=>{navigate('/BlindBox')}}>
                         寶箱
@@ -93,7 +103,7 @@ const MainLayout :React.FC =() =>{
                         <Dropdown overlay={menu} placement="bottom" overlayClassName="LangDropDown" trigger={['click']} arrow={{ pointAtCenter: true }}>
                             <div className="Lang">
                                 <img src={Lang} alt="" />
-                                語言切換 - 繁
+                                語言切換 - {i18n.language === 'zh' ? '繁':'English'}
                             </div>
                         </Dropdown>
                         {

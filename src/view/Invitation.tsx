@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import {getUserReferee} from '../API'
 import {useSelector , useDispatch} from "react-redux";
 import {stateType} from '../store/reducer'
@@ -7,13 +7,22 @@ import {addMessage,AddrHandle} from '../utils/tool'
 import copyIcon from '../assets/image/copyIcon.png'
 import copy from 'copy-to-clipboard'; 
 import '../assets/style/Invitation.scss'
-
+interface InvitationItem{
+    userAddress:string,
+    id:number,
+}
+interface InvitationType{
+    list:InvitationItem[],
+    size:number
+}
 export default function Invitation() {
     let state = useSelector<stateType,stateType>(state => state);
+    let [InvitationData,setInvitationTypeDate] = useState<InvitationType | null>(null)
     const web3React = useWeb3React()
     useEffect(()=>{
         if(state.token){
             getUserReferee().then(res=>{
+                setInvitationTypeDate(res.data)
                 console.log(res,"用户邀请列表")
             })
         }
@@ -63,14 +72,11 @@ export default function Invitation() {
         </div>
         <div className="BoxBorder" style={{marginTop:20}}>
             <div className="InvitationAddr">
-                <div className="boxLabel">推薦 <div className="InvitationNum flexCenter">已邀請：20人</div></div>
+                <div className="boxLabel">推薦 <div className="InvitationNum flexCenter">已邀請：{InvitationData?.size}人</div></div>
                 <ul className="InvitationList">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    {
+                        InvitationData?.list.map((item,index)=><li key={item.id}>{AddrHandle(item.userAddress,6,4,'.............')}</li>)
+                    }
                 </ul>
             </div>
         </div>

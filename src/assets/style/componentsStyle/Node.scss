@@ -9,6 +9,10 @@
         margin-left: 5px;
     }
 }
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
 .progressRow{
     display: flex;
     margin: 10px 0;

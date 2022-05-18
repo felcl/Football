@@ -4,6 +4,7 @@ import {useWeb3React} from '@web3-react/core'
 import {getBoxBase} from '../API'
 import {Contracts} from '../web3'
 // import Tips from "../components/Tips"
+import { useTranslation } from 'react-i18next'
 import {isApprove,addMessage,showLoding} from '../utils/tool'
 import PurchaseBox from "../components/PurchaseBox"
 import BlindBoxImg from '../assets/image/BlindBoxImg.png'
@@ -22,6 +23,7 @@ export interface BoxBaseType{
 
 function BlindBox() {
   const web3React = useWeb3React()
+  let { t ,i18n} = useTranslation()
   const [showRaceBoxModal, setShowRaceBoxModal] = useState(false)
   const [showPurchaseBox, setShowPurchaseBox] = useState(false)
   /* 盲盒基本配置 */
