@@ -155,7 +155,7 @@ export default function Node() {
             }
         </div>
         {/* 铸币节点申请记录 */}
-        {/* <GoldRecord isShow={showApplyRecord}></GoldRecord> */}
+        <GoldRecord isShow={showApplyRecord}></GoldRecord>
     </div>
   )
 }

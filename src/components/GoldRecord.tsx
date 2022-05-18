@@ -18,41 +18,15 @@ interface applyRecord{
 }
 function GoldRecord(props:propsType) {
   let state = useSelector<stateType,stateType>(state => state);
+  let [BuyRecord,setBuyRecord] = useState([])
   useEffect(()=>{
     if(state.token && props.isShow){
       getNodeUserBuyRecord().then(res=>{
+        setBuyRecord(res.data)
         console.log(res,"获取用户申请记录")
       })
     }
   },[state.token , props.isShow])
-  const columns = [
-    {
-      title: "时间",
-      dataIndex: "name",
-    },
-    {
-      title: "ID",
-      dataIndex: "ID",
-      // width: 90,
-    },
-    {
-      title: "申請金額BNB",
-      dataIndex: "age",
-    },
-    {
-      title: "獎勵金額SBL",
-      dataIndex: "address",
-    },
-  ];
-  const data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      name: `2022/05/06 11:40`,
-      ID: "456987",
-      denji: "10.4156",
-    });
-  }
   return (
     <>
       <Modal
@@ -63,9 +37,9 @@ function GoldRecord(props:propsType) {
         closable={false}
         footer={null}
       >
-        <p className="title"> 收益記錄 </p>
+        <p className="title"> 申請記錄 </p>
         <Table
-          dataSource={data}
+          dataSource={BuyRecord}
           pagination={false}
           rowKey="id"
           scroll={{ y: 260 }}
@@ -75,23 +49,23 @@ function GoldRecord(props:propsType) {
             width={140}
             render={(item) => (
               <>
-                <div>{item.name}</div>
+                <div>{item.createTime}</div>
               </>
             )}
           />
           <Column
-            title="ID"
+            title="申請金額BNB"
             render={(item) => (
               <>
-                <div>{item.ID}</div>
+                <div>{item.applyPrice}</div>
               </>
             )}
           />
           <Column
-            title="等級"
+            title="獎勵金額SBL"
             render={(item) => (
               <>
-                <div>{item.denji}</div>
+                <div>{item.awardNum}</div>
               </>
             )}
           />
