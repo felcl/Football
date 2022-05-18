@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import "../assets/style/componentsStyle/MyDealRecord.scss";
 const status=['上架','撤销','已售出']
+const type = ['类型A','类型B','类型C','类型D']
 const { Column } = Table;
 interface propsType{
   isShow: boolean,
@@ -67,7 +68,7 @@ function MyDealRecord(props:propsType) {
             title="等級"
             render={(item) => (
               <>
-                <div>{item.denji}</div>
+                <div>{item.cardLevel}</div>
               </>
             )}
           />
@@ -75,7 +76,7 @@ function MyDealRecord(props:propsType) {
             title="類型"
             render={(item) => (
               <>
-                <div>{item.leixin}</div>
+                <div>{type[item.cardType]}</div>
               </>
             )}
           />
@@ -83,7 +84,7 @@ function MyDealRecord(props:propsType) {
             title="類别"
             render={(item) => (
               <>
-                <div>{item.leibie}</div>
+                <div>{status[item.status]}</div>
               </>
             )}
           />
@@ -93,16 +94,6 @@ function MyDealRecord(props:propsType) {
             render={(item) => (
               <>
                 <div>{item.orderPrice}</div>
-              </>
-            )}
-          />
-          <Column
-            align="center"
-            title="状态"
-            width={100}
-            render={(item) => (
-              <>
-                <div>{status[item.status]}</div>
               </>
             )}
           />
