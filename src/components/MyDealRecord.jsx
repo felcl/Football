@@ -57,7 +57,7 @@ function MyDealRecord() {
   return (
     <>
       <Modal
-        visible={true}
+        visible={false}
         className="MyDealRecord"
         centered
         width={"886px"}

@@ -2,9 +2,13 @@
   background: #1d1e44;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 19px;
-  height: 424px;
+  // height: 424px;
+  padding-left: 30px;
+  padding-right: 32px;
   .ant-modal-content {
     box-shadow: none;
+    background: #1d1e44;
+    margin-bottom: 30px;
   }
   .ant-modal-header {
     display: none;
@@ -12,7 +16,6 @@
   .ant-modal-body {
     position: relative;
     background: #1d1e44;
-    // box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 0;
     .title {
       font-size: 24px;
@@ -34,13 +37,9 @@
       color: #fff;
     }
     .ant-table {
-      //   margin-left: 10px;
       background: #1d1e44;
     }
     .ant-table-wrapper {
-      //   background: #1d1e44;
-      width: 465px;
-      margin: 0 auto;
       .ant-pagination {
         display: none;
       }
@@ -52,63 +51,40 @@
         box-shadow: none;
       }
       th {
-        // padding: 0;
         font-size: 14px;
         background: #1d1e44;
         color: rgba(255, 255, 255, 0.8);
         border: 0;
-      }
-      th:nth-child(1) {
-        padding-left: 0;
-      }
-      th:nth-child(2) {
         text-align: center;
       }
-      th:nth-child(3) {
-        padding-right: 15px;
-        text-align: right;
+      th:nth-child(1) {
+        text-align: left;
+        padding-left: 0;
       }
-      //   th:nth-child(4) {
-      //     box-shadow: 0px;
-      //   }
     }
   }
   .ant-table-tbody {
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-    // .ant-table-row {
-    // }
     tr {
       font-size: 14px;
       background: #1d1e44;
       color: #fff;
       td {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      td:nth-child(1) {
-        padding-left: 0;
-      }
-      td:nth-child(2) {
         text-align: center;
       }
-      td:nth-child(3) {
-        padding-right: 0;
-        text-align: right;
-        // margin-right: 20px;
+      td:nth-child(1) {
+        text-align: left;
+        padding-left: 0;
       }
       .ant-table-cell-row-hover {
         background: #1d1e44 !important;
       }
     }
-    // tr:hover {
-    //   background: #5b5c83 !important;
-    // }
   }
   //表格体的滚动条设置
   .ant-table-body {
-    // margin-left: 30px;
-    padding-right: 15px;
     &::-webkit-scrollbar {
-      //   margin-left: 10px;
       width: 3px; //y轴滚动条粗细
     }
 
