@@ -6,6 +6,8 @@ import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import '../assets/style/componentsStyle/GoldRecord.scss'
 
+  
+const { Column } = Table;
 interface propsType{
   isShow:boolean
 }
@@ -29,6 +31,11 @@ function GoldRecord(props:propsType) {
       dataIndex: "name",
     },
     {
+      title: "ID",
+      dataIndex: "ID",
+      // width: 90,
+    },
+    {
       title: "申請金額BNB",
       dataIndex: "age",
     },
@@ -42,8 +49,8 @@ function GoldRecord(props:propsType) {
     data.push({
       key: i,
       name: `2022/05/06 11:40`,
-      age: "2,352445,4756",
-      address: `推荐购买`,
+      ID: "456987",
+      denji: "10.4156",
     });
   }
   return (
@@ -56,14 +63,39 @@ function GoldRecord(props:propsType) {
         closable={false}
         footer={null}
       >
-        <p className="title">申请记录</p>
+        <p className="title"> 收益記錄 </p>
         <Table
-          columns={columns}
           dataSource={data}
-          //   bordered={false}
-          //   pagination={{ pageSize: 50 }}
-          scroll={{ y: 240 }}
-        />
+          pagination={false}
+          rowKey="id"
+          scroll={{ y: 260 }}
+        >
+          <Column
+            title="时间"
+            width={140}
+            render={(item) => (
+              <>
+                <div>{item.name}</div>
+              </>
+            )}
+          />
+          <Column
+            title="ID"
+            render={(item) => (
+              <>
+                <div>{item.ID}</div>
+              </>
+            )}
+          />
+          <Column
+            title="等級"
+            render={(item) => (
+              <>
+                <div>{item.denji}</div>
+              </>
+            )}
+          />
+        </Table>
         <span>点击任意地方离开</span>
       </Modal>
     </>

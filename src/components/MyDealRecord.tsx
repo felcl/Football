@@ -27,7 +27,7 @@ function MyDealRecord(props:propsType) {
   return (
     <>
       <Modal
-        visible={props.isShow}
+        visible={false}
         className="MyDealRecord"
         onCancel={()=>props.close()}
         centered

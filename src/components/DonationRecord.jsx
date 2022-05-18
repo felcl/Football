@@ -2,7 +2,7 @@
 import React from "react";
 import { Modal, Table } from "antd";
 import "../assets/style/componentsStyle/DonationRecord.scss";
-
+const { Column } = Table;
 function DonationRecord() {
   const columns = [
     {
@@ -11,14 +11,14 @@ function DonationRecord() {
       width: 180,
     },
     {
-      title: "金额SBL",
-      dataIndex: "age",
-      width: 160,
+      title: "ID",
+      dataIndex: "ID",
+      // width: 90,
     },
     {
-      title: "类型",
-      dataIndex: "address",
-      while: 160,
+      title: "等级",
+      dataIndex: "denji",
+      // width: 90,
     },
   ];
   const data = [];
@@ -26,8 +26,8 @@ function DonationRecord() {
     data.push({
       key: i,
       name: `2022/05/06 11:40`,
-      age: "2,352445,4756",
-      address: `推荐购买`,
+      ID: "456987",
+      denji: "10.4156",
     });
   }
   return (
@@ -42,12 +42,37 @@ function DonationRecord() {
       >
         <p className="title"> 收益記錄 </p>
         <Table
-          columns={columns}
           dataSource={data}
-          //   bordered={false}
-          //   pagination={{ pageSize: 50 }}
-          scroll={{ y: 240 }}
-        />
+          pagination={false}
+          rowKey="id"
+          scroll={{ y: 260 }}
+        >
+          <Column
+            title="时间"
+            width={140}
+            render={(item) => (
+              <>
+                <div>{item.name}</div>
+              </>
+            )}
+          />
+          <Column
+            title="ID"
+            render={(item) => (
+              <>
+                <div>{item.ID}</div>
+              </>
+            )}
+          />
+          <Column
+            title="等級"
+            render={(item) => (
+              <>
+                <div>{item.denji}</div>
+              </>
+            )}
+          />
+        </Table>
         <span>点击任意地方离开</span>
       </Modal>
     </>
