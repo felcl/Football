@@ -29,8 +29,9 @@ interface NodeRecordType{
     totalAwardNum:number,
     stayAwardNum:number,
     stayDrawNum:number,
-    currentDay:number
-    coinName:string
+    currentDay:number,
+    coinName:string,
+    isReturn:number
 }
 interface ApplyRecordType{
     id:number,
@@ -134,7 +135,17 @@ export default function Node() {
                         <div className="rewardNum">{item.stayDrawNum}</div>
                         <div className="TokenInfo"><img src={SBLToken} alt="" />{item.coinName}</div>
                     </div>
-                    <div className="applyBtn flexCenter">領取</div>
+                    {
+                        item.isReturn === 1 ? <>
+                            <div className="BtnRow">
+                                <div className="receiveBtn flexCenter">領取</div>
+                                <div className="returnBtn flexCenter">退还</div>
+                            </div>
+                        </>:<>
+                            <div className="applyBtn flexCenter">領取</div>
+                        </>
+                    }
+                   
                     <div className="NodeTips">
                         我的加速等級：享有一星級12%推薦獎勵<img src={Refresh} alt="" />
                     </div>
