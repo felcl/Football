@@ -42,6 +42,7 @@ function GoldRecord(props:propsType) {
           dataSource={BuyRecord}
           pagination={false}
           rowKey="id"
+          // style={{overflowY:'auto',maxHeight:260}}
           scroll={{ y: 260 }}
         >
           <Column

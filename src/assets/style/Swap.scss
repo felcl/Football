@@ -43,9 +43,23 @@
         }
     }
 }
-// @media (max-width) {
+@media (max-width:548px) {
+    .screen{
+        flex-direction: column;
+        .DropDownGroup{
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-wrap: wrap;
+            // flex-direction: column;
+            .dropDown{
+                width: 85px;
+                padding: 10px 10px;
+            }
+        }
+    }
     
-// }
+}
 
 .CardList{
     display: grid;

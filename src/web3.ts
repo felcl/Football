@@ -230,6 +230,11 @@ export class Contracts{
         this.verification('Node')
         return this.contract.Node?.methods.buyNode(data).send({from: addr,value:num})
     }
+    //领取收益
+    getAward(addr: string,data:string,type:number){
+        this.verification('Node')
+        return this.contract.Node?.methods.getAward(data,type).send({from: addr})
+    }
     //查询当前区块高度
     QueryBlock(){
         return this.web3.eth.getBlockNumber()

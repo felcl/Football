@@ -133,7 +133,7 @@ const MainLayout :React.FC =() =>{
                     </div>
                 </div>
             </Header>
-            <Content className="MainContent" style={{ padding: '0 50px', marginTop: 64 }}>
+            <Content className="MainContent" style={{marginTop: 64 }}>
                 <Outlet />
             </Content>
             <Footer>

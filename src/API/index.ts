@@ -153,3 +153,40 @@ export function getNodeUserBuyRecord(){
         method:'get'
     })
 }
+/* 获取用户 */
+export function getUserAccountList(){
+    return axois.request({
+        url:`/user/uUserAccount/getUserAccountList`,
+        method:'get'
+    })
+}
+/* 获取用户节点收益记录 */
+export function getNodeEarnRecord(id: number){
+    return axois.request({
+        url:`/user/dNodeBase/getNodeEarnRecord/${id}`,
+        method:'get'
+    })
+}
+/* 获取收益记录 type:1推荐 2 团队 */
+export function getUserAccountDetail(type: number){
+    return axois.request({
+        url:`/user/uUserAccount/getUserAccountDetail/${type}`,
+        method:'get'
+    })
+}
+interface DrawAwardType{
+    type:number,
+    id:number,
+}
+/* 用户领取收益 */
+export function userDrawAward(data:DrawAwardType){
+    console.log(data)
+    return axois.request({
+        url:`/user/uUserAccount/userDrawAward`,
+        method:'post',
+        data:{
+            ...data,
+            Encrypt:true
+        }
+    })
+}

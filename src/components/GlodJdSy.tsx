@@ -1,74 +1,69 @@
 //金币节点 收益记录
-import React from "react";
+import React , {useEffect , useState} from "react";
 import { Modal, Table } from "antd";
+import {useSelector} from "react-redux";
+import {stateType} from '../store/reducer'
+import {getNodeEarnRecord} from '../API'
 import "../assets/style/componentsStyle/GlodJdSy.scss";
 const { Column } = Table;
-function GlodJdSy() {
-  const columns = [
-    {
-      title: "时间",
-      dataIndex: "name",
-      width: 180,
-    },
-    {
-      title: "ID",
-      dataIndex: "ID",
-      // width: 90,
-    },
-    {
-      title: "等级",
-      dataIndex: "denji",
-      // width: 90,
-    },
-  ];
-  const data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      name: `2022/05/06 11:40`,
-      ID: "456987",
-      denji: "10.4156",
-    });
-  }
+interface propsType{
+  isShow:boolean,
+  id:number,
+  close:Function
+}
+const type = ['' , '奖励领取' , '奖励发放' , '节点返还']
+function GlodJdSy(props:propsType) {
+  let state = useSelector<stateType,stateType>(state => state);
+  let [tableData , setTableData] = useState([])
+  useEffect(()=>{
+    if(state.token && props.id!==-1){
+      getNodeEarnRecord(props.id).then(res=>{
+        setTableData(res.data)
+        console.log(res,"奖励记录");
+      })
+    }
+  },[state.token,props.id])
+
   return (
     <>
       <Modal
-        visible={false}
+        visible={props.isShow}
         className="GlodJdSy"
         centered
+        onCancel={()=>props.close()}
         width={"525px"}
         closable={false}
         footer={null}
       >
         <p className="title"> 收益記錄 </p>
         <Table
-          dataSource={data}
+          dataSource={tableData}
           pagination={false}
           rowKey="id"
           scroll={{ y: 260 }}
         >
           <Column
-            title="时间"
+            title="時間"
             width={140}
             render={(item) => (
               <>
-                <div>{item.name}</div>
+                <div>{item.createTime}</div>
               </>
             )}
           />
           <Column
-            title="ID"
+            title="金額"
             render={(item) => (
               <>
-                <div>{item.ID}</div>
+                <div>{item.amount}</div>
               </>
             )}
           />
           <Column
-            title="等級"
+            title="類型"
             render={(item) => (
               <>
-                <div>{item.denji}</div>
+                <div>{type[item.type]}</div>
               </>
             )}
           />

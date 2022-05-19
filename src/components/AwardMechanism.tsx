@@ -3,11 +3,16 @@ import React from 'react'
 import { Modal} from 'antd';
 import '../assets/style/componentsStyle/AwardMechanism.scss'
 
-function AwardMechanism() {
+interface propsType{
+  isShow: boolean,
+  close:Function
+}
+function AwardMechanism(props:propsType) {
   return (
     <>
-    <Modal visible={false} 
+    <Modal visible={props.isShow} 
     className='AwardMechanism'
+    onCancel={()=>props.close()}
     centered
     width={'449px'}
     closable={ false }

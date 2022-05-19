@@ -56,9 +56,8 @@ export default function Invitation() {
         </div>
         <div className="BoxBorder" style={{marginTop:10}}>
             <div className="InvitationAddr">
-            <div className="boxLabel">推薦</div>
+            <div className="boxLabel">推薦鏈接</div>
             <div className="userAddr">
-                <div className="linkLabel">推薦鏈接</div>
                 {
                     web3React.account && <div className="link">
                         <div className="linkAddr">{window.location.origin+window.location.pathname+'?address='+AddrHandle(web3React.account)}</div>

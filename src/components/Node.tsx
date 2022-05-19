@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import {getNodeBase , buyNodeBase , getNodeUserList , getCardUserMaxLevelInfo} from '../API'
 import GoldRecord from '../components/GoldRecord'
+import GlodJdSy from '../components/GlodJdSy'
 import record from '../assets/image/record.png'
 import Refresh from '../assets/image/Refresh.png'
 import SBLToken from '../assets/image/SBLToken.png'
@@ -43,6 +44,10 @@ export default function Node() {
     let [NodeRecord,setNodeRecord] = useState<NodeRecordType []>([])
     /* 铸币节点申请记录弹窗 */
     let [showApplyRecord,setshowApplyRecord] = useState(false)
+    /* 铸币节点奖励记录弹窗 */
+    let [showProfit,setShowProfit] = useState(false)
+    /* 铸币节点奖励记录id */
+    let [ProfitId,setProfitId] = useState(-1)
     useEffect(()=>{
         getNodeBase().then(res=>{
             setNodeBase(res.data)
@@ -79,6 +84,12 @@ export default function Node() {
                 })
             })
         }
+    }
+    /* 显示节点奖励记录弹窗 */
+    function ShowProfitFun(id:number){
+        console.log(id)
+        setProfitId(id)
+        setShowProfit(true)
     }
   return (
     <div>
@@ -138,7 +149,7 @@ export default function Node() {
                     {
                         item.isReturn === 1 ? <>
                             <div className="BtnRow">
-                                <div className="receiveBtn flexCenter">領取</div>
+                                <div className="receiveNodeBtn flexCenter">領取</div>
                                 <div className="returnBtn flexCenter">退还</div>
                             </div>
                         </>:<>
@@ -150,12 +161,15 @@ export default function Node() {
                         我的加速等級：享有一星級12%推薦獎勵<img src={Refresh} alt="" />
                     </div>
                     <span className="record">獎勵機制 <img src={record} alt="" /></span>
+                    <span className="record" onClick={()=>{ShowProfitFun(item.id)}}>收益記錄 <img src={record} alt="" /></span>
                 </div>
                 )
             }
         </div>
         {/* 铸币节点申请记录 */}
         <GoldRecord isShow={showApplyRecord}></GoldRecord>
+        {/* 铸币节点收益记录 */}
+        <GlodJdSy isShow={showProfit} id={ProfitId} close={()=>{setShowProfit(false)}}></GlodJdSy>
     </div>
   )
 }

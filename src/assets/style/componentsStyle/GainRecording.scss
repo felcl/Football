@@ -84,8 +84,10 @@
   }
   //表格体的滚动条设置
   .ant-table-body {
+    overflow: auto !important;
     &::-webkit-scrollbar {
       width: 3px; //y轴滚动条粗细
+      height: 3px;
     }
 
     //滚动条里面的小方块，能上下左右移动（取决于是垂直滚动条还是水平滚动条）
