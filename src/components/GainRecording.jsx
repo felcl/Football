@@ -22,7 +22,7 @@ function GainRecording() {
     },
   ];
   const data = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 5; i++) {
     data.push({
       key: i,
       name: `2022/05/06 11:40`,
