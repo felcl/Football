@@ -24,10 +24,37 @@ import bt9 from "../assets/image/bt9.png";
 import bt10 from "../assets/image/bt10.png";
 import bt11 from "../assets/image/bt11.png";
 import bt12 from "../assets/image/bt12.png";
+// import bj1 from "../assets/image/bj1.png";
+// import bj2 from "../assets/image/bj2.png";
 
 import BScroll from "@better-scroll/core";
 
 function Home() {
+  let [lxt, setLxt] = useState([
+    {
+      title: "2021 第二季度",
+      nei: [
+        "4月：SpaceBall概念誕生，進行可行性研究。",
+        "6月：團隊建設，模型設計。",
+      ],
+    },
+    {
+      title: "2021 第三季度",
+      nei: ["進入元宇宙技術開發"],
+    },
+    {
+      title: "2022 第一季度",
+      nei: ["元宇宙路線衍生，增加遊戲、社交、ID身份。"],
+    },
+    {
+      title: "2022 第二季度",
+      nei: ["遊戲內NFT購買、交易、IGO。。"],
+    },
+    {
+      title: "2022 第三季度",
+      nei: ["NFT卡牌質押獎勵開啟，NFT交易平台正式上線，SBL鑄造和銷毀開啟。"],
+    },
+  ]);
   let [bt, setBt] = useState([
     {
       img: bt1,
@@ -72,6 +99,7 @@ function Home() {
       scrollX: true, //开启横向滚动
       click: true, // better-scroll 默认会阻止浏览器的原生 click 事件
       scrollY: false, //关闭竖向滚动
+      // probeType: 3,
       // freeScroll: true,
       // bounce: {
       //   bottom: false,
@@ -114,7 +142,13 @@ function Home() {
     },
   ]);
   return (
-    <div>
+    <div className="bj">
+      <div className="bj1"></div>
+      <div className="bj2"></div>
+      <div className="bj3"></div>
+      <div className="bj4"></div>
+      <div className="bj5"></div>
+
       <div className="Edition-Center">
         <div className="introduce">
           <div className="yanyu">
@@ -207,64 +241,30 @@ function Home() {
         <div className="roadmap">
           <div className="roatitle">SPACE BALL -　路綫圖</div>
           <div className="scroll">
-            <div className="roabox">
-              <div className="boxtitle">
-                <span className="boxn">2021 第二季度</span>
-                <span className="boxn">2021 第三季度</span>
-                <span className="boxn">2022 第一季度</span>
-                <span className="boxn">2022 第二季度</span>
-                <span className="boxn">2022 第三季度</span>
-              </div>
-              <div className="bxian"></div>
-              <div className="roabtm">
-                <div className="wbtm">
-                  <div className="wdian">
-                    <div className="ndian"></div>
+            <div className="sebox">
+              {lxt.map((item, index) => {
+                return (
+                  <div className="roabox" key={index}>
+                    <div className="rotitle">{item.title}</div>
+                    <div className="bxian">
+                      <div className="wdian">
+                        <div className="ndian"></div>
+                      </div>
+                    </div>
+                    <div className="wbtm">
+                      <div className="nbtm">
+                        {item.nei.map((item, index) => {
+                          return (
+                            <p className="ww" key={index}>
+                              {item}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-                  <div className="nbtm">
-                    <p className="ww">
-                      4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                    </p>
-                    <p className="ww">6月：團隊建設，模型設計。 </p>
-                  </div>
-                </div>
-                <div className="wbtm">
-                  <div className="wdian">
-                    <div className="ndian"></div>
-                  </div>
-                  <div className="nbtm">
-                    <p className="ww">進入元宇宙技術開發。 </p>
-                  </div>
-                </div>
-                <div className="wbtm">
-                  <div className="wdian">
-                    <div className="ndian"></div>
-                  </div>
-                  <div className="nbtm">
-                    <p className="ww">
-                      元宇宙路線衍生，增加遊戲、社交、ID身份。{" "}
-                    </p>
-                  </div>
-                </div>
-                <div className="wbtm">
-                  <div className="wdian">
-                    <div className="ndian"></div>
-                  </div>
-                  <div className="nbtm">
-                    <p className="ww">遊戲內NFT購買、交易、IGO。 </p>
-                  </div>
-                </div>
-                <div className="wbtm">
-                  <div className="wdian">
-                    <div className="ndian"></div>
-                  </div>
-                  <div className="nbtm">
-                    <p className="ww">
-                      NFT卡牌質押獎勵開啟，NFT交易平台正式上線，SBL鑄造和銷毀開啟。{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
