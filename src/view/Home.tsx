@@ -24,8 +24,6 @@ import bt9 from "../assets/image/bt9.png";
 import bt10 from "../assets/image/bt10.png";
 import bt11 from "../assets/image/bt11.png";
 import bt12 from "../assets/image/bt12.png";
-// import bj1 from "../assets/image/bj1.png";
-// import bj2 from "../assets/image/bj2.png";
 
 import BScroll from "@better-scroll/core";
 
@@ -99,14 +97,6 @@ function Home() {
       scrollX: true, //开启横向滚动
       click: true, // better-scroll 默认会阻止浏览器的原生 click 事件
       scrollY: false, //关闭竖向滚动
-      // probeType: 3,
-      // freeScroll: true,
-      // bounce: {
-      //   bottom: false,
-      //   left: false,
-      //   right: false,
-      //   top: false,
-      // },
     });
   }, []);
   let [space, setSpace] = useState([
