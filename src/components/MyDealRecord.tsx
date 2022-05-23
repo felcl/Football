@@ -2,6 +2,7 @@
 import React,{useEffect , useState} from "react";
 import { Modal, Table } from "antd";
 import {getOrderStateList} from '../API'
+import {dateFormat} from '../utils/tool'
 import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import "../assets/style/componentsStyle/MyDealRecord.scss";
@@ -27,7 +28,7 @@ function MyDealRecord(props:propsType) {
   return (
     <>
       <Modal
-        visible={false}
+        visible={props.isShow}
         className="MyDealRecord"
         onCancel={()=>props.close()}
         centered
@@ -52,7 +53,7 @@ function MyDealRecord(props:propsType) {
             width={140}
             render={(item) => (
               <>
-                <div>{item.createTime}</div>
+                <div>{dateFormat('YYYY-mm-dd HH:MM',new Date(item.createTime))}</div>
               </>
             )}
           />
@@ -60,7 +61,7 @@ function MyDealRecord(props:propsType) {
             title="ID"
             render={(item) => (
               <>
-                <div>{item.orderId}</div>
+                <div>{item.tokenId}</div>
               </>
             )}
           />

@@ -1,8 +1,12 @@
 .RewardLabel{
     font-weight: 700;
     font-size: 20px;
-    color: #fff;
+    width: max-content;
     margin-top: 27px;
+    background-image: -webkit-gradient(linear,left center,right center,from(#fff),to(#161731));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .RewardItem{
     width: 437px;
@@ -65,12 +69,23 @@
             }
         }
     }
+    @keyframes rotate{
+        0%{-webkit-transform:rotate(0deg);}
+        25%{-webkit-transform:rotate(90deg);}
+        50%{-webkit-transform:rotate(180deg);}
+        75%{-webkit-transform:rotate(270deg);}
+        100%{-webkit-transform:rotate(360deg);}
+    }
     .RewardExplain{
         font-weight: 400;
         font-size: 14px;
         color: #FFFFFF;
         margin-bottom: 10px;
+        .imgRotate{
+            animation:rotate 1s linear 1;
+        }
     }
+
     .mechanism,.record{
         font-weight: 400;
         font-size: 12px;

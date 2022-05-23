@@ -2,12 +2,16 @@
 import React from 'react'
 import { Modal} from 'antd';
 import '../assets/style/componentsStyle/GlodMechanism.scss'
-
-function GlodMechanism() {
+interface propsType{
+  isShow:boolean,
+  close:Function
+}
+function GlodMechanism(props:propsType) {
   return (
     <>
-    <Modal visible={false} 
+    <Modal visible={props.isShow} 
     className='GlodMechanism'
+    onCancel={()=>props.close()}
     centered
     width={'634px'}
     closable={ false }

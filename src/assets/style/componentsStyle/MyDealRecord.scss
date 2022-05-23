@@ -100,3 +100,10 @@
     }
   }
 }
+
+.ant-table-tbody>tr.ant-table-placeholder:hover>td{
+  background: #1d1e44 !important;
+}
+.ant-table-body{
+  overflow: auto !important;
+}

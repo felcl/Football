@@ -2,7 +2,7 @@
 import React from 'react'
 import { Modal} from 'antd';
 import '../assets/style/componentsStyle/BoxOpen.scss'
-
+const cardType=['']
 function BoxOpen() {
   return (
     <>

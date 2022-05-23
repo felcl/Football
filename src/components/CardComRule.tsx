@@ -2,12 +2,16 @@
 import React from 'react'
 import { Modal} from 'antd';
 import '../assets/style/componentsStyle/CardComRule.scss'
-
-function CardComRule() {
+interface PropsType{
+  isShow:boolean,
+  close:Function
+}
+function CardComRule(props:PropsType) {
   return (
     <>
-    <Modal visible={false} 
+    <Modal visible={props.isShow} 
     className='CardComRule'
+    onCancel={()=>props.close()}
     centered
     width={'449px'}
     closable={ false }

@@ -41,10 +41,8 @@
                         .CardItems {
                             display: flex;
                             justify-content: space-evenly;
-                            flex-wrap: wrap;
 
                             >div {
-                                // flex: 1;
                                 width: 150px;
                                 height: 150px;
                             }
@@ -64,8 +62,8 @@
                             }
 
                             .CardImg {
-                                width: 150px;
-                                height: 150px;
+                                width: 100%;
+                                height: 100%;
                                 background: #171833;
                                 border: 1px solid rgba(255, 255, 255, 0.1);
                                 border-radius: 10px;
@@ -75,13 +73,19 @@
                                 }
                             }
                         }
+                        @media (max-width:1024px) {
+                            .CardItems {
+                                >div {
+                                    width: 120px;
+                                    height: 120px;
+                                }
+                            }
+                        }
 
                         .CardItem {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            width: 190px;
-                            height: 400px;
                             margin: 0 auto;
                             padding-top: 56px;
 
@@ -128,6 +132,14 @@
                                 }
                             }
                         }
+                        @media (max-width:1024px) {
+                            .CardItem {
+                                .CardImg {
+                                    width: 120px;
+                                    height: 120px;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -136,6 +148,7 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    padding: 0 27px;
                     // width: 550px;
                     height: 550px;
                     border-left: 1px solid rgba(255, 255, 255, 0.2);
@@ -143,12 +156,10 @@
                     .Category {
                         width: 100%;
                         display: flex;
-                        justify-content: space-evenly;
+                        justify-content: space-between;
                         flex-wrap: wrap;
 
                         >div {
-
-                            width: 150px;
                             height: 36px;
                         }
 
@@ -225,35 +236,36 @@
                             border: 1px solid rgba(255, 255, 255, 0.2);
                             color: rgba(255, 255, 255, 0.6);
                             border-radius: 6px;
-                            margin-left: 10px;
+                            margin-left: 0 ;
                             padding: 10px 15px;
                             justify-content: space-between;
                         }
                     }
-
                     .CardListBox {
-                        width: 492px;
-                        height: 495px;
-                        display: flex;
-                        justify-content: space-between;
+                        width: 100%;
+                        max-height: 495px;
+                        display: grid;
                         margin-top: 12px;
+                        grid-template-columns: repeat(2,216px);
+                        grid-row-gap: 20px;
+                        grid-column-gap: 20px;
 
                         .SynthesisCardList {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
                             width: 216px;
-                            height: 241px;
                             border-radius: 19px;
                             padding-top: 15PX;
+                            padding:15px 15px 0;
                             border: 1px solid rgba(255, 255, 255, 0.2);
 
                             .Img {
                                 background: #171833;
                                 border: 1px solid rgba(255, 255, 255, 0.1);
                                 border-radius: 10px;
-                                width: 186px;
-                                height: 186px;
+                                width: 100%;
+                                // height: 186px;
                                 overflow: hidden;
                                 // margin-top: 15px;
                                 img{
@@ -268,6 +280,12 @@
                                 margin-top: 10px;
                             }
 
+                        }
+                        @media (max-width:1024px) {
+                            .SynthesisCardList {
+                                width: 151px;
+                                height: 168px;
+                            }
                         }
                     }
                 }

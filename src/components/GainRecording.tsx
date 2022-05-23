@@ -3,6 +3,7 @@ import React, { useEffect , useState} from "react";
 import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import { Modal, Table } from "antd";
+import {dateFormat} from '../utils/tool'
 import {getUserAccountDetail} from '../API'
 import "../assets/style/componentsStyle/GainRecording.scss";
 const { Column } = Table;
@@ -47,13 +48,12 @@ function GainRecording(props:propsType) {
             // width={140}
             render={(item) => (
               <>
-                <div className="nowrap">{item.createTime}</div>
+                <div className="nowrap">{dateFormat('YYYY-mm-dd HH:MM',new Date(item.createTime))}</div>
               </>
             )}
           />
           <Column
             title="金額 SBL"
-            width={80}
             render={(item) => (
               <>
                 <div className="nowrap">{item.amount}</div>
