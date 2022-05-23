@@ -179,7 +179,7 @@ function Home() {
         </div>
 
         <div className="system">
-          <div className="sytitle">SPACE BALL - 代筆系統</div>
+          <div className="sytitle">SPACE BALL - 代系幣統</div>
           <div className="qiu">
             <div className="lqiu">
               <p className="lz">SPACE BALL 生態治理</p>
@@ -196,6 +196,9 @@ function Home() {
               SBL是Space
               Ball的原生治理代幣，結合了去中心化金額（DeFi），DAO和NFT，在幣安智能鏈上創建的一種元宇宙經濟，SBL是一種開源協議，其規則由智能合約執行，SBL是一種賦予持有人SBL治理權利的BEP20代幣。
             </p>
+            <p className="sbt">
+              總發行量為 2 億枚代幣，將會通過銷毀基金持續銷毀其供應量
+            </p>
             <div className="sbhy">
               <span className="lef">合約地址</span>
               <div className="rig">
@@ -206,9 +209,6 @@ function Home() {
                 </div>
               </div>
             </div>
-            <p className="sbt">
-              總發行量為 2 億枚代幣，將會通過銷毀基金持續銷毀其供應量
-            </p>
           </div>
           <div className="group">
             <img src={Group} alt="" />

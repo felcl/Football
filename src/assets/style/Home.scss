@@ -71,10 +71,12 @@
       margin-left: 7vw;
       margin-top: 259px;
       .name {
+        font-weight: 700;
         font-size: 30px;
         color: #fff;
       }
       .brief {
+        font-weight: 500;
         font-size: 16px;
         color: #fff;
         margin-bottom: 0;
@@ -433,6 +435,11 @@
       // width: 25%;
       width: 300px;
       margin: 20px 0;
+      img {
+        display: block;
+        margin: 0 auto;
+        // margin-left: 60px;
+      }
     }
   }
 }
@@ -555,6 +562,8 @@
           .bt {
             img {
               width: 150px;
+              display: block;
+              margin: 0 auto;
             }
           }
         }
