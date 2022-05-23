@@ -2,6 +2,7 @@
 import React , {useEffect , useState} from "react";
 import { Modal, Table } from "antd";
 import {getNodeUserBuyRecord} from '../API'
+import {dateFormat} from '../utils/tool'
 import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import '../assets/style/componentsStyle/GoldRecord.scss'
@@ -9,7 +10,8 @@ import '../assets/style/componentsStyle/GoldRecord.scss'
   
 const { Column } = Table;
 interface propsType{
-  isShow:boolean
+  isShow:boolean,
+  close:Function
 }
 interface applyRecord{
   createTime:number,
@@ -32,6 +34,7 @@ function GoldRecord(props:propsType) {
       <Modal
         visible={props.isShow}
         className="GoldRecord"
+        onCancel={()=>props.close()}
         centered
         width={"525px"}
         closable={false}
@@ -47,10 +50,9 @@ function GoldRecord(props:propsType) {
         >
           <Column
             title="时间"
-            width={140}
             render={(item) => (
               <>
-                <div>{item.createTime}</div>
+                <div>{dateFormat('YYYY-mm-dd HH:MM',new Date(item.createTime))}</div>
               </>
             )}
           />

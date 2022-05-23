@@ -2,22 +2,24 @@ import React, { useEffect ,useState } from 'react';
 import {getCardCompoundList , compoundCard} from '../API'
 import {Contracts} from '../web3'
 import {useWeb3React} from '@web3-react/core'
-import {useSelector , useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
 import {CardInfoType} from './Card'
 import {contractAddress} from '../config'
 import { Modal, Pagination } from 'antd';
 import {addMessage,showLoding} from '../utils/tool'
 import RuleImg from '../assets/image/CardSynthesis.png'
-import FootballImg from '../assets/image/Rectangle 49.png'
 import AddImg from '../assets/image/Union.png'
-import dropDownIcon from '../assets/image/dropDownIcon.png'
 import DropDown from '../components/DropDown'
-// import '../assets/style/componentsStyle/DropDown.scss'
+import Tips from '../components/Tips'
+// 卡牌合成规则
+import CardComRule from '../components/CardComRule'
+import BigNumber from 'big.js'
 interface CardSynthesisPropsType {
     CardInfo:CardInfoType,
     isShow: boolean,
     close:Function
+    mergeSuccess:Function
 }
 interface SelCardType{
     list:CardInfoType [],
@@ -52,17 +54,24 @@ function CardSynthesis(props: CardSynthesisPropsType) {
     const [ToBeSelect,setToBeSelect] = useState<SelCardType | null>(null)
     const [isApproved,setIsApproved] = useState(false)
     const [SelCard,setSelCard] = useState<CardInfoType | null>(null)
+    /* 确认合成弹窗控制 */
+    let [showEnterMerge,setShowEnterMerge] = useState(false)
+    /* 合成规则弹窗控制 */
+    let [showMergeRule,setShowMergeRule] = useState(false)
     /* 类型筛选 */
     let [type,SetType] = useState(0)
     /* 分页 */
     let [page,SetPage] = useState(1)
+    /* 总条数 */
+    let [total,SetTotal] = useState(0)
     useEffect(()=>{
         if(web3React.account && state.token && props.isShow){
+            setSelCard(null)
             getCardCompoundList({
                 currentPage:page,
                 level:props.CardInfo.cardLevel,
                 type:type,
-                pageSize:10,
+                pageSize:12,
                 userAddress:web3React.account as string
             }).then(res=>{
                 res.data.list = res.data.list.filter((item:CardInfoType)=>{
@@ -70,6 +79,7 @@ function CardSynthesis(props: CardSynthesisPropsType) {
                 })
                 setToBeSelect(res.data)
                 console.log(res,"获取可用卡牌")
+                SetTotal(res.data.size)
             })
             Contracts.example.isApprovedForAll(web3React.account, contractAddress.Merge).then((res:boolean)=>{
                 setIsApproved(res)
@@ -90,21 +100,28 @@ function CardSynthesis(props: CardSynthesisPropsType) {
         })
     }
     /* 合成 */
-    function mager(){
+    async function mager(){
+        setShowEnterMerge(false)
         if(!web3React.account){
-            return console.log("请链接钱包")
+            return addMessage("请链接钱包")
         }
         if(!SelCard){
-            return console.log("请选择要合成的卡牌")
+            return addMessage("请选择要合成的卡牌")
+        }
+        let Balance = await Contracts.example.getBalance(web3React.account as string)
+        Balance = new BigNumber(Balance).div(10 ** 18).toString()
+        if(new BigNumber(Balance).lt(ToBeSelect?.price as number)){
+        return addMessage("余额不足")
         }
         showLoding(true)
         compoundCard({
             cardId:props.CardInfo.id, 
             choiceCardId:SelCard.id
-        }).then(res=>{
-            console.log(res,"合成加密数据")
-            Contracts.example.toSynthesis(web3React.account as string, res.data.sign,ToBeSelect?.price as number).then((res:any)=>{
+        }).then(resSign=>{
+            console.log(resSign,"合成加密数据")
+            Contracts.example.toSynthesis(web3React.account as string, resSign.data.sign,ToBeSelect?.price as number).then((res:any)=>{
                 console.log(res,"合成结果")
+                props.mergeSuccess(resSign.data.cardUser)
             }).finally(()=>{
                 showLoding(false)
             })
@@ -117,6 +134,9 @@ function CardSynthesis(props: CardSynthesisPropsType) {
     }
     return (
         <>
+            {/* 确认合成 */}
+            <Tips isShow={showEnterMerge} title="合成消耗" subTitle={"此次合成將消耗"+ToBeSelect?.price+"BNB"} enterFun={mager} close={()=>setShowEnterMerge(false)}></Tips>
+            <CardComRule isShow={showMergeRule} close={()=>setShowMergeRule(false)}></CardComRule>
             <Modal visible={props.isShow}
                 className='CardSynthesis'
                 onCancel={()=>props.close()}
@@ -151,10 +171,10 @@ function CardSynthesis(props: CardSynthesisPropsType) {
                                     <div className="Price">需要消耗：</div><div className='Number'>{ToBeSelect?.price}BNB</div>
                                 </div>
                                 {
-                                    isApproved ? <button onClick={mager}>開始合成</button> : <button onClick={Approval}>授权</button>
+                                    isApproved ? <button onClick={()=>{setShowEnterMerge(true)}}>開始合成</button> : <button onClick={Approval}>授权</button>
                                 }
 
-                                <div className='Tip'><div className='TipContent'>卡牌合成規則</div><div className='TipImg'><img src={RuleImg} alt="" /></div></div>
+                                <div className='Tip'><div className='TipContent' onClick={()=>{setShowMergeRule(true)}}>卡牌合成規則</div><div className='TipImg'><img src={RuleImg} alt="" /></div></div>
                             </div>
                         </div>
                     </div>
@@ -162,9 +182,8 @@ function CardSynthesis(props: CardSynthesisPropsType) {
                         <div className="Category">
                         <DropDown Map={typeMap} change={SetType}></DropDown>
                             {/* 三个水平排列（保证布局一致） */}
-                            <div></div>
                             <div className="Page">
-                                <Pagination simple defaultCurrent={page} total={9} onChange={changePage} />
+                                <Pagination simple defaultCurrent={page} total={total} defaultPageSize={12} onChange={changePage} />
                             </div>
                         </div>
                         <div className="CardListBox">

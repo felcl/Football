@@ -13,11 +13,11 @@ function CardItem(props:CardInfo) {
     <div className="CardItemLinearBorder">
         <div className="CardItem">
             <div className="CardImg" onClick={()=>props.showCardDetail()}>
-
+              <img src={props.orderInfo?.image} alt="" />
             </div>
             {
               props.type ==="commodity" && <>
-                <div className="price flexCenter">價格：{props.orderInfo?.price} SBL <div className="decorate"></div></div>
+                <div className="price flexCenter">價格：{props.orderInfo?.price} {props.orderInfo?.coinName}  <div className="decorate"></div></div>
                 <div className="buyBtn linear-gradient" onClick={()=>{props.buy!()}}>購買</div>
               </>
             }

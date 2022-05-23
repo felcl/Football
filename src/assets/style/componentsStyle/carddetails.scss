@@ -47,6 +47,10 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
       }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+      }
     }
     .butm {
       width: 80%;

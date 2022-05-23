@@ -5,7 +5,8 @@ import EXChangeNFT from './ABI/EXChangeNFT.json';
 import Merge from './ABI/Merge.json';
 import NFT from './ABI/NFT.json';
 import Node from './ABI/Node.json';
-export let baseUrl:string = 'http://192.168.2.115:10000';
+// export let baseUrl:string = 'http://192.168.2.36:10000';
+export let baseUrl:string = 'http://47.107.116.172:10000';
 interface abiObjType {
     [propName: string]: any;
 }
@@ -30,6 +31,6 @@ export const contractAddress :contractAddressType = {
     "BlindBox": "0xE583dD3A525d8541C71963f6e48EA88BE1214701",
     "EXChangeNFT": "0x3d81D122A568CCde84dF3E65f9a6a4c158bb9e16",
     "NFT": "0x1B57103eD624bA5aBeA0E8Eeb02f616372C8AAbf",
-    "Merge": "0x12f2C18b79bcB9309CDC65567907C4CbD39E1cA9",
+    "Merge": "0xCAB778AB656f2d598C05fE6af1e1f3F30D3fE567",
     "Node": "0x16bD30744A927ac1D2218F018cF153882A3995f4"
   }

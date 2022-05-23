@@ -67,8 +67,7 @@ function SBL() {
       <GlodMechanism></GlodMechanism>
       {/* 团队奖励的收益记录 */}
       <TeamEarnings></TeamEarnings>
-      {/* 团队奖励机制 */}
-      <TeamMachine></TeamMachine>
+
     </div>
   )
 }

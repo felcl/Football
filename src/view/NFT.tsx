@@ -29,8 +29,10 @@ import BoxOpen from '../components/BoxOpen'
 
 
 
+
 export interface BoxInfo{
   id:number,
+  image:string,
 }
 export interface OpenResType{
   imageUrl:string,
@@ -111,6 +113,9 @@ function NFT() {
     let [showCreateOrder,setShowCreateOrder] = useState(false)
     /* 开卡成功弹窗控制 */
     let [showOpenCard,setShowOpenCard] = useState(false)
+    /* 合成成功弹窗控制 */
+    let [showMergeSuccess,setShowMergeSuccess] = useState(false)
+
     /* 开盲盒结果 */
     let [openRes,setOpenRes] = useState<OpenResType | null>(null)
     function showDetial(index:number) {
@@ -133,21 +138,26 @@ function NFT() {
       setOpenRes(res)
       setShowOpenCard(true)
     }
+    function mergeSuccess(res:OpenResType){
+      setOpenRes(res)
+      setshowCardSynthesis(false)
+      setShowMergeSuccess(true)
+    }
     /* 初始化数据 */
     useEffect(()=>{
-      if(state.token && web3React.account){
+      if(state.token && web3React.account && TabIndex === 1){
         getBoxUserInfo(1,10).then(res=>{
           setuserBox(res.data)
           console.log(res,"用户盲盒信息")
         })
       }
-    },[state.token,web3React.account])
+    },[state.token,web3React.account,TabIndex])
     useEffect(()=>{
-      if(state.token && web3React.account){
+      if(state.token && web3React.account && TabIndex === 0){
         getUserCard({
           currentPage:page,
           level:level,
-          pageSize:10,
+          pageSize:12,
           type:type,
           userAddress:web3React.account
         }).then(res=>{
@@ -156,10 +166,10 @@ function NFT() {
           console.log(res,"获取用户所有卡牌")
         })
       }
-    },[state.token,web3React.account,type,level,page])
+    },[state.token,web3React.account,type,level,page,TabIndex])
   return (
     <div>
-      {/* <AddFlow></AddFlow> */}
+      {/* 盲盒开启成功 */}
       {
         openRes && <ComSucceed isShow={showOpenCard} close={()=>setShowOpenCard(false)} CardInfo={openRes} ></ComSucceed>
       }
@@ -171,20 +181,21 @@ function NFT() {
       {
         userCard.length >0  && <CardDetails isShow={showCreateOrder} CardInfo={userCard[cardDetialIndex]} close={()=>setShowCreateOrder(false)} type="CreateOrder"></CardDetails>
       }
+
       {/* 卡牌合成 */}
-      <CardSynthesis isShow={showCardSynthesis} CardInfo={userCard[cardDetialIndex]} close={()=>setshowCardSynthesis(false)}></CardSynthesis>
+      <CardSynthesis isShow={showCardSynthesis} mergeSuccess={mergeSuccess} CardInfo={userCard[cardDetialIndex]} close={()=>setshowCardSynthesis(false)}></CardSynthesis>
       <div className="Edition-Center">
         <div className="SwapTitle">
           NFT - 庫存
         </div>
         {/* 盲盒开启 */}
-        <BoxOpen></BoxOpen>
-        {/* 卡牌合成规则 */}
-        <CardComRule></CardComRule>
+        {/* <BoxOpen></BoxOpen> */}
         {/* 挂卖详情 */}
         {/* <PutParticulars></PutParticulars> */}
         {/* 合成成功 */}
-        {/* <ComSucceed></ComSucceed> */}
+        {
+          openRes && <ComSucceed isShow={showMergeSuccess} CardInfo={openRes as OpenResType} close={()=>{setShowMergeSuccess(false)}}></ComSucceed>
+        }
         <div className="screen">
             <div className="Tabs">
                 <div className={TabIndex === 0 ? 'activeTab linear-gradient':'invalidTab'} onClick={() =>{SetTabIndex(0)}}>卡牌</div>
@@ -213,7 +224,7 @@ function NFT() {
               </>
             }
               <div className="Pagination">
-                  <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} hideOnSinglePage showSizeChanger={false} total={totalNum} onChange={onChange} />
+                  <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} defaultPageSize={12} showSizeChanger={false} total={totalNum} onChange={onChange} />
               </div>
             </> : <>
             {/* 盲盒 */}

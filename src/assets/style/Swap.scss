@@ -46,6 +46,7 @@
 @media (max-width:548px) {
     .screen{
         flex-direction: column;
+        align-items: flex-start;
         .DropDownGroup{
             display: flex;
             position: relative;
@@ -65,10 +66,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 270px);
     grid-row-gap: 40px;
-    grid-column-gap: 30px;
-    justify-content: center;
+    grid-column-gap: 40px;
+    justify-content: space-between;
     margin-top: 20px;
     max-width:1200px;
+}
+@media (max-width:425px) {
+    .CardList{
+        grid-template-columns: repeat(auto-fill, 158px);
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+    }
 }
 .Pagination{
     display: flex;

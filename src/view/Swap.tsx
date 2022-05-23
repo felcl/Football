@@ -2,11 +2,11 @@ import React,{useState , useEffect} from "react"
 import orderRecord from '../assets/image/orderRecord.png'
 import {useSelector , useDispatch} from "react-redux";
 import {stateType} from '../store/reducer'
-import CardDetails from '../components/CardDetails'
+import PutParticulars from '../components/PutParticulars'
 import {useWeb3React} from '@web3-react/core'
 import Tips from '../components/Tips'
 import {getOrderList} from '../API'
-
+import {addMessage,showLoding} from '../utils/tool'
 import DropDown from '../components/DropDown'
 import CardItem from '../components/CardItem'
 import NoData from '../components/NoData'
@@ -88,7 +88,12 @@ const LevelMap = [
   export interface orderInfoType{
     id:number,
     price:number,
-    chainOrderId:string
+    cardName:string,
+    chainOrderId:string,
+    image:string
+    coinName:string
+    introduce:string
+    userAddress:string
   }
 function Swap() {
     let state = useSelector<stateType,stateType>(state => state);
@@ -133,7 +138,7 @@ function Swap() {
             getOrderList({
                 currentPage:page,
                 level:level,
-                pageSize:10,
+                pageSize:12,
                 type:type
             }).then(res=>{
                 setOrderList(res.data.list)
@@ -147,8 +152,9 @@ function Swap() {
             getOrderList({
                 currentPage:page,
                 level:userlevel,
-                pageSize:10,
-                type:usertype
+                pageSize:12,
+                type:usertype,
+                userAddress:web3React.account
             }).then(res=>{
                 setUserOrderList(res.data.list)
                 SetTotalNum(res.data.size)
@@ -161,6 +167,11 @@ function Swap() {
         console.log('Page: ', pageNumber);
     }
     function buy(index:number){
+      // if()
+      console.log(orderList[index].userAddress === web3React.account?.toLocaleLowerCase())
+      if(orderList[index].userAddress === web3React.account?.toLocaleLowerCase()){
+        return addMessage("不能购买自己的订单")
+      }
         setOrderInfo(orderList[index])
         setShowEnterBuy(true)
     }
@@ -175,21 +186,31 @@ function Swap() {
     function changeTab(tab:number){
         SetTabIndex(tab)
     }
+    function ShowCardDetailFun(index:number,type:string){
+      if(type ==='swap'){
+        setOrderInfo(orderList[index])
+      }else{
+        setOrderInfo(userOrderList[index])
+      }
+      setShowCardDetail(true)
+    }
   return (
     <div>
       <div className="Edition-Center">
         {/* 我的交易记录 */}
         <MyDealRecord isShow={showOrderRecord} close={()=>{setShowOrderRecord(false)}} ></MyDealRecord>
         {/* 卡牌详情 */}
-        {/* <CardDetails isShow={showCardDetail} close={()=>setShowCardDetail(false)} type="Swap"></CardDetails> */}
+        {
+            orderInfo && <PutParticulars isShow={showCardDetail} OrderInfo={orderInfo} close={()=>setShowCardDetail(false)} ></PutParticulars>
+        }
         {/* 取消挂卖成功 */}
-        <Tips isShow={showCancelSuccess} title="取消成功" subTitle="该挂卖以成功取消" close={()=>setShowCancelSuccess(false)}></Tips>
+        <Tips isShow={showCancelSuccess} title="取消成功" subTitle="该挂卖以成功取消" enterFun={()=>setShowCancelSuccess(false)} close={()=>setShowCancelSuccess(false)}></Tips>
         {/* 取消挂卖 */}
         {
         orderInfo && <CancelPurchase isShow={showCancelOrder} buyInfo={orderInfo} close={()=>setShowCancelOrder(false)} CancelSuccess={CancelSuccess}></CancelPurchase>
         }
         {/* 购买成功 */}
-        <Tips isShow={showBuySuccess} title="购买成功" subTitle="购买成功以放置宝箱" close={()=>setShowBuySuccess(false)}></Tips>
+        <Tips isShow={showBuySuccess} title="购买成功" subTitle="购买成功以放置宝箱" enterFun={()=>setShowBuySuccess(false)} close={()=>setShowBuySuccess(false)}></Tips>
         {/*确认购买  */}
         {
             orderInfo && <MarketDealing isShow={showEnterBuy} buyInfo={orderInfo} close={()=>{setShowEnterBuy(false)}} buySuccess={()=>setShowBuySuccess(true)}></MarketDealing>
@@ -225,7 +246,7 @@ function Swap() {
                     orderList.length !==0 ? <>
                         <div className="CardList">
                             {
-                                orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{setShowCardDetail(true)}} buy={()=>buy(index)}></CardItem>)
+                                orderList.map((item,index) =><CardItem key={item.id} type="commodity" orderInfo={item} showCardDetail={()=>{ShowCardDetailFun(index,'swap')}} buy={()=>buy(index)}></CardItem>)
                             }
                         </div>
                     </>:<>
@@ -241,7 +262,7 @@ function Swap() {
                 userOrderList.length !==0 ? <>
                     <div className="CardList">
                         {
-                            userOrderList.map((item,index) =><CardItem type="goods" key={item.id} showCardDetail={()=>{setShowCardDetail(true)}} CancelOrder={()=>Cancel(index)}></CardItem>)
+                            userOrderList.map((item,index) =><CardItem type="goods" key={item.id} orderInfo={item} showCardDetail={()=>{ShowCardDetailFun(index,'my')}} CancelOrder={()=>Cancel(index)}></CardItem>)
                         }
                     </div>
                 </>:<>
@@ -253,7 +274,7 @@ function Swap() {
         }
         {/* 交易场数据合个人交易场数据共用一个分页器 */}
         <div className="Pagination">
-            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} hideOnSinglePage showSizeChanger={false} total={totalNum} onChange={onChange} />
+            <Pagination style={{margin:"auto"}} showQuickJumper defaultCurrent={page} defaultPageSize={12} hideOnSinglePage showSizeChanger={false} total={totalNum} onChange={onChange} />
         </div>
         
       </div>

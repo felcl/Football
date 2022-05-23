@@ -2,12 +2,16 @@
 import React from 'react'
 import { Modal} from 'antd';
 import '../assets/style/componentsStyle/TeamMachine.scss'
-
-function TeamMachine() {
+interface propsType{
+  isShow:boolean,
+  close:Function
+}
+function TeamMachine(props:propsType) {
   return (
     <>
-    <Modal visible={false} 
+    <Modal visible={props.isShow} 
     className='TeamMachine'
+    onCancel={()=>props.close()}
     centered
     width={'446px'}
     closable={ false }

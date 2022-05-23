@@ -27,7 +27,7 @@
     }
     span {
       position: absolute;
-      bottom: -85px;
+      bottom: -60px;
       width: 100%;
       text-align: center;
       font-style: normal;
@@ -49,6 +49,7 @@
     tr {
       .ant-table-cell-scrollbar {
         box-shadow: none;
+        display: none;
       }
       th {
         font-size: 14px;

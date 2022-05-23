@@ -95,7 +95,7 @@ function BlindBox() {
             {
               BoxBase.map((item,index)=><div key={item.id} className="BuyRow">
               <div className="buyInfo">
-                <div className="BuyName">IGO</div>
+                <div className="BuyName">{index === 0 ? 'IGO':'售卖'}</div>
                 <div className="price">價格：{item.price} {item.coinName}/個</div>
               </div>
               {
@@ -116,7 +116,7 @@ function BlindBox() {
                     </>
                   }
                 </>:<>
-                  <div className="BuyBtn invalid pointer">立即購買</div>
+                  <div className="BuyBtn invalid pointer">暂未开启</div>
                 </>
               }
             </div>)
