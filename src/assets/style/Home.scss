@@ -490,3 +490,75 @@
     }
   }
 }
+@media screen and (max-width: 500px) {
+  .bj {
+    .Edition-Center {
+      .introduce {
+        margin-bottom: 100px;
+      }
+      .tedian {
+        margin-bottom: 50px;
+        .tename {
+          margin-bottom: 50px;
+        }
+      }
+      .system {
+        margin-bottom: 100px;
+        .sybox {
+          // display: flex;
+          // margin-left: 0;
+          margin: 0 auto;
+          .sbq {
+            padding-right: 0;
+          }
+          .sbhy {
+            // display: block;
+            width: 250px;
+            margin: 0 auto;
+          }
+        }
+      }
+      .zoology {
+        .zootitle {
+          margin-bottom: 50px;
+        }
+        .zoobox {
+          margin-bottom: 100px;
+        }
+      }
+      .roadmap {
+        .roatitle {
+          margin-bottom: 50px;
+        }
+        .scroll {
+          // margin-right: 0px;
+          margin: 0 auto;
+          .sebox {
+            margin-right: 0px;
+            .roabox {
+              .wbtm {
+                width: 184px;
+                height: 280px;
+                .nbtm {
+                  width: 180px;
+                  height: 280px;
+                }
+              }
+            }
+          }
+        }
+        margin-bottom: 100px;
+      }
+      .partner {
+        .pabtbox {
+          margin-bottom: 50px;
+          .bt {
+            img {
+              width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
