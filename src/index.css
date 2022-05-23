@@ -82,7 +82,7 @@ input:focus,select:focus,textarea:focus {
   position: relative
 }
 .ant-layout-header{
-  background: #161731 !important;
+  /* background: #161731 !important; */
   padding: 0 !important;
 }
 .ant-layout-footer{

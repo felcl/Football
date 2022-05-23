@@ -179,7 +179,7 @@ function Home() {
         </div>
 
         <div className="system">
-          <div className="sytitle">SPACE BALL - 代系幣統</div>
+          <div className="sytitle">SPACE BALL - 代幣系統</div>
           <div className="qiu">
             <div className="lqiu">
               <p className="lz">SPACE BALL 生態治理</p>
@@ -262,12 +262,12 @@ function Home() {
         <div className="partner">
           <div className="partibox">
             <div className="partitle">SPACE BALL -　合作夥伴</div>
-            <div className="titimg1">
+            {/* <div className="titimg1">
               <img src={titimg1} alt="" />
             </div>
             <div className="titimg2">
               <img src={titimg2} alt="" />
-            </div>
+            </div> */}
           </div>
           <div className="pabtbox">
             {bt.map((item, index) => {

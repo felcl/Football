@@ -1,4 +1,5 @@
 .bj {
+  // z-index: 1;
   position: relative;
   .bj1 {
     position: absolute;
@@ -214,7 +215,7 @@
         font-size: 14px;
         font-weight: 500;
         color: #fff;
-        margin-bottom: 30px;
+        margin-bottom: 0;
       }
       .sbhy {
         width: 306px;
@@ -259,7 +260,7 @@
         font-weight: 400;
         font-size: 14px;
         color: #fff;
-        margin-bottom: 62px;
+        margin-bottom: 20px;
       }
     }
     .group {
@@ -413,16 +414,16 @@
         color: #fff;
         margin-bottom: 54px;
       }
-      .titimg1 {
-        position: absolute;
-        top: -185px;
-        left: 455px;
-      }
-      .titimg2 {
-        position: absolute;
-        top: -55px;
-        right: 35px;
-      }
+      // .titimg1 {
+      //   position: absolute;
+      //   top: -185px;
+      //   left: 455px;
+      // }
+      // .titimg2 {
+      //   position: absolute;
+      //   top: -55px;
+      //   right: 35px;
+      // }
     }
     .pabtbox {
       display: flex;
