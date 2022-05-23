@@ -63,8 +63,7 @@ function SBL() {
       <DonateRule></DonateRule>
       {/* 捐赠销毁捐赠成功 */}
       <DonateSucceed></DonateSucceed>
-      {/* 金币节点奖励机制 */}
-      <GlodMechanism></GlodMechanism>
+
       {/* 团队奖励的收益记录 */}
       <TeamEarnings></TeamEarnings>
 

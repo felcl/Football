@@ -235,6 +235,11 @@ export class Contracts{
         this.verification('Node')
         return this.contract.Node?.methods.getAward(data,type).send({from: addr})
     }
+    //节点退还
+    quitNode(addr: string,data:string){
+        this.verification('Node')
+        return this.contract.Node?.methods.quitNode(data).send({from: addr})
+    }
     //查询当前区块高度
     QueryBlock(){
         return this.web3.eth.getBlockNumber()

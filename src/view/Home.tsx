@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import shou from "../assets/image/shou.png";
 import "../assets/style/Home.scss";
 import home1 from "../assets/image/home1.png";
@@ -10,17 +10,95 @@ import home6 from "../assets/image/home6.png";
 import fz1 from "../assets/image/fz1.png";
 import Group from "../assets/image/Group.png";
 import zoobox from "../assets/image/zoobox.png";
+import titimg1 from "../assets/image/titimg1.png";
+import titimg2 from "../assets/image/titimg2.png";
+import bt1 from "../assets/image/bt1.png";
+import bt2 from "../assets/image/bt2.png";
+import bt3 from "../assets/image/bt3.png";
+import bt4 from "../assets/image/bt4.png";
+import bt5 from "../assets/image/bt5.png";
+import bt6 from "../assets/image/bt6.png";
+import bt7 from "../assets/image/bt7.png";
+import bt8 from "../assets/image/bt8.png";
+import bt9 from "../assets/image/bt9.png";
+import bt10 from "../assets/image/bt10.png";
+import bt11 from "../assets/image/bt11.png";
+import bt12 from "../assets/image/bt12.png";
+
 import BScroll from "@better-scroll/core";
 
 function Home() {
-  useEffect(()=>{
-    const wrapper:any = document.querySelector('.scroll')
+  let [lxt, setLxt] = useState([
+    {
+      title: "2021 第二季度",
+      nei: [
+        "4月：SpaceBall概念誕生，進行可行性研究。",
+        "6月：團隊建設，模型設計。",
+      ],
+    },
+    {
+      title: "2021 第三季度",
+      nei: ["進入元宇宙技術開發"],
+    },
+    {
+      title: "2022 第一季度",
+      nei: ["元宇宙路線衍生，增加遊戲、社交、ID身份。"],
+    },
+    {
+      title: "2022 第二季度",
+      nei: ["遊戲內NFT購買、交易、IGO。。"],
+    },
+    {
+      title: "2022 第三季度",
+      nei: ["NFT卡牌質押獎勵開啟，NFT交易平台正式上線，SBL鑄造和銷毀開啟。"],
+    },
+  ]);
+  let [bt, setBt] = useState([
+    {
+      img: bt1,
+    },
+    {
+      img: bt2,
+    },
+    {
+      img: bt3,
+    },
+    {
+      img: bt4,
+    },
+    {
+      img: bt5,
+    },
+    {
+      img: bt6,
+    },
+    {
+      img: bt7,
+    },
+    {
+      img: bt8,
+    },
+    {
+      img: bt9,
+    },
+    {
+      img: bt10,
+    },
+    {
+      img: bt11,
+    },
+    {
+      img: bt12,
+    },
+  ]);
+  useEffect(() => {
+    const wrapper: any = document.querySelector(".scroll");
     const scroll = new BScroll(wrapper, {
-      scrollX: true,  //开启横向滚动
-      click: true,  // better-scroll 默认会阻止浏览器的原生 click 事件
+      scrollX: true, //开启横向滚动
+      click: true, // better-scroll 默认会阻止浏览器的原生 click 事件
       scrollY: false, //关闭竖向滚动
-    })
-  },[])
+    });
+  }, []);
   let [space, setSpace] = useState([
     {
       title: "IGO 發行",
@@ -54,7 +132,13 @@ function Home() {
     },
   ]);
   return (
-    <div>
+    <div className="bj">
+      <div className="bj1"></div>
+      <div className="bj2"></div>
+      <div className="bj3"></div>
+      <div className="bj4"></div>
+      <div className="bj5"></div>
+
       <div className="Edition-Center">
         <div className="introduce">
           <div className="yanyu">
@@ -147,73 +231,52 @@ function Home() {
         <div className="roadmap">
           <div className="roatitle">SPACE BALL -　路綫圖</div>
           <div className="scroll">
-            <div className="roabox">
-                <div className="boxtitle">
-                  <span className="boxn">2021 第二季度</span>
-                  <span className="boxn">2021 第三季度</span>
-                  <span className="boxn">2022 第一季度</span>
-                  <span className="boxn">2022 第二季度</span>
-                  <span className="boxn">2022 第三季度</span>
-                </div>
-                <div className="bxian"></div>
-                <div className="roabtm">
-                  <div className="wbtm">
-                    <div className="wdian">
-                      <div className="ndian"></div>
+            <div className="sebox">
+              {lxt.map((item, index) => {
+                return (
+                  <div className="roabox" key={index}>
+                    <div className="rotitle">{item.title}</div>
+                    <div className="bxian">
+                      <div className="wdian">
+                        <div className="ndian"></div>
+                      </div>
                     </div>
-                    <div className="nbtm">
-                      <p className="ww">
-                        4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                      </p>
-                      <p className="ww">6月：團隊建設，模型設計。 </p>
-                    </div>
-                  </div>
-                  <div className="wbtm">
-                    <div className="wdian">
-                      <div className="ndian"></div>
-                    </div>
-                    <div className="nbtm">
-                      <p className="ww">
-                        4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                      </p>
-                      <p className="ww">6月：團隊建設，模型設計。 </p>
+                    <div className="wbtm">
+                      <div className="nbtm">
+                        {item.nei.map((item, index) => {
+                          return (
+                            <p className="ww" key={index}>
+                              {item}
+                            </p>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                  <div className="wbtm">
-                    <div className="wdian">
-                      <div className="ndian"></div>
-                    </div>
-                    <div className="nbtm">
-                      <p className="ww">
-                        4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                      </p>
-                      <p className="ww">6月：團隊建設，模型設計。 </p>
-                    </div>
-                  </div>
-                  <div className="wbtm">
-                    <div className="wdian">
-                      <div className="ndian"></div>
-                    </div>
-                    <div className="nbtm">
-                      <p className="ww">
-                        4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                      </p>
-                      <p className="ww">6月：團隊建設，模型設計。 </p>
-                    </div>
-                  </div>
-                  <div className="wbtm">
-                    <div className="wdian">
-                      <div className="ndian"></div>
-                    </div>
-                    <div className="nbtm">
-                      <p className="ww">
-                        4月：SpaceBall概念誕生，進行可行性研究。{" "}
-                      </p>
-                      <p className="ww">6月：團隊建設，模型設計。 </p>
-                    </div>
-                  </div>
-                </div>
+                );
+              })}
             </div>
+          </div>
+        </div>
+
+        <div className="partner">
+          <div className="partibox">
+            <div className="partitle">SPACE BALL -　合作夥伴</div>
+            <div className="titimg1">
+              <img src={titimg1} alt="" />
+            </div>
+            <div className="titimg2">
+              <img src={titimg2} alt="" />
+            </div>
+          </div>
+          <div className="pabtbox">
+            {bt.map((item, index) => {
+              return (
+                <div className="bt" key={index}>
+                  <img src={item.img} alt="" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

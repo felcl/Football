@@ -4,9 +4,10 @@ import {useWeb3React} from '@web3-react/core'
 import {addMessage,showLoding} from '../utils/tool'
 import {useSelector} from "react-redux";
 import {stateType} from '../store/reducer'
-import {getNodeBase , buyNodeBase , getNodeUserList , getCardUserMaxLevelInfo} from '../API'
+import {getNodeBase , buyNodeBase , getNodeUserList , getCardUserMaxLevelInfo , nodeReturned} from '../API'
 import GoldRecord from '../components/GoldRecord'
 import GlodJdSy from '../components/GlodJdSy'
+import GlodMechanism from '../components/GlodMechanism'
 import record from '../assets/image/record.png'
 import Refresh from '../assets/image/Refresh.png'
 import SBLToken from '../assets/image/SBLToken.png'
@@ -36,6 +37,7 @@ interface NodeRecordType{
     currentDay:number,
     coinName:string,
     isReturn:number
+    retainTokenNum:number
 }
 interface ApplyRecordType{
     id:number,
@@ -56,17 +58,18 @@ export default function Node() {
     let [ProfitId,setProfitId] = useState(-1)
     /* 加载状态 */
     let [heavyLoad,setHeavyLoad] = useState(false)
-    useEffect(()=>{
-        getNodeBase().then(res=>{
-            setNodeBase(res.data)
-            console.log(res,"节点配置")
-        })
-    },[])
+    /* 节点奖励机制 */
+    let [nodeRules,setNodeRules] = useState(false)
+
     useEffect(()=>{
         if(state.token){
             getNodeUserList().then(res=>{
                 setNodeRecord(res.data)
                 console.log(res,"节点奖励记录")
+            })
+            getNodeBase().then(res=>{
+                setNodeBase(res.data)
+                console.log(res,"节点配置")
             })
             getCardUserMaxLevelInfo().then(res=>{
                 setMaxLevel(res.data)
@@ -75,8 +78,8 @@ export default function Node() {
     },[state.token])
     function approve(){
         if(web3React.account){
-            Contracts.example.approve(web3React.account, contractAddress.Node).then(()=>{
-                
+            Contracts.example.approve(web3React.account, contractAddress.Node).then((res:any)=>{
+
             })
         }
     }
@@ -85,7 +88,7 @@ export default function Node() {
             if(NodeBase.currentNodeBase.isBuy === 0){
                 return addMessage("节点释放中，请释放完成后购买")
             }
-            let balanceOf = await Contracts.example.balanceOf(web3React.account)
+            let balanceOf = await Contracts.example.getBalance(web3React.account)
             if(new BigNumber(balanceOf).div(10 ** 18).lt(NodeBase.currentNodeBase.price)){
                 return addMessage("余额不足")
             }
@@ -119,6 +122,33 @@ export default function Node() {
            setMaxLevel(res.data)
            console.log(res,'用户卡牌最高等级')
        })
+    }
+    /* 领取 */
+    function receive(){
+        addMessage("暂未开放")
+    }
+    /* 退还 */
+    function returnFun(id: number,amount:number){
+        if(new BigNumber(amount).lte(0)){
+            addMessage("可领取量不足")
+        }
+        if(web3React.account){
+            showLoding(true)
+            nodeReturned({id,userAddress:web3React.account}).then(res=>{
+                console.log(res,"退还加密")
+                if(res.data){
+                    Contracts.example.quitNode(web3React.account as string,res.data).then((res:any)=>{
+                        console.log(res,"退还成功")
+                    }).finally(()=>{
+                        showLoding(false)
+                    })
+                }else{
+                    showLoding(false)
+                }
+            },()=>{
+                showLoding(false)
+            })
+        }
     }
   return (
     <div>
@@ -181,18 +211,18 @@ export default function Node() {
                     {
                         item.isReturn === 1 ? <>
                             <div className="BtnRow">
-                                <div className="receiveNodeBtn flexCenter">領取</div>
-                                <div className="returnBtn flexCenter">退还</div>
+                                <div className="receiveNodeBtn flexCenter" onClick={receive}>領取</div>
+                                <div className="returnBtn flexCenter" onClick={()=>{returnFun(item.id,item.retainTokenNum)}}>退还</div>
                             </div>
                         </>:<>
-                            <div className="applyBtn flexCenter">領取</div>
+                            <div className="applyBtn flexCenter" onClick={receive}>領取</div>
                         </>
                     }
                    
                     <div className="NodeTips">
                         我的加速等級：{nodeAccelerate[MaxLevel]} <img  className={heavyLoad ? "imgRotate" :""} onClick={getMaxLevel} src={Refresh} alt="" />
                     </div>
-                    <span className="record">獎勵機制 <img src={record} alt="" /></span>
+                    <span className="record" onClick={()=>{setNodeRules(true)}}>獎勵機制 <img src={record} alt="" /></span>
                     <span className="record" onClick={()=>{ShowProfitFun(item.id)}}>收益記錄 <img src={record} alt="" /></span>
                 </div>
                 )
@@ -202,6 +232,8 @@ export default function Node() {
         <GoldRecord isShow={showApplyRecord} close={()=>{setshowApplyRecord(false)}}></GoldRecord>
         {/* 铸币节点收益记录 */}
         <GlodJdSy isShow={showProfit} id={ProfitId} close={()=>{setShowProfit(false)}}></GlodJdSy>
+        {/* 铸币节点奖励机制 */}
+        <GlodMechanism isShow={nodeRules} close={()=>{setNodeRules(false)}}></GlodMechanism>
     </div>
   )
 }

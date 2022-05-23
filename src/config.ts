@@ -5,8 +5,8 @@ import EXChangeNFT from './ABI/EXChangeNFT.json';
 import Merge from './ABI/Merge.json';
 import NFT from './ABI/NFT.json';
 import Node from './ABI/Node.json';
-// export let baseUrl:string = 'http://192.168.2.36:10000';
-export let baseUrl:string = 'http://47.107.116.172:10000';
+export let baseUrl:string = 'http://192.168.2.36:10000';
+// export let baseUrl:string = 'http://47.107.116.172:10000';
 interface abiObjType {
     [propName: string]: any;
 }

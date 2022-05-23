@@ -44,9 +44,9 @@ export function openBox(data:buyBoxType){
     })
 }
 /* 获取用户盲盒信息 */
-export function getBoxUserInfo(pageNumber:number,pageSize:number){
+export function getBoxUserInfo(){
     return axois.request({
-        url:`/user/bBoxUser/getBoxUserInfo/${pageNumber}/${pageSize}`,
+        url:`/user/bBoxUser/getBoxUserInfo`,
         method:'get'
     })
 }
@@ -183,6 +183,18 @@ export function userDrawAward(data:DrawAwardType){
     console.log(data)
     return axois.request({
         url:`/user/uUserAccount/userDrawAward`,
+        method:'post',
+        data:{
+            ...data,
+            Encrypt:true
+        }
+    })
+}
+/* 节点退还 */
+export function nodeReturned(data:buyBoxType){
+    console.log(data)
+    return axois.request({
+        url:`/user/dNodeBase/nodeReturned`,
         method:'post',
         data:{
             ...data,

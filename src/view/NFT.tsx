@@ -12,7 +12,6 @@ import CardSynthesis from "../components/CardSynthesis"
 import '../assets/style/Swap.scss'
 import '../assets/style/componentsStyle/CardSynthesis.scss'
 import NoData from '../components/NoData'
-import AddFlow from '../components/AddFlow'
 import {addMessage,showLoding} from '../utils/tool'
 import { Pagination } from 'antd';
 import '../assets/style/componentsStyle/AddFlow.scss'
@@ -146,7 +145,7 @@ function NFT() {
     /* 初始化数据 */
     useEffect(()=>{
       if(state.token && web3React.account && TabIndex === 1){
-        getBoxUserInfo(1,10).then(res=>{
+        getBoxUserInfo().then(res=>{
           setuserBox(res.data)
           console.log(res,"用户盲盒信息")
         })
@@ -169,6 +168,7 @@ function NFT() {
     },[state.token,web3React.account,type,level,page,TabIndex])
   return (
     <div>
+      {/* <AddFlow></AddFlow> */}
       {/* 盲盒开启成功 */}
       {
         openRes && <ComSucceed isShow={showOpenCard} close={()=>setShowOpenCard(false)} CardInfo={openRes} ></ComSucceed>

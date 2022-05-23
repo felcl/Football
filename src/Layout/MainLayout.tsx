@@ -1,6 +1,7 @@
 import { Outlet , useNavigate , useLocation} from "react-router-dom";
 import { useTranslation } from 'react-i18next'
 import { Layout } from 'antd';
+import { useConnectWallet , injected , ChainId} from '../web3'
 import { AddrHandle } from '../utils/tool'
 import {useWeb3React} from '@web3-react/core'
 import logo from '../assets/image/logo.png'
@@ -17,6 +18,7 @@ const { Header, Content, Footer} = Layout;
 const MainLayout :React.FC =() =>{
     let {t,i18n} = useTranslation()
     const web3React = useWeb3React()
+    let Connect = useConnectWallet()
     function getparent(triggerNode:any){
         return triggerNode.parentNode
     }
@@ -112,7 +114,7 @@ const MainLayout :React.FC =() =>{
                             {AddrHandle(web3React.account as string)}
                             </div>
                             </>:<>
-                            <div className="Connect linear-gradient pointer">
+                            <div className="Connect linear-gradient pointer" onClick={()=>{Connect(injected,ChainId.BSC)}}>
                             Connect
                             </div>
                             </>
@@ -125,7 +127,7 @@ const MainLayout :React.FC =() =>{
                                 {AddrHandle(web3React.account as string)}
                             </div>
                             </>:<>
-                            <div className="Connect linear-gradient pointer">
+                            <div className="Connect linear-gradient pointer" onClick={()=>{Connect(injected,ChainId.BSC)}}>
                                 Connect
                             </div>
                             </>

@@ -1,9 +1,71 @@
+.bj {
+  position: relative;
+  .bj1 {
+    position: absolute;
+    width: 20%;
+    height: 636.58px;
+    z-index: 999;
+    top: -330px;
+    left: -270px;
+    background: linear-gradient(180deg, #fb03f5 0%, #aa9cff 100%);
+    filter: blur(189.415px);
+    transform: rotate(76.66deg);
+  }
+  .bj2 {
+    position: absolute;
+    z-index: 99;
+    width: 40%;
+    height: 818.52px;
+    left: -337.13px;
+    top: -500px;
+    border-radius: 50%;
+
+    background: linear-gradient(261.63deg, #7000ff 4.87%, #06fff0 87.02%);
+    filter: blur(280.94px);
+    transform: rotate(54.35deg);
+  }
+  .bj3 {
+    position: absolute;
+    width: 40%;
+    height: 490.22px;
+    // right: -200px;
+    top: 700px;
+    right: 0px;
+    // left: 1500px;
+    z-index: 999;
+    background: linear-gradient(180deg, #2603fb 0%, #dc06ff 100%);
+    filter: blur(300px);
+    border-radius: 50%;
+  }
+  .bj4 {
+    position: absolute;
+    width: 40%;
+    height: 490.22px;
+    left: -270px;
+    top: 2900px;
+    // border-radius: 50%;
+    background: linear-gradient(180deg, #2603fb 0%, #dc06ff 100%);
+    filter: blur(300px);
+    transform: rotate(-50deg);
+  }
+  .bj5 {
+    position: absolute;
+    width: 400.88px;
+    height: 400.88px;
+    bottom: -200px;
+    right: 0px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #2603fb 0%, #dc06ff 100%);
+    filter: blur(300px);
+  }
+}
+
 .Edition-Center {
   width: 100%;
-  // overflow: hidden;
   .introduce {
     width: 100%;
     display: flex;
+    margin-bottom: 276px;
     .yanyu {
       width: 432px;
       margin-left: 7vw;
@@ -203,6 +265,9 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 60px;
+      img {
+        width: 60%;
+      }
     }
     .gro {
       text-align: center;
@@ -227,9 +292,13 @@
     }
     .zoobox {
       margin-bottom: 320px;
+      img {
+        width: 100%;
+      }
     }
   }
   .roadmap {
+    margin-bottom: 326px;
     .roatitle {
       font-size: 24px;
       font-weight: 700;
@@ -237,94 +306,186 @@
       color: #fff;
       margin-bottom: 164px;
     }
-    .roabox {
-      margin-right: -350px;
-      .boxtitle {
-        text-align: right;
-        overflow: hidden;
-        margin-right: -50px;
-        margin-bottom: 23px;
-        .boxn {
-          margin-right: 148px;
-          font-style: normal;
-          font-size: 26px;
-          font-weight: 700;
-          margin-bottom: 25px;
-          background: linear-gradient(
-            180deg,
-            #db2dcf 21.43%,
-            rgba(219, 45, 207, 0) 80.95%
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
-        }
-        .boxn:nth-child(5) {
-          margin-right: 0;
-        }
-      }
-      .bxian {
-        border-bottom: 2px solid rgba(219, 45, 207, 0.35);
-        margin-bottom: 21px;
-      }
-      .roabtm {
+    .scroll {
+      width: 80vw;
+      height: 450px;
+      margin-right: -250px;
+      position: relative;
+      overflow: hidden;
+      .sebox {
+        width: 1600px;
+        position: absolute;
         display: flex;
-        margin-right: -350px;
-
-        justify-content: flex-start;
-        .wbtm {
-          width: 240px;
-          height: 337px;
-          border: 1px solid;
-          margin-left: 90px;
-          background: linear-gradient(
-            to bottom,
-            #db2dcf 12.13%,
-            rgba(125, 197, 252, 0.5) 50%,
-            rgba(78, 173, 245, 0) 98.9%
-          );
-          // border: 1px solid;
-          border-radius: 1px;
-          padding: 1px;
-          position: relative;
-          .wdian {
-            width: 12px;
-            height: 13px;
-            border-radius: 60%;
-            background: rgba(219, 45, 207, 0.35);
-            position: absolute;
-            top: -30px;
-            left: 116px;
-            .ndian {
-              margin: auto;
-              margin-top: 3px;
-              width: 8px;
-              height: 7px;
-              border-radius: 50%;
-              background: #db2dcf;
-            }
-          }
-          .nbtm {
-            width: 236px;
-            height: 337px;
+        right: -250px;
+        justify-content: start;
+        .roabox {
+          width: 300px;
+          margin: 0px;
+          text-align: center;
+          .rotitle {
+            font-style: normal;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
             background: linear-gradient(
               180deg,
-              // rgba(12, 8, 17, 1) 100%
-              #1e2240 0%,
-              rgba(12, 8, 17, 1) 100%
+              #db2dcf 21.43%,
+              rgba(219, 45, 207, 0) 80.95%
             );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+          }
+          .bxian {
+            border-bottom: 2px solid rgba(219, 45, 207, 0.35);
+            position: relative;
+            margin-bottom: 21px;
+            .wdian {
+              position: absolute;
+              left: 140px;
+              top: -6px;
+              width: 12px;
+              height: 13px;
+              border-radius: 60%;
+              background: rgba(219, 45, 207, 0.35);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .ndian {
+                width: 8px;
+                height: 7px;
+                border-radius: 50%;
+                background: #db2dcf;
+              }
+            }
+          }
+          .wbtm {
+            margin: auto;
+            width: 240px;
+            height: 337px;
+            border: 1px solid;
+            background: linear-gradient(
+              to bottom,
+              #db2dcf 12.13%,
+              rgba(125, 197, 252, 0.5) 50%,
+              rgba(78, 173, 245, 0) 98.9%
+            );
+            // border: 1px solid;
             border-radius: 1px;
-            .ww {
-              font-weight: 500;
-              font-size: 14px;
-              color: #fff;
-              margin-bottom: 0;
-              padding-left: 10px;
-              padding-top: 5px;
+            padding: 1px;
+            .nbtm {
+              width: 236px;
+              height: 337px;
+              background: linear-gradient(
+                180deg,
+                // rgba(12, 8, 17, 1) 100%
+                #1e2240 0%,
+                rgba(12, 8, 17, 1) 100%
+              );
+              border-radius: 1px;
+              .ww {
+                font-weight: 500;
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 0;
+                padding: 5px 10px 0 10px;
+                text-align: left;
+                // padding-left: 10px;
+                // padding-top: 5px;
+              }
             }
           }
         }
+      }
+    }
+  }
+  .partner {
+    .partibox {
+      position: relative;
+      text-align: center;
+      .partitle {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 54px;
+      }
+      .titimg1 {
+        position: absolute;
+        top: -185px;
+        left: 455px;
+      }
+      .titimg2 {
+        position: absolute;
+        top: -55px;
+        right: 35px;
+      }
+    }
+    .pabtbox {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 131px;
+    }
+    .bt {
+      // width: 25%;
+      width: 300px;
+      margin: 20px 0;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .Edition-Center {
+    width: 100%;
+    .introduce {
+      display: flex;
+      flex-direction: column-reverse;
+      .yanyu {
+        width: 100%;
+        margin-top: 0;
+        // line-height: 1px;
+      }
+      .intimg {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1300px) {
+  .Edition-Center {
+    .partner {
+      .partibox {
+        .titimg1 {
+          display: none;
+        }
+        .titimg2 {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .Edition-Center {
+    .roadmap {
+      .scroll {
+        overflow: auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 690px) {
+  .partner {
+    .pabtbox {
+      justify-content: center;
+      .bt {
+        display: flex;
+        justify-content: center;
       }
     }
   }
